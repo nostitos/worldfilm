@@ -1,0 +1,2 @@
+talking-head-3s.mp4: 3-second excerpt of Mixkit clip 4834 ("Therapist in his office talking to the camera", https://mixkit.co/free-stock-video/talking/),
+used under the Mixkit Stock Video Free License for testing the worldfilm sam_separate.py tool. Not redistributed as a film asset.

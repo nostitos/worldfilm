@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>depth composite fixture</title>
+<style>
+html,body{margin:0;background:#000;overflow:hidden}
+#root{position:relative;width:1920px;height:1080px;overflow:hidden}
+.layer{position:absolute;left:0;top:0;width:1920px;height:1080px}
+video{width:1920px;height:1080px;object-fit:cover}
+#graphic{position:absolute;left:560px;top:150px;width:1000px;height:300px;background:#f7931a;color:#101010;font:700 72px/1.05 Helvetica,Arial,sans-serif;padding:36px;box-sizing:border-box;border-radius:8px;transform-origin:0 50%}
+#graphic small{display:block;font:500 28px/1.2 Helvetica,Arial,sans-serif;margin-top:18px}
+</style></head>
+<body>
+<div id="root">
+  <video id="bg" class="layer" src="../talking-head-3s.mp4" muted playsinline preload="auto"></video>
+  <div id="graphic">BEHIND<br>THE SUBJECT<small>a graphic between the person and the room</small></div>
+  <video id="fg" class="layer" src="../talking-head-3s-sep/cutout.webm" muted playsinline preload="auto"></video>
+</div>
+<script>
+// seek contract: both videos follow t; the graphic slides in from the right over the first second (pure function of t)
+const bg = document.getElementById('bg'), fg = document.getElementById('fg'), g = document.getElementById('graphic');
+const ready = Promise.all([bg, fg].map(v => new Promise(r => { if (v.readyState >= 2) r(); else v.addEventListener('loadeddata', r, { once: true }); })));
+const seekVideo = (v, t) => new Promise(r => { if (Math.abs(v.currentTime - t) < 1e-3) return r(); v.addEventListener('seeked', () => r(), { once: true }); v.currentTime = t; });
+window.__worldfilm = { seek: async (t) => { await ready; await Promise.all([seekVideo(bg, t), seekVideo(fg, t)]); const u = Math.min(1, t / 1.0); const e = 1 - Math.pow(2, -10 * u); g.style.transform = 'translateX(' + ((1 - e) * 700) + 'px) scale(' + (0.6 + 0.4 * e) + ')'; } };
+window.__worldfilm.seek(0);
+</script>
+</body></html>

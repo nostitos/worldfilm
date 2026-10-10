@@ -1,0 +1,930 @@
+{
+ "duration": 30.0,
+ "seed": 21,
+ "target_lufs": -14.0,
+ "ceiling_db": -2.0,
+ "fade_out": 0.4,
+ "silence": [
+  [
+   25.0,
+   27.0
+  ]
+ ],
+ "pad": {
+  "group": "score",
+  "gain": 0.34,
+  "chords": [
+   [
+    0.0,
+    [
+     55.0,
+     82.41,
+     110.0,
+     261.63
+    ]
+   ],
+   [
+    7.0,
+    [
+     55.0,
+     82.41,
+     110.0
+    ]
+   ],
+   [
+    10.0,
+    [
+     55.0,
+     82.41,
+     261.63
+    ]
+   ],
+   [
+    13.0,
+    [
+     55.0,
+     110.0
+    ]
+   ],
+   [
+    15.5,
+    [
+     55.0,
+     82.41
+    ]
+   ],
+   [
+    19.5,
+    [
+     55.0
+    ]
+   ],
+   [
+    23.0,
+    [
+     55.0
+    ]
+   ]
+  ],
+  "volume": [
+   [
+    0,
+    0.0
+   ],
+   [
+    0.6,
+    0.55
+   ],
+   [
+    6.96,
+    0.55
+   ],
+   [
+    7.0,
+    0.18
+   ],
+   [
+    7.45,
+    0.55
+   ],
+   [
+    9.96,
+    0.55
+   ],
+   [
+    10.0,
+    0.18
+   ],
+   [
+    10.45,
+    0.55
+   ],
+   [
+    12.96,
+    0.55
+   ],
+   [
+    13.0,
+    0.18
+   ],
+   [
+    13.45,
+    0.55
+   ],
+   [
+    15.46,
+    0.55
+   ],
+   [
+    15.5,
+    0.18
+   ],
+   [
+    15.95,
+    0.55
+   ],
+   [
+    17.4,
+    0.55
+   ],
+   [
+    19.5,
+    0.35
+   ],
+   [
+    23.0,
+    0.45
+   ],
+   [
+    24.8,
+    0.0
+   ],
+   [
+    27.0,
+    0.0
+   ],
+   [
+    27.1,
+    0.0
+   ]
+  ],
+  "detune": 0.5,
+  "tremolo": 0.12
+ },
+ "cues": [
+  {
+   "group": "score",
+   "id": "hat-07",
+   "t": 3.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "pulse-08",
+   "t": 4.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "score",
+   "id": "hat-09",
+   "t": 4.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "hat-11",
+   "t": 5.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "pulse-12",
+   "t": 6.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "score",
+   "id": "hat-13",
+   "t": 6.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "hat-15",
+   "t": 7.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "pulse-16",
+   "t": 8.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "score",
+   "id": "hat-17",
+   "t": 8.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "hat-19",
+   "t": 9.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "hat-21",
+   "t": 10.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "hat-23",
+   "t": 11.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "pulse-24",
+   "t": 12.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "score",
+   "id": "hat-25",
+   "t": 12.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "hat-27",
+   "t": 13.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "pulse-28",
+   "t": 14.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "score",
+   "id": "hat-29",
+   "t": 14.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "hat-31",
+   "t": 15.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "pulse-32",
+   "t": 16.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "score",
+   "id": "hat-33",
+   "t": 16.5,
+   "gen": "hat",
+   "args": {
+    "fc": 7000
+   },
+   "gain": 0.08
+  },
+  {
+   "group": "score",
+   "id": "pulse-40",
+   "t": 20.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "score",
+   "id": "pulse-44",
+   "t": 22.0,
+   "gen": "kick",
+   "args": {
+    "f0": 48,
+    "dur": 0.3,
+    "punch": 110
+   },
+   "gain": 0.22
+  },
+  {
+   "group": "sfx",
+   "id": "kick-h1",
+   "t": 7.0,
+   "gen": "kick",
+   "args": {
+    "f0": 55.0,
+    "dur": 0.6,
+    "punch": 170
+   },
+   "gain": 1.0,
+   "audibility_db": 6
+  },
+  {
+   "group": "sfx",
+   "id": "sub-h1",
+   "t": 7.02,
+   "gen": "sub",
+   "args": {
+    "freq": 55.0,
+    "dur": 1.6,
+    "attack": 0.01,
+    "release": 0.6
+   },
+   "gain": 0.5
+  },
+  {
+   "group": "sfx",
+   "id": "kick-h2",
+   "t": 10.0,
+   "gen": "kick",
+   "args": {
+    "f0": 51.9,
+    "dur": 0.6,
+    "punch": 170
+   },
+   "gain": 0.96,
+   "audibility_db": 6
+  },
+  {
+   "group": "sfx",
+   "id": "sub-h2",
+   "t": 10.02,
+   "gen": "sub",
+   "args": {
+    "freq": 51.9,
+    "dur": 1.6,
+    "attack": 0.01,
+    "release": 0.6
+   },
+   "gain": 0.5
+  },
+  {
+   "group": "sfx",
+   "id": "kick-h3",
+   "t": 13.0,
+   "gen": "kick",
+   "args": {
+    "f0": 49.0,
+    "dur": 0.6,
+    "punch": 170
+   },
+   "gain": 0.92,
+   "audibility_db": 6
+  },
+  {
+   "group": "sfx",
+   "id": "sub-h3",
+   "t": 13.02,
+   "gen": "sub",
+   "args": {
+    "freq": 49.0,
+    "dur": 1.6,
+    "attack": 0.01,
+    "release": 0.6
+   },
+   "gain": 0.5
+  },
+  {
+   "group": "sfx",
+   "id": "kick-h4",
+   "t": 15.5,
+   "gen": "kick",
+   "args": {
+    "f0": 46.2,
+    "dur": 0.6,
+    "punch": 170
+   },
+   "gain": 0.88,
+   "audibility_db": 6
+  },
+  {
+   "group": "sfx",
+   "id": "sub-h4",
+   "t": 15.52,
+   "gen": "sub",
+   "args": {
+    "freq": 46.2,
+    "dur": 1.6,
+    "attack": 0.01,
+    "release": 0.6
+   },
+   "gain": 0.5
+  },
+  {
+   "group": "score",
+   "id": "tone-now",
+   "t": 17.4,
+   "gen": "tone",
+   "args": {
+    "freq": 440.0,
+    "dur": 2.2,
+    "attack": 0.4,
+    "release": 1.0,
+    "harmonics": [
+     1.0,
+     0.2,
+     0.05
+    ]
+   },
+   "gain": 0.14
+  },
+  {
+   "group": "sfx",
+   "id": "arrive-now",
+   "t": 17.4,
+   "gen": "blip",
+   "args": {
+    "freq": 880.0,
+    "dur": 0.5,
+    "tau": 0.18
+   },
+   "gain": 0.42,
+   "align": "peak"
+  },
+  {
+   "group": "score",
+   "id": "tick-h5",
+   "t": 19.8,
+   "gen": "click",
+   "args": {
+    "freq": 1600,
+    "dur": 0.05
+   },
+   "gain": 0.34
+  },
+  {
+   "group": "score",
+   "id": "tick-h6",
+   "t": 20.25,
+   "gen": "click",
+   "args": {
+    "freq": 1640,
+    "dur": 0.05
+   },
+   "gain": 0.331
+  },
+  {
+   "group": "score",
+   "id": "tick-h7",
+   "t": 20.6,
+   "gen": "click",
+   "args": {
+    "freq": 1680,
+    "dur": 0.05
+   },
+   "gain": 0.322
+  },
+  {
+   "group": "score",
+   "id": "tick-h8",
+   "t": 20.9,
+   "gen": "click",
+   "args": {
+    "freq": 1720,
+    "dur": 0.05
+   },
+   "gain": 0.31300000000000006
+  },
+  {
+   "group": "score",
+   "id": "tick-h9",
+   "t": 21.15,
+   "gen": "click",
+   "args": {
+    "freq": 1760,
+    "dur": 0.05
+   },
+   "gain": 0.30400000000000005
+  },
+  {
+   "group": "score",
+   "id": "tick-h10",
+   "t": 21.35,
+   "gen": "click",
+   "args": {
+    "freq": 1800,
+    "dur": 0.05
+   },
+   "gain": 0.29500000000000004
+  },
+  {
+   "group": "score",
+   "id": "tick-h11",
+   "t": 21.52,
+   "gen": "click",
+   "args": {
+    "freq": 1840,
+    "dur": 0.05
+   },
+   "gain": 0.28600000000000003
+  },
+  {
+   "group": "score",
+   "id": "tick-h12",
+   "t": 21.67,
+   "gen": "click",
+   "args": {
+    "freq": 1880,
+    "dur": 0.05
+   },
+   "gain": 0.277
+  },
+  {
+   "group": "score",
+   "id": "tick-h13",
+   "t": 21.8,
+   "gen": "click",
+   "args": {
+    "freq": 1920,
+    "dur": 0.05
+   },
+   "gain": 0.268
+  },
+  {
+   "group": "score",
+   "id": "tick-h14",
+   "t": 21.92,
+   "gen": "click",
+   "args": {
+    "freq": 1960,
+    "dur": 0.05
+   },
+   "gain": 0.259
+  },
+  {
+   "group": "score",
+   "id": "tick-h15",
+   "t": 22.02,
+   "gen": "click",
+   "args": {
+    "freq": 2000,
+    "dur": 0.05
+   },
+   "gain": 0.25
+  },
+  {
+   "group": "score",
+   "id": "tick-h16",
+   "t": 22.11,
+   "gen": "click",
+   "args": {
+    "freq": 2040,
+    "dur": 0.05
+   },
+   "gain": 0.24100000000000005
+  },
+  {
+   "group": "score",
+   "id": "tick-h17",
+   "t": 22.19,
+   "gen": "click",
+   "args": {
+    "freq": 2080,
+    "dur": 0.05
+   },
+   "gain": 0.23200000000000004
+  },
+  {
+   "group": "score",
+   "id": "tick-h18",
+   "t": 22.26,
+   "gen": "click",
+   "args": {
+    "freq": 2120,
+    "dur": 0.05
+   },
+   "gain": 0.22300000000000003
+  },
+  {
+   "group": "score",
+   "id": "tick-h19",
+   "t": 22.32,
+   "gen": "click",
+   "args": {
+    "freq": 2160,
+    "dur": 0.05
+   },
+   "gain": 0.21400000000000002
+  },
+  {
+   "group": "score",
+   "id": "tick-h20",
+   "t": 22.38,
+   "gen": "click",
+   "args": {
+    "freq": 2200,
+    "dur": 0.05
+   },
+   "gain": 0.20500000000000004
+  },
+  {
+   "group": "score",
+   "id": "tick-h21",
+   "t": 22.43,
+   "gen": "click",
+   "args": {
+    "freq": 2240,
+    "dur": 0.05
+   },
+   "gain": 0.19600000000000004
+  },
+  {
+   "group": "score",
+   "id": "tick-h22",
+   "t": 22.48,
+   "gen": "click",
+   "args": {
+    "freq": 2280,
+    "dur": 0.05
+   },
+   "gain": 0.18700000000000003
+  },
+  {
+   "group": "score",
+   "id": "tick-h23",
+   "t": 22.52,
+   "gen": "click",
+   "args": {
+    "freq": 2320,
+    "dur": 0.05
+   },
+   "gain": 0.17800000000000005
+  },
+  {
+   "group": "score",
+   "id": "tick-h24",
+   "t": 22.56,
+   "gen": "click",
+   "args": {
+    "freq": 2360,
+    "dur": 0.05
+   },
+   "gain": 0.16900000000000004
+  },
+  {
+   "group": "score",
+   "id": "tick-h25",
+   "t": 22.6,
+   "gen": "click",
+   "args": {
+    "freq": 2400,
+    "dur": 0.05
+   },
+   "gain": 0.16000000000000003
+  },
+  {
+   "group": "score",
+   "id": "tick-h26",
+   "t": 22.64,
+   "gen": "click",
+   "args": {
+    "freq": 2440,
+    "dur": 0.05
+   },
+   "gain": 0.15100000000000005
+  },
+  {
+   "group": "score",
+   "id": "tick-h27",
+   "t": 22.67,
+   "gen": "click",
+   "args": {
+    "freq": 2480,
+    "dur": 0.05
+   },
+   "gain": 0.14200000000000004
+  },
+  {
+   "group": "score",
+   "id": "tick-h28",
+   "t": 22.7,
+   "gen": "click",
+   "args": {
+    "freq": 2520,
+    "dur": 0.05
+   },
+   "gain": 0.13300000000000003
+  },
+  {
+   "group": "score",
+   "id": "tick-h29",
+   "t": 22.73,
+   "gen": "click",
+   "args": {
+    "freq": 2560,
+    "dur": 0.05
+   },
+   "gain": 0.12400000000000005
+  },
+  {
+   "group": "score",
+   "id": "tick-h30",
+   "t": 22.76,
+   "gen": "click",
+   "args": {
+    "freq": 2600,
+    "dur": 0.05
+   },
+   "gain": 0.11500000000000005
+  },
+  {
+   "group": "score",
+   "id": "tick-h31",
+   "t": 22.79,
+   "gen": "click",
+   "args": {
+    "freq": 2640,
+    "dur": 0.05
+   },
+   "gain": 0.10600000000000004
+  },
+  {
+   "group": "score",
+   "id": "tick-h32",
+   "t": 22.82,
+   "gen": "click",
+   "args": {
+    "freq": 2680,
+    "dur": 0.05
+   },
+   "gain": 0.09700000000000003
+  },
+  {
+   "group": "sfx",
+   "id": "riser",
+   "t": 24.95,
+   "gen": "riser",
+   "args": {
+    "dur": 2.4,
+    "f0": 220,
+    "f1": 4800
+   },
+   "gain": 0.55,
+   "align": "peak"
+  },
+  {
+   "group": "sfx",
+   "id": "whoosh-s01",
+   "t": 1.3,
+   "gen": "whoosh",
+   "args": {
+    "dur": 0.9,
+    "f0": 240,
+    "f1": 2600,
+    "peak": 0.55
+   },
+   "gain": 0.4,
+   "align": "peak"
+  },
+  {
+   "group": "sfx",
+   "id": "whoosh-s07",
+   "t": 21.9,
+   "gen": "whoosh",
+   "args": {
+    "dur": 0.9,
+    "f0": 240,
+    "f1": 2600,
+    "peak": 0.55
+   },
+   "gain": 0.4,
+   "align": "peak"
+  },
+  {
+   "group": "sfx",
+   "id": "whoosh-s08",
+   "t": 23.8,
+   "gen": "whoosh",
+   "args": {
+    "dur": 0.9,
+    "f0": 240,
+    "f1": 2600,
+    "peak": 0.55
+   },
+   "gain": 0.4,
+   "align": "peak"
+  },
+  {
+   "group": "sfx",
+   "id": "impact-cap",
+   "t": 27.0,
+   "gen": "impact",
+   "args": {
+    "dur": 1.6
+   },
+   "gain": 1.0,
+   "align": "peak"
+  },
+  {
+   "group": "score",
+   "id": "chime-cap",
+   "t": 27.02,
+   "gen": "chime",
+   "args": {
+    "freqs": [
+     220.0,
+     329.63,
+     440.0
+    ],
+    "dur": 2.4,
+    "tau": 0.9
+   },
+   "gain": 0.5
+  },
+  {
+   "group": "sfx",
+   "id": "sub-cap",
+   "t": 27.0,
+   "gen": "sub",
+   "args": {
+    "freq": 55.0,
+    "dur": 2.4,
+    "attack": 0.02,
+    "release": 0.8
+   },
+   "gain": 0.6
+  }
+ ]
+}

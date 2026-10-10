@@ -1,0 +1,559 @@
+{
+  "runner": {
+    "name": "run_gates.py",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-10-10T01:04:23+00:00",
+  "ffmpeg_version": "ffmpeg version 8.0.1 Copyright (c) 2000-2025 the FFmpeg developers",
+  "spec": {
+    "path": "studio/projects/block-space/shotspec.json",
+    "sha256": "6aa73ca1b4037d38fad839f833e2d1490a2a5b0326d6680bf15c8bdb0c3094d0",
+    "title": "Block Space",
+    "shots": 9
+  },
+  "mode": "static",
+  "video": {
+    "path": null,
+    "sha256": null,
+    "probe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 60.0,
+      "duration": 30.0,
+      "has_audio": false,
+      "static_stub": true
+    }
+  },
+  "facts_file": "studio/projects/block-space/facts.json",
+  "composition_dir": null,
+  "out_dir": "studio/projects/block-space/gates/static",
+  "thresholds": {
+    "frozen_max_s_per_30s": 1.0,
+    "hold_max_s": 0.3,
+    "contrast_min": 4.5,
+    "lufs_target": -14,
+    "true_peak_max_dbtp": -1,
+    "cut_error_max_frames": 2,
+    "handoff_max_mean_abs_diff": 6,
+    "palette_max_distance": 40
+  },
+  "gates": [
+    {
+      "gate": "frozen_time",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {},
+      "detail": "static mode: needs a rendered video",
+      "evidence_paths": []
+    },
+    {
+      "gate": "loudness",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {},
+      "detail": "static mode: needs a rendered video",
+      "evidence_paths": []
+    },
+    {
+      "gate": "handoff",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {},
+      "detail": "static mode: needs a rendered video",
+      "evidence_paths": []
+    },
+    {
+      "gate": "facts",
+      "status": "PASS",
+      "measured": {
+        "facts_file": "studio/projects/block-space/facts.json",
+        "facts_loaded": true,
+        "fact_values": 173,
+        "tokens_checked": 18,
+        "composition_tokens": 0,
+        "unmatched": 0,
+        "text_entries_missing_fact_ids": 0,
+        "unmatched_tokens": [],
+        "missing_fact_ids": [],
+        "tokens": [
+          {
+            "shot": "s01",
+            "text_id": "C1",
+            "token": "2,016",
+            "matched_fact": "F-PERIOD.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s02",
+            "text_id": "L-h1",
+            "token": "1",
+            "matched_fact": "F-H1.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s02",
+            "text_id": "L-h1",
+            "token": "25",
+            "matched_fact": "F-H1.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s03",
+            "text_id": "L-h2",
+            "token": "2",
+            "matched_fact": "F-H2.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s03",
+            "text_id": "L-h2",
+            "token": "12.5",
+            "matched_fact": "F-H2.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s04",
+            "text_id": "L-h3",
+            "token": "3",
+            "matched_fact": "F-H3.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s04",
+            "text_id": "L-h3",
+            "token": "6.25",
+            "matched_fact": "F-H3.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s05",
+            "text_id": "L-h4",
+            "token": "4",
+            "matched_fact": "F-H4.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s05",
+            "text_id": "L-h4",
+            "token": "3.125",
+            "matched_fact": "F-H4.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s06",
+            "text_id": "L-now",
+            "token": "970,440",
+            "matched_fact": "F-NOW.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s06",
+            "text_id": "L-now",
+            "token": "2026",
+            "matched_fact": "F-RULE.retrieved",
+            "source": "spec"
+          },
+          {
+            "shot": "s06",
+            "text_id": "C2",
+            "token": "20,095,128",
+            "matched_fact": "F-NOW.value.coins_through_tip_whole",
+            "source": "spec"
+          },
+          {
+            "shot": "s07",
+            "text_id": "C3",
+            "token": "28",
+            "matched_fact": "F-H1.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s07",
+            "text_id": "L-h5",
+            "token": "5",
+            "matched_fact": "F-FUTURE.value.first.k",
+            "source": "spec"
+          },
+          {
+            "shot": "s07",
+            "text_id": "L-h5",
+            "token": "1.5625",
+            "matched_fact": "F-FUTURE.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s08",
+            "text_id": "L-last",
+            "token": "6,929,999",
+            "matched_fact": "F-LAST.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s09",
+            "text_id": "H-cap",
+            "token": "21,000,000",
+            "matched_fact": "F-CAP.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s09",
+            "text_id": "X-cap",
+            "token": "20,999,999.9769",
+            "matched_fact": "F-CAP.claim",
+            "source": "spec"
+          }
+        ]
+      },
+      "threshold": {
+        "unmatched_tokens_max": 0,
+        "digit_text_without_fact_ids_max": 0
+      },
+      "detail": "18 numeric tokens all trace to facts.json values (173 values; 0 tokens from the composition)",
+      "evidence_paths": []
+    },
+    {
+      "gate": "beats",
+      "status": "PASS",
+      "measured": {
+        "beat_grid_len": 61,
+        "checked": 8,
+        "failed": 0,
+        "worst_error_frames": 0.0,
+        "per_shot": [
+          {
+            "shot": "s01",
+            "on_beat": 6,
+            "t_out": 3.0,
+            "beat_t": 3.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s02",
+            "on_beat": 14,
+            "t_out": 7.0,
+            "beat_t": 7.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s03",
+            "on_beat": 20,
+            "t_out": 10.0,
+            "beat_t": 10.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s04",
+            "on_beat": 26,
+            "t_out": 13.0,
+            "beat_t": 13.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s05",
+            "on_beat": 31,
+            "t_out": 15.5,
+            "beat_t": 15.5,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s06",
+            "on_beat": 39,
+            "t_out": 19.5,
+            "beat_t": 19.5,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s07",
+            "on_beat": 46,
+            "t_out": 23.0,
+            "beat_t": 23.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s08",
+            "on_beat": 54,
+            "t_out": 27.0,
+            "beat_t": 27.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          }
+        ]
+      },
+      "threshold": {
+        "cut_error_max_frames": 2,
+        "cut_error_max_s": 0.0333
+      },
+      "detail": "s01 beat 6: 0.00 frames (PASS); s02 beat 14: 0.00 frames (PASS); s03 beat 20: 0.00 frames (PASS); s04 beat 26: 0.00 frames (PASS); s05 beat 31: 0.00 frames (PASS); s06 beat 39: 0.00 frames (PASS); s07 beat 46: 0.00 frames (PASS); s08 beat 54: 0.00 frames (PASS)",
+      "evidence_paths": []
+    },
+    {
+      "gate": "swatch",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {},
+      "detail": "static mode: needs a rendered video",
+      "evidence_paths": []
+    },
+    {
+      "gate": "read_time",
+      "status": "PASS",
+      "measured": {
+        "texts": 14,
+        "failed": 0,
+        "missing_min_hold": 0,
+        "skipped_credits": [],
+        "max_required_hold_s": 5.63,
+        "per_text": [
+          {
+            "shot": "s01",
+            "text_id": "C1",
+            "chars": 62,
+            "cjk_chars": 0,
+            "required_hold_s": 5.63,
+            "min_hold_s": 6.2,
+            "shot_len_s": 3.0,
+            "window_s": 6.2,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s02",
+            "text_id": "L-h1",
+            "chars": 14,
+            "cjk_chars": 0,
+            "required_hold_s": 2.43,
+            "min_hold_s": 3.3,
+            "shot_len_s": 4.0,
+            "window_s": 3.3,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s03",
+            "text_id": "L-h2",
+            "chars": 16,
+            "cjk_chars": 0,
+            "required_hold_s": 2.57,
+            "min_hold_s": 2.9,
+            "shot_len_s": 3.0,
+            "window_s": 2.9,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s04",
+            "text_id": "L-h3",
+            "chars": 16,
+            "cjk_chars": 0,
+            "required_hold_s": 2.57,
+            "min_hold_s": 2.9,
+            "shot_len_s": 3.0,
+            "window_s": 2.9,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s05",
+            "text_id": "L-h4",
+            "chars": 17,
+            "cjk_chars": 0,
+            "required_hold_s": 2.63,
+            "min_hold_s": 2.65,
+            "shot_len_s": 2.5,
+            "window_s": 2.65,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s06",
+            "text_id": "L-now",
+            "chars": 24,
+            "cjk_chars": 0,
+            "required_hold_s": 3.1,
+            "min_hold_s": 3.5,
+            "shot_len_s": 4.0,
+            "window_s": 3.5,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s06",
+            "text_id": "C2",
+            "chars": 27,
+            "cjk_chars": 0,
+            "required_hold_s": 3.3,
+            "min_hold_s": 3.3,
+            "shot_len_s": 4.0,
+            "window_s": 3.3,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s07",
+            "text_id": "C3",
+            "chars": 26,
+            "cjk_chars": 0,
+            "required_hold_s": 3.23,
+            "min_hold_s": 3.6,
+            "shot_len_s": 3.5,
+            "window_s": 3.6,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s07",
+            "text_id": "L-h5",
+            "chars": 18,
+            "cjk_chars": 0,
+            "required_hold_s": 2.7,
+            "min_hold_s": 3.0,
+            "shot_len_s": 3.5,
+            "window_s": 3.0,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s08",
+            "text_id": "C4",
+            "chars": 15,
+            "cjk_chars": 0,
+            "required_hold_s": 2.5,
+            "min_hold_s": 2.85,
+            "shot_len_s": 4.0,
+            "window_s": 2.85,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s08",
+            "text_id": "L-last",
+            "chars": 19,
+            "cjk_chars": 0,
+            "required_hold_s": 2.77,
+            "min_hold_s": 3.1,
+            "shot_len_s": 4.0,
+            "window_s": 3.1,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s09",
+            "text_id": "H-cap",
+            "chars": 10,
+            "cjk_chars": 0,
+            "required_hold_s": 2.17,
+            "min_hold_s": 3.0,
+            "shot_len_s": 3.0,
+            "window_s": 3.0,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s09",
+            "text_id": "K-cap",
+            "chars": 10,
+            "cjk_chars": 0,
+            "required_hold_s": 2.17,
+            "min_hold_s": 2.7,
+            "shot_len_s": 3.0,
+            "window_s": 2.7,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s09",
+            "text_id": "X-cap",
+            "chars": 18,
+            "cjk_chars": 0,
+            "required_hold_s": 2.7,
+            "min_hold_s": 2.9,
+            "shot_len_s": 3.0,
+            "window_s": 2.9,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          }
+        ]
+      },
+      "threshold": {
+        "latin_cps": 15.0,
+        "cjk_cps": 4.5,
+        "pad_s": 1.5,
+        "min_s": 1.5,
+        "rule": "required = max(min_s, cjk/cjk_cps + other/latin_cps + pad_s); min_hold_s >= required and required <= the text's on-screen window (at_s..until_s, else the shot); role=credits is skipped"
+      },
+      "detail": "s01/C1: 62 chars need 5.63s, min_hold 6.2, on screen 6.20s (PASS); s02/L-h1: 14 chars need 2.43s, min_hold 3.3, on screen 3.30s (PASS); s03/L-h2: 16 chars need 2.57s, min_hold 2.9, on screen 2.90s (PASS); s04/L-h3: 16 chars need 2.57s, min_hold 2.9, on screen 2.90s (PASS); s05/L-h4: 17 chars need 2.63s, min_hold 2.65, on screen 2.65s (PASS); s06/L-now: 24 chars need 3.10s, min_hold 3.5, on screen 3.50s (PASS); s06/C2: 27 chars need 3.30s, min_hold 3.3, on screen 3.30s (PASS); s07/C3: 26 chars need 3.23s, min_hold 3.6, on screen 3.60s (PASS); s07/L-h5: 18 chars need 2.70s, min_hold 3.0, on screen 3.00s (PASS); s08/C4: 15 chars need 2.50s, min_hold 2.85, on screen 2.85s (PASS); s08/L-last: 19 chars need 2.77s, min_hold 3.1, on screen 3.10s (PASS); s09/H-cap: 10 chars need 2.17s, min_hold 3.0, on screen 3.00s (PASS); s09/K-cap: 10 chars need 2.17s, min_hold 2.7, on screen 2.70s (PASS); s09/X-cap: 18 chars need 2.70s, min_hold 2.9, on screen 2.90s (PASS). Static check on the spec; the live readcheck.mjs sweep (window.TEXTS) still applies to the rendered page.",
+      "evidence_paths": []
+    },
+    {
+      "gate": "motion_shape",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {},
+      "detail": "static mode: needs a rendered video",
+      "evidence_paths": []
+    },
+    {
+      "gate": "contrast",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {
+        "contrast_min": 4.5,
+        "rule": "HyperFrames check: WCAG AA (4.5:1 normal text, 3:1 large), content_overlap / clipped_text findings"
+      },
+      "detail": "no --composition-dir given; contrast/overlap/clipped-text need the HTML composition",
+      "evidence_paths": []
+    },
+    {
+      "gate": "contact_sheet",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {},
+      "detail": "static mode: needs a rendered video",
+      "evidence_paths": []
+    }
+  ],
+  "summary": {
+    "pass": 3,
+    "fail": 0,
+    "warn": 0,
+    "skip": 7,
+    "exit_code": 0,
+    "verdict": "PASS",
+    "failed_gates": []
+  },
+  "notes": [],
+  "needs_human": [
+    "Aesthetics against the references: does it sit beside premium SaaS launch films (launch-film-notes.md benchmark) or read as 'image, then video, then text'?",
+    "Sound-off comprehension: can a first-time viewer, on mute, say what the business does and the one next action by the end?",
+    "Frame 0 is a finished composition; no empty frames, wasted space or lingering beats (per-scene % empty frame and seconds to lose).",
+    "Text collisions mid-transition, equal spacing in lists/rows, aligned left edges across headline, image and supporting rows.",
+    "Transitions keep a carried object or matched direction (handoff only measures pixels inside carry.box, not whether the cut reads).",
+    "Lead subject fills 60-85% of the frame in feature beats (fill_ratio is declared in the spec, not measured).",
+    "Every claim is true or clearly labelled as a concept; the facts gate only traces numbers, not wording or implication.",
+    "Music matches the buyer and brand tone; SFX land on visual events and feel professional (~+4 dB in-band lift is not measured here).",
+    "Brightness and mood: consumer and home-services buyers rejected dark openers unless the brand demands it.",
+    "Taste: the 3 signature moments should be describable without effect names (spec marks 4 shot(s) as signature).",
+    "Gate 'frozen_time' was skipped (static mode: needs a rendered video); cover it by hand or supply the missing input.",
+    "Gate 'loudness' was skipped (static mode: needs a rendered video); cover it by hand or supply the missing input.",
+    "Gate 'handoff' was skipped (static mode: needs a rendered video); cover it by hand or supply the missing input.",
+    "Gate 'swatch' was skipped (static mode: needs a rendered video); cover it by hand or supply the missing input.",
+    "Gate 'motion_shape' was skipped (static mode: needs a rendered video); cover it by hand or supply the missing input.",
+    "Gate 'contrast' was skipped (no --composition-dir given; contrast/overlap/clipped-text need the HTML composition); cover it by hand or supply the missing input.",
+    "Gate 'contact_sheet' was skipped (static mode: needs a rendered video); cover it by hand or supply the missing input."
+  ]
+}

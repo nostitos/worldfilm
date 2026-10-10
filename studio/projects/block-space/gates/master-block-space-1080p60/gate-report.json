@@ -1,0 +1,790 @@
+{
+  "runner": {
+    "name": "run_gates.py",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-10-10T01:44:53+00:00",
+  "ffmpeg_version": "ffmpeg version 8.0.1 Copyright (c) 2000-2025 the FFmpeg developers",
+  "spec": {
+    "path": "studio/projects/block-space/shotspec.json",
+    "sha256": "6aa73ca1b4037d38fad839f833e2d1490a2a5b0326d6680bf15c8bdb0c3094d0",
+    "title": "Block Space",
+    "shots": 9
+  },
+  "mode": "render",
+  "video": {
+    "path": "studio/projects/block-space/renders/block-space-1080p60.mp4",
+    "sha256": "3c3f34f1a2d8440c5489f77f1b22e3637d2d3d470d065d25674d3bac7aebe29a",
+    "probe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 60.0,
+      "duration": 30.0,
+      "nb_frames": 1800,
+      "video_codec": "h264",
+      "pix_fmt": "yuv420p",
+      "has_audio": true,
+      "audio_codec": "aac",
+      "audio_sample_rate": 48000,
+      "audio_channels": 2
+    }
+  },
+  "facts_file": "studio/projects/block-space/facts.json",
+  "composition_dir": "studio/projects/block-space",
+  "out_dir": "studio/projects/block-space/gates/master-block-space-1080p60",
+  "thresholds": {
+    "frozen_max_s_per_30s": 1.0,
+    "hold_max_s": 0.3,
+    "contrast_min": 4.5,
+    "lufs_target": -14,
+    "true_peak_max_dbtp": -1,
+    "cut_error_max_frames": 2,
+    "handoff_max_mean_abs_diff": 6,
+    "palette_max_distance": 40
+  },
+  "gates": [
+    {
+      "gate": "frozen_time",
+      "status": "FAIL",
+      "measured": {
+        "frozen_total_s": 1.0,
+        "frozen_s_per_30s": 1.11,
+        "longest_hold_s": 0.2,
+        "longest_hold_at_s": 17.8,
+        "analysed_window_s": 27.0,
+        "tail_excluded_s": 3.0,
+        "tail_frozen_s": 2.7,
+        "samples": 299,
+        "yavg_threshold": 0.35,
+        "stretches_top": [
+          {
+            "start_s": 17.8,
+            "end_s": 18.0,
+            "len_s": 0.2
+          },
+          {
+            "start_s": 21.1,
+            "end_s": 21.3,
+            "len_s": 0.2
+          },
+          {
+            "start_s": 22.9,
+            "end_s": 23.1,
+            "len_s": 0.2
+          },
+          {
+            "start_s": 19.2,
+            "end_s": 19.3,
+            "len_s": 0.1
+          },
+          {
+            "start_s": 23.2,
+            "end_s": 23.3,
+            "len_s": 0.1
+          },
+          {
+            "start_s": 25.0,
+            "end_s": 25.1,
+            "len_s": 0.1
+          },
+          {
+            "start_s": 26.6,
+            "end_s": 26.7,
+            "len_s": 0.1
+          }
+        ]
+      },
+      "threshold": {
+        "frozen_max_s_per_30s": 1.0,
+        "hold_max_s": 0.3
+      },
+      "detail": "10 near-frozen samples of 270 in the first 27.0s (YAVG < 0.35) = 1.0s, normalised 1.11s per 30s; longest still stretch 0.2s at 17.8-18.0s; final 3.0s excluded as the CTA end card (2.7s frozen there). stretches: 17.8-18.0s (0.2s), 21.1-21.3s (0.2s), 22.9-23.1s (0.2s), 19.2-19.3s (0.1s), 23.2-23.3s (0.1s), 25.0-25.1s (0.1s), 26.6-26.7s (0.1s)",
+      "evidence_paths": [
+        "frame-diff.csv"
+      ]
+    },
+    {
+      "gate": "loudness",
+      "status": "PASS",
+      "measured": {
+        "integrated_lufs": -14.0,
+        "lra_lu": 7.2,
+        "true_peak_dbtp": -2.5,
+        "samples": 300,
+        "delta_from_target_lu": 0.0
+      },
+      "threshold": {
+        "lufs_target": -14,
+        "lufs_tolerance_lu": 1.5,
+        "true_peak_max_dbtp": -1
+      },
+      "detail": "integrated -14.0 LUFS (target -14 +-1.5), true peak -2.5 dBTP LRA 7.2 LU.",
+      "evidence_paths": [
+        "loudness.csv"
+      ]
+    },
+    {
+      "gate": "handoff",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {
+        "handoff_max_mean_abs_diff": 6
+      },
+      "detail": "no shot declares a carry object",
+      "evidence_paths": []
+    },
+    {
+      "gate": "facts",
+      "status": "PASS",
+      "measured": {
+        "facts_file": "studio/projects/block-space/facts.json",
+        "facts_loaded": true,
+        "fact_values": 173,
+        "tokens_checked": 18,
+        "composition_tokens": 0,
+        "unmatched": 0,
+        "text_entries_missing_fact_ids": 0,
+        "unmatched_tokens": [],
+        "missing_fact_ids": [],
+        "tokens": [
+          {
+            "shot": "s01",
+            "text_id": "C1",
+            "token": "2,016",
+            "matched_fact": "F-PERIOD.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s02",
+            "text_id": "L-h1",
+            "token": "1",
+            "matched_fact": "F-H1.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s02",
+            "text_id": "L-h1",
+            "token": "25",
+            "matched_fact": "F-H1.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s03",
+            "text_id": "L-h2",
+            "token": "2",
+            "matched_fact": "F-H2.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s03",
+            "text_id": "L-h2",
+            "token": "12.5",
+            "matched_fact": "F-H2.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s04",
+            "text_id": "L-h3",
+            "token": "3",
+            "matched_fact": "F-H3.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s04",
+            "text_id": "L-h3",
+            "token": "6.25",
+            "matched_fact": "F-H3.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s05",
+            "text_id": "L-h4",
+            "token": "4",
+            "matched_fact": "F-H4.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s05",
+            "text_id": "L-h4",
+            "token": "3.125",
+            "matched_fact": "F-H4.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s06",
+            "text_id": "L-now",
+            "token": "970,440",
+            "matched_fact": "F-NOW.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s06",
+            "text_id": "L-now",
+            "token": "2026",
+            "matched_fact": "F-RULE.retrieved",
+            "source": "spec"
+          },
+          {
+            "shot": "s06",
+            "text_id": "C2",
+            "token": "20,095,128",
+            "matched_fact": "F-NOW.value.coins_through_tip_whole",
+            "source": "spec"
+          },
+          {
+            "shot": "s07",
+            "text_id": "C3",
+            "token": "28",
+            "matched_fact": "F-H1.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s07",
+            "text_id": "L-h5",
+            "token": "5",
+            "matched_fact": "F-FUTURE.value.first.k",
+            "source": "spec"
+          },
+          {
+            "shot": "s07",
+            "text_id": "L-h5",
+            "token": "1.5625",
+            "matched_fact": "F-FUTURE.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s08",
+            "text_id": "L-last",
+            "token": "6,929,999",
+            "matched_fact": "F-LAST.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s09",
+            "text_id": "H-cap",
+            "token": "21,000,000",
+            "matched_fact": "F-CAP.claim",
+            "source": "spec"
+          },
+          {
+            "shot": "s09",
+            "text_id": "X-cap",
+            "token": "20,999,999.9769",
+            "matched_fact": "F-CAP.claim",
+            "source": "spec"
+          }
+        ]
+      },
+      "threshold": {
+        "unmatched_tokens_max": 0,
+        "digit_text_without_fact_ids_max": 0
+      },
+      "detail": "18 numeric tokens all trace to facts.json values (173 values; 0 tokens from the composition)",
+      "evidence_paths": []
+    },
+    {
+      "gate": "beats",
+      "status": "PASS",
+      "measured": {
+        "beat_grid_len": 61,
+        "checked": 8,
+        "failed": 0,
+        "worst_error_frames": 0.0,
+        "per_shot": [
+          {
+            "shot": "s01",
+            "on_beat": 6,
+            "t_out": 3.0,
+            "beat_t": 3.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s02",
+            "on_beat": 14,
+            "t_out": 7.0,
+            "beat_t": 7.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s03",
+            "on_beat": 20,
+            "t_out": 10.0,
+            "beat_t": 10.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s04",
+            "on_beat": 26,
+            "t_out": 13.0,
+            "beat_t": 13.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s05",
+            "on_beat": 31,
+            "t_out": 15.5,
+            "beat_t": 15.5,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s06",
+            "on_beat": 39,
+            "t_out": 19.5,
+            "beat_t": 19.5,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s07",
+            "on_beat": 46,
+            "t_out": 23.0,
+            "beat_t": 23.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          },
+          {
+            "shot": "s08",
+            "on_beat": 54,
+            "t_out": 27.0,
+            "beat_t": 27.0,
+            "error_s": 0.0,
+            "error_frames": 0.0,
+            "status": "PASS"
+          }
+        ]
+      },
+      "threshold": {
+        "cut_error_max_frames": 2,
+        "cut_error_max_s": 0.0333
+      },
+      "detail": "s01 beat 6: 0.00 frames (PASS); s02 beat 14: 0.00 frames (PASS); s03 beat 20: 0.00 frames (PASS); s04 beat 26: 0.00 frames (PASS); s05 beat 31: 0.00 frames (PASS); s06 beat 39: 0.00 frames (PASS); s07 beat 46: 0.00 frames (PASS); s08 beat 54: 0.00 frames (PASS)",
+      "evidence_paths": []
+    },
+    {
+      "gate": "swatch",
+      "status": "SKIP",
+      "measured": {},
+      "threshold": {
+        "palette_max_distance": 40
+      },
+      "detail": "no shot declares swatch_points",
+      "evidence_paths": []
+    },
+    {
+      "gate": "read_time",
+      "status": "PASS",
+      "measured": {
+        "texts": 14,
+        "failed": 0,
+        "missing_min_hold": 0,
+        "skipped_credits": [],
+        "max_required_hold_s": 5.63,
+        "per_text": [
+          {
+            "shot": "s01",
+            "text_id": "C1",
+            "chars": 62,
+            "cjk_chars": 0,
+            "required_hold_s": 5.63,
+            "min_hold_s": 6.2,
+            "shot_len_s": 3.0,
+            "window_s": 6.2,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s02",
+            "text_id": "L-h1",
+            "chars": 14,
+            "cjk_chars": 0,
+            "required_hold_s": 2.43,
+            "min_hold_s": 3.3,
+            "shot_len_s": 4.0,
+            "window_s": 3.3,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s03",
+            "text_id": "L-h2",
+            "chars": 16,
+            "cjk_chars": 0,
+            "required_hold_s": 2.57,
+            "min_hold_s": 2.9,
+            "shot_len_s": 3.0,
+            "window_s": 2.9,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s04",
+            "text_id": "L-h3",
+            "chars": 16,
+            "cjk_chars": 0,
+            "required_hold_s": 2.57,
+            "min_hold_s": 2.9,
+            "shot_len_s": 3.0,
+            "window_s": 2.9,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s05",
+            "text_id": "L-h4",
+            "chars": 17,
+            "cjk_chars": 0,
+            "required_hold_s": 2.63,
+            "min_hold_s": 2.65,
+            "shot_len_s": 2.5,
+            "window_s": 2.65,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s06",
+            "text_id": "L-now",
+            "chars": 24,
+            "cjk_chars": 0,
+            "required_hold_s": 3.1,
+            "min_hold_s": 3.5,
+            "shot_len_s": 4.0,
+            "window_s": 3.5,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s06",
+            "text_id": "C2",
+            "chars": 27,
+            "cjk_chars": 0,
+            "required_hold_s": 3.3,
+            "min_hold_s": 3.3,
+            "shot_len_s": 4.0,
+            "window_s": 3.3,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s07",
+            "text_id": "C3",
+            "chars": 26,
+            "cjk_chars": 0,
+            "required_hold_s": 3.23,
+            "min_hold_s": 3.6,
+            "shot_len_s": 3.5,
+            "window_s": 3.6,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s07",
+            "text_id": "L-h5",
+            "chars": 18,
+            "cjk_chars": 0,
+            "required_hold_s": 2.7,
+            "min_hold_s": 3.0,
+            "shot_len_s": 3.5,
+            "window_s": 3.0,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s08",
+            "text_id": "C4",
+            "chars": 15,
+            "cjk_chars": 0,
+            "required_hold_s": 2.5,
+            "min_hold_s": 2.85,
+            "shot_len_s": 4.0,
+            "window_s": 2.85,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s08",
+            "text_id": "L-last",
+            "chars": 19,
+            "cjk_chars": 0,
+            "required_hold_s": 2.77,
+            "min_hold_s": 3.1,
+            "shot_len_s": 4.0,
+            "window_s": 3.1,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s09",
+            "text_id": "H-cap",
+            "chars": 10,
+            "cjk_chars": 0,
+            "required_hold_s": 2.17,
+            "min_hold_s": 3.0,
+            "shot_len_s": 3.0,
+            "window_s": 3.0,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s09",
+            "text_id": "K-cap",
+            "chars": 10,
+            "cjk_chars": 0,
+            "required_hold_s": 2.17,
+            "min_hold_s": 2.7,
+            "shot_len_s": 3.0,
+            "window_s": 2.7,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          },
+          {
+            "shot": "s09",
+            "text_id": "X-cap",
+            "chars": 18,
+            "cjk_chars": 0,
+            "required_hold_s": 2.7,
+            "min_hold_s": 2.9,
+            "shot_len_s": 3.0,
+            "window_s": 2.9,
+            "window_from": "text at_s..until_s",
+            "status": "PASS"
+          }
+        ]
+      },
+      "threshold": {
+        "latin_cps": 15.0,
+        "cjk_cps": 4.5,
+        "pad_s": 1.5,
+        "min_s": 1.5,
+        "rule": "required = max(min_s, cjk/cjk_cps + other/latin_cps + pad_s); min_hold_s >= required and required <= the text's on-screen window (at_s..until_s, else the shot); role=credits is skipped"
+      },
+      "detail": "s01/C1: 62 chars need 5.63s, min_hold 6.2, on screen 6.20s (PASS); s02/L-h1: 14 chars need 2.43s, min_hold 3.3, on screen 3.30s (PASS); s03/L-h2: 16 chars need 2.57s, min_hold 2.9, on screen 2.90s (PASS); s04/L-h3: 16 chars need 2.57s, min_hold 2.9, on screen 2.90s (PASS); s05/L-h4: 17 chars need 2.63s, min_hold 2.65, on screen 2.65s (PASS); s06/L-now: 24 chars need 3.10s, min_hold 3.5, on screen 3.50s (PASS); s06/C2: 27 chars need 3.30s, min_hold 3.3, on screen 3.30s (PASS); s07/C3: 26 chars need 3.23s, min_hold 3.6, on screen 3.60s (PASS); s07/L-h5: 18 chars need 2.70s, min_hold 3.0, on screen 3.00s (PASS); s08/C4: 15 chars need 2.50s, min_hold 2.85, on screen 2.85s (PASS); s08/L-last: 19 chars need 2.77s, min_hold 3.1, on screen 3.10s (PASS); s09/H-cap: 10 chars need 2.17s, min_hold 3.0, on screen 3.00s (PASS); s09/K-cap: 10 chars need 2.17s, min_hold 2.7, on screen 2.70s (PASS); s09/X-cap: 18 chars need 2.70s, min_hold 2.9, on screen 2.90s (PASS). Static check on the spec; the live readcheck.mjs sweep (window.TEXTS) still applies to the rendered page.",
+      "evidence_paths": []
+    },
+    {
+      "gate": "motion_shape",
+      "status": "PASS",
+      "measured": {
+        "shots": 9,
+        "flagged": 0,
+        "per_shot": [
+          {
+            "shot": "s01",
+            "samples": 30,
+            "evidence": "motion-s01.csv",
+            "mean": 4.57,
+            "std": 1.267,
+            "cv": 0.277,
+            "min": 2.107,
+            "max": 6.835,
+            "status": "PASS"
+          },
+          {
+            "shot": "s02",
+            "samples": 40,
+            "evidence": "motion-s02.csv",
+            "mean": 5.898,
+            "std": 2.699,
+            "cv": 0.458,
+            "min": 1.284,
+            "max": 12.173,
+            "status": "PASS"
+          },
+          {
+            "shot": "s03",
+            "samples": 30,
+            "evidence": "motion-s03.csv",
+            "mean": 8.363,
+            "std": 2.382,
+            "cv": 0.285,
+            "min": 5.265,
+            "max": 13.999,
+            "status": "PASS"
+          },
+          {
+            "shot": "s04",
+            "samples": 30,
+            "evidence": "motion-s04.csv",
+            "mean": 9.076,
+            "std": 3.24,
+            "cv": 0.357,
+            "min": 4.37,
+            "max": 16.792,
+            "status": "PASS"
+          },
+          {
+            "shot": "s05",
+            "samples": 25,
+            "evidence": "motion-s05.csv",
+            "mean": 6.701,
+            "std": 3.759,
+            "cv": 0.561,
+            "min": 3.676,
+            "max": 20.513,
+            "status": "PASS"
+          },
+          {
+            "shot": "s06",
+            "samples": 40,
+            "evidence": "motion-s06.csv",
+            "mean": 4.052,
+            "std": 4.144,
+            "cv": 1.023,
+            "min": 0.305,
+            "max": 13.163,
+            "status": "PASS"
+          },
+          {
+            "shot": "s07",
+            "samples": 35,
+            "evidence": "motion-s07.csv",
+            "mean": 3.746,
+            "std": 4.625,
+            "cv": 1.235,
+            "min": 0.286,
+            "max": 17.009,
+            "status": "PASS"
+          },
+          {
+            "shot": "s08",
+            "samples": 40,
+            "evidence": "motion-s08.csv",
+            "mean": 0.704,
+            "std": 0.421,
+            "cv": 0.598,
+            "min": 0.247,
+            "max": 2.799,
+            "status": "PASS"
+          },
+          {
+            "shot": "s09",
+            "samples": 29,
+            "evidence": "motion-s09.csv",
+            "mean": 0.18,
+            "std": 0.402,
+            "cv": 2.231,
+            "min": 0.029,
+            "max": 2.079,
+            "status": "PASS"
+          }
+        ]
+      },
+      "threshold": {
+        "cv_min": 0.15,
+        "mean_min": 1.0,
+        "rule": "WARN when CV(frame-diff) < cv_min while mean > mean_min (speed never changes)"
+      },
+      "detail": "s01: mean 4.57 cv 0.28 (PASS); s02: mean 5.90 cv 0.46 (PASS); s03: mean 8.36 cv 0.28 (PASS); s04: mean 9.08 cv 0.36 (PASS); s05: mean 6.70 cv 0.56 (PASS); s06: mean 4.05 cv 1.02 (PASS); s07: mean 3.75 cv 1.24 (PASS); s08: mean 0.70 cv 0.60 (PASS); s09: mean 0.18 cv 2.23 (PASS). Experimental: a frame-difference series is a proxy for speed, so static shots with a tiny moving element or constant-speed camera moves can both trigger it; judge with the contact sheet.",
+      "evidence_paths": [
+        "motion-s01.csv",
+        "motion-s02.csv",
+        "motion-s03.csv",
+        "motion-s04.csv",
+        "motion-s05.csv",
+        "motion-s06.csv",
+        "motion-s07.csv",
+        "motion-s08.csv",
+        "motion-s09.csv"
+      ]
+    },
+    {
+      "gate": "contrast",
+      "status": "PASS",
+      "measured": {
+        "hyperframes_ok": true,
+        "browser_skipped": false,
+        "contrast_enabled": true,
+        "contrast_checked": 23,
+        "contrast_passed": 23,
+        "contrast_samples": [
+          1.667,
+          8.333,
+          15,
+          21.667,
+          28.333
+        ],
+        "contrast_failures": 0,
+        "overlap_findings": 0,
+        "clipped_findings": 0,
+        "other_layout_findings": 0,
+        "lint_errors": 0,
+        "runtime_errors": 0,
+        "findings": [],
+        "command": "npx hyperframes check --json 'studio/projects/block-space'"
+      },
+      "threshold": {
+        "contrast_min": 4.5,
+        "rule": "HyperFrames check: WCAG AA (4.5:1 normal text, 3:1 large), content_overlap / clipped_text findings"
+      },
+      "detail": "contrast 23/23 text checks pass WCAG AA at 5 samples; 0 contrast, 0 overlap, 0 clipped-text findings (0 errors, 0 warnings); lint errors 0, runtime errors 0, other layout findings 0",
+      "evidence_paths": [
+        "hyperframes-check.json"
+      ]
+    },
+    {
+      "gate": "contact_sheet",
+      "status": "PASS",
+      "measured": {
+        "frames": 150,
+        "sheets": 1,
+        "cut_strips": 9,
+        "tile": "320x180",
+        "every_s": 0.2,
+        "strip_fps": 20,
+        "strip_window_s": 1.0
+      },
+      "threshold": {},
+      "detail": "150 frames every 0.2s on 1 sheet(s) (8 columns, 320x180 tiles, timestamps burned in); 9 dense strips of +-0.5s at 20 fps around each transition_out (orange border = first frame at/after the cut)",
+      "evidence_paths": [
+        "contact-sheet.jpg",
+        "cut-s01.jpg",
+        "cut-s02.jpg",
+        "cut-s03.jpg",
+        "cut-s04.jpg",
+        "cut-s05.jpg",
+        "cut-s06.jpg",
+        "cut-s07.jpg",
+        "cut-s08.jpg",
+        "cut-s09.jpg",
+        "contact-sheet.json"
+      ]
+    }
+  ],
+  "summary": {
+    "pass": 7,
+    "fail": 1,
+    "warn": 0,
+    "skip": 2,
+    "exit_code": 1,
+    "verdict": "FAIL",
+    "failed_gates": [
+      "frozen_time"
+    ]
+  },
+  "notes": [],
+  "needs_human": [
+    "Aesthetics against the references: does it sit beside premium SaaS launch films (launch-film-notes.md benchmark) or read as 'image, then video, then text'?",
+    "Sound-off comprehension: can a first-time viewer, on mute, say what the business does and the one next action by the end?",
+    "Frame 0 is a finished composition; no empty frames, wasted space or lingering beats (per-scene % empty frame and seconds to lose).",
+    "Text collisions mid-transition, equal spacing in lists/rows, aligned left edges across headline, image and supporting rows.",
+    "Transitions keep a carried object or matched direction (handoff only measures pixels inside carry.box, not whether the cut reads).",
+    "Lead subject fills 60-85% of the frame in feature beats (fill_ratio is declared in the spec, not measured).",
+    "Every claim is true or clearly labelled as a concept; the facts gate only traces numbers, not wording or implication.",
+    "Music matches the buyer and brand tone; SFX land on visual events and feel professional (~+4 dB in-band lift is not measured here).",
+    "Brightness and mood: consumer and home-services buyers rejected dark openers unless the brand demands it.",
+    "Taste: the 3 signature moments should be describable without effect names (spec marks 4 shot(s) as signature).",
+    "Gate 'handoff' was skipped (no shot declares a carry object); cover it by hand or supply the missing input.",
+    "Gate 'swatch' was skipped (no shot declares swatch_points); cover it by hand or supply the missing input."
+  ]
+}

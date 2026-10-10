@@ -1,0 +1,39 @@
+{
+  "gate": "pops",
+  "status": "WARN",
+  "video": "studio/projects/block-space/renders/block-space-1080p60.mp4",
+  "fps": 60.0,
+  "frames": 1800,
+  "analysis_size": [
+    180,
+    102
+  ],
+  "thresholds": {
+    "ratio": 3.0,
+    "floor": 0.75,
+    "block": 16,
+    "block_floor": 6.0,
+    "block_min": 2,
+    "block_fail": 6,
+    "flash": 40.0
+  },
+  "measured": {
+    "pops": 0,
+    "flashes": 0,
+    "allowed_hits": 0,
+    "shimmer_frames": 1,
+    "median_frame_diff": 1.684,
+    "detected_cuts": 0
+  },
+  "pops": [],
+  "flashes": [],
+  "shimmer": [
+    {
+      "frame": 607,
+      "t": 10.1167,
+      "blocks": 3
+    }
+  ],
+  "detected_cuts": [],
+  "intended_cuts": []
+}

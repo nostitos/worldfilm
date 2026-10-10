@@ -1,0 +1,702 @@
+{
+  "written": {
+    "mix": "assets/mix.wav",
+    "score": "assets/stems/score.wav",
+    "sfx": "assets/stems/sfx.wav"
+  },
+  "stats": {
+    "lufs": -14.003514390943796,
+    "peak_db": -2.504837769870508,
+    "drive": 2.2,
+    "gain": 0.7492132011998106
+  },
+  "cues": [
+    {
+      "id": "hat-07",
+      "gen": "hat",
+      "t": 3.5,
+      "end": 3.56,
+      "peak_t": 3.5016041666666666,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-08",
+      "gen": "kick",
+      "t": 4.0,
+      "end": 4.3,
+      "peak_t": 4.002125,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-09",
+      "gen": "hat",
+      "t": 4.5,
+      "end": 4.56,
+      "peak_t": 4.5013125,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-11",
+      "gen": "hat",
+      "t": 5.5,
+      "end": 5.56,
+      "peak_t": 5.501104166666667,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-12",
+      "gen": "kick",
+      "t": 6.0,
+      "end": 6.3,
+      "peak_t": 6.002229166666667,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-13",
+      "gen": "hat",
+      "t": 6.5,
+      "end": 6.56,
+      "peak_t": 6.501645833333333,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-15",
+      "gen": "hat",
+      "t": 7.5,
+      "end": 7.56,
+      "peak_t": 7.5006875,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-16",
+      "gen": "kick",
+      "t": 8.0,
+      "end": 8.3,
+      "peak_t": 8.001854166666666,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-17",
+      "gen": "hat",
+      "t": 8.5,
+      "end": 8.56,
+      "peak_t": 8.500979166666667,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-19",
+      "gen": "hat",
+      "t": 9.5,
+      "end": 9.56,
+      "peak_t": 9.5015,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-21",
+      "gen": "hat",
+      "t": 10.5,
+      "end": 10.56,
+      "peak_t": 10.500875,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-23",
+      "gen": "hat",
+      "t": 11.5,
+      "end": 11.56,
+      "peak_t": 11.500791666666666,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-24",
+      "gen": "kick",
+      "t": 12.0,
+      "end": 12.3,
+      "peak_t": 12.0019375,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-25",
+      "gen": "hat",
+      "t": 12.5,
+      "end": 12.56,
+      "peak_t": 12.500583333333333,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-27",
+      "gen": "hat",
+      "t": 13.5,
+      "end": 13.56,
+      "peak_t": 13.502854166666667,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-28",
+      "gen": "kick",
+      "t": 14.0,
+      "end": 14.3,
+      "peak_t": 14.002208333333334,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-29",
+      "gen": "hat",
+      "t": 14.5,
+      "end": 14.56,
+      "peak_t": 14.500604166666667,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-31",
+      "gen": "hat",
+      "t": 15.5,
+      "end": 15.56,
+      "peak_t": 15.501604166666667,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-32",
+      "gen": "kick",
+      "t": 16.0,
+      "end": 16.3,
+      "peak_t": 16.002,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "hat-33",
+      "gen": "hat",
+      "t": 16.5,
+      "end": 16.56,
+      "peak_t": 16.500416666666666,
+      "gain": 0.08,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-40",
+      "gen": "kick",
+      "t": 20.0,
+      "end": 20.3,
+      "peak_t": 20.0020625,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "pulse-44",
+      "gen": "kick",
+      "t": 22.0,
+      "end": 22.3,
+      "peak_t": 22.002166666666668,
+      "gain": 0.22,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "kick-h1",
+      "gen": "kick",
+      "t": 7.0,
+      "end": 7.6,
+      "peak_t": 7.001416666666667,
+      "gain": 1.0,
+      "pan": 0.0,
+      "group": "sfx",
+      "audibility_db": 6
+    },
+    {
+      "id": "sub-h1",
+      "gen": "sub",
+      "t": 7.02,
+      "end": 8.62,
+      "peak_t": 7.034395833333333,
+      "gain": 0.5,
+      "pan": 0.0,
+      "group": "sfx"
+    },
+    {
+      "id": "kick-h2",
+      "gen": "kick",
+      "t": 10.0,
+      "end": 10.6,
+      "peak_t": 10.0014375,
+      "gain": 0.96,
+      "pan": 0.0,
+      "group": "sfx",
+      "audibility_db": 6
+    },
+    {
+      "id": "sub-h2",
+      "gen": "sub",
+      "t": 10.02,
+      "end": 11.62,
+      "peak_t": 10.073791666666667,
+      "gain": 0.5,
+      "pan": 0.0,
+      "group": "sfx"
+    },
+    {
+      "id": "kick-h3",
+      "gen": "kick",
+      "t": 13.0,
+      "end": 13.6,
+      "peak_t": 13.001208333333333,
+      "gain": 0.92,
+      "pan": 0.0,
+      "group": "sfx",
+      "audibility_db": 6
+    },
+    {
+      "id": "sub-h3",
+      "gen": "sub",
+      "t": 13.02,
+      "end": 14.62,
+      "peak_t": 13.117791666666667,
+      "gain": 0.5,
+      "pan": 0.0,
+      "group": "sfx"
+    },
+    {
+      "id": "kick-h4",
+      "gen": "kick",
+      "t": 15.5,
+      "end": 16.1,
+      "peak_t": 15.50125,
+      "gain": 0.88,
+      "pan": 0.0,
+      "group": "sfx",
+      "audibility_db": 6
+    },
+    {
+      "id": "sub-h4",
+      "gen": "sub",
+      "t": 15.52,
+      "end": 17.12,
+      "peak_t": 16.2604375,
+      "gain": 0.5,
+      "pan": 0.0,
+      "group": "sfx"
+    },
+    {
+      "id": "tone-now",
+      "gen": "tone",
+      "t": 17.4,
+      "end": 19.6,
+      "peak_t": 18.399583333333332,
+      "gain": 0.14,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "arrive-now",
+      "gen": "blip",
+      "t": 17.396791666666665,
+      "end": 17.896791666666665,
+      "peak_t": 17.4,
+      "gain": 0.42,
+      "pan": 0.0,
+      "group": "sfx",
+      "align": "peak"
+    },
+    {
+      "id": "tick-h5",
+      "gen": "click",
+      "t": 19.8,
+      "end": 19.85,
+      "peak_t": 19.8005,
+      "gain": 0.34,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h6",
+      "gen": "click",
+      "t": 20.25,
+      "end": 20.3,
+      "peak_t": 20.250729166666666,
+      "gain": 0.331,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h7",
+      "gen": "click",
+      "t": 20.6,
+      "end": 20.65,
+      "peak_t": 20.600416666666668,
+      "gain": 0.322,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h8",
+      "gen": "click",
+      "t": 20.9,
+      "end": 20.95,
+      "peak_t": 20.900104166666665,
+      "gain": 0.31300000000000006,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h9",
+      "gen": "click",
+      "t": 21.15,
+      "end": 21.2,
+      "peak_t": 21.150145833333333,
+      "gain": 0.30400000000000005,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h10",
+      "gen": "click",
+      "t": 21.35,
+      "end": 21.4,
+      "peak_t": 21.350145833333332,
+      "gain": 0.29500000000000004,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h11",
+      "gen": "click",
+      "t": 21.52,
+      "end": 21.57,
+      "peak_t": 21.520125,
+      "gain": 0.28600000000000003,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h12",
+      "gen": "click",
+      "t": 21.67,
+      "end": 21.72,
+      "peak_t": 21.670166666666667,
+      "gain": 0.277,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h13",
+      "gen": "click",
+      "t": 21.8,
+      "end": 21.85,
+      "peak_t": 21.800125,
+      "gain": 0.268,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h14",
+      "gen": "click",
+      "t": 21.92,
+      "end": 21.97,
+      "peak_t": 21.920125,
+      "gain": 0.259,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h15",
+      "gen": "click",
+      "t": 22.02,
+      "end": 22.07,
+      "peak_t": 22.020625,
+      "gain": 0.25,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h16",
+      "gen": "click",
+      "t": 22.11,
+      "end": 22.16,
+      "peak_t": 22.110104166666666,
+      "gain": 0.24100000000000005,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h17",
+      "gen": "click",
+      "t": 22.19,
+      "end": 22.24,
+      "peak_t": 22.190125,
+      "gain": 0.23200000000000004,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h18",
+      "gen": "click",
+      "t": 22.26,
+      "end": 22.31,
+      "peak_t": 22.260833333333334,
+      "gain": 0.22300000000000003,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h19",
+      "gen": "click",
+      "t": 22.32,
+      "end": 22.37,
+      "peak_t": 22.320145833333335,
+      "gain": 0.21400000000000002,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h20",
+      "gen": "click",
+      "t": 22.38,
+      "end": 22.43,
+      "peak_t": 22.380583333333334,
+      "gain": 0.20500000000000004,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h21",
+      "gen": "click",
+      "t": 22.43,
+      "end": 22.48,
+      "peak_t": 22.4305625,
+      "gain": 0.19600000000000004,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h22",
+      "gen": "click",
+      "t": 22.48,
+      "end": 22.53,
+      "peak_t": 22.480104166666667,
+      "gain": 0.18700000000000003,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h23",
+      "gen": "click",
+      "t": 22.52,
+      "end": 22.57,
+      "peak_t": 22.520125,
+      "gain": 0.17800000000000005,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h24",
+      "gen": "click",
+      "t": 22.56,
+      "end": 22.61,
+      "peak_t": 22.5600625,
+      "gain": 0.16900000000000004,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h25",
+      "gen": "click",
+      "t": 22.6,
+      "end": 22.65,
+      "peak_t": 22.600083333333334,
+      "gain": 0.16000000000000003,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h26",
+      "gen": "click",
+      "t": 22.64,
+      "end": 22.69,
+      "peak_t": 22.6405,
+      "gain": 0.15100000000000005,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h27",
+      "gen": "click",
+      "t": 22.67,
+      "end": 22.72,
+      "peak_t": 22.670291666666667,
+      "gain": 0.14200000000000004,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h28",
+      "gen": "click",
+      "t": 22.7,
+      "end": 22.75,
+      "peak_t": 22.700104166666666,
+      "gain": 0.13300000000000003,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h29",
+      "gen": "click",
+      "t": 22.73,
+      "end": 22.78,
+      "peak_t": 22.730104166666667,
+      "gain": 0.12400000000000005,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h30",
+      "gen": "click",
+      "t": 22.76,
+      "end": 22.81,
+      "peak_t": 22.760458333333332,
+      "gain": 0.11500000000000005,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h31",
+      "gen": "click",
+      "t": 22.79,
+      "end": 22.84,
+      "peak_t": 22.7900625,
+      "gain": 0.10600000000000004,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "tick-h32",
+      "gen": "click",
+      "t": 22.82,
+      "end": 22.87,
+      "peak_t": 22.820083333333333,
+      "gain": 0.09700000000000003,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "riser",
+      "gen": "riser",
+      "t": 22.602999999999998,
+      "end": 25.003,
+      "peak_t": 24.95,
+      "gain": 0.55,
+      "pan": 0.0,
+      "group": "sfx",
+      "align": "peak"
+    },
+    {
+      "id": "whoosh-s01",
+      "gen": "whoosh",
+      "t": 0.7527708333333334,
+      "end": 1.6527708333333333,
+      "peak_t": 1.3,
+      "gain": 0.4,
+      "pan": 0.0,
+      "group": "sfx",
+      "align": "peak"
+    },
+    {
+      "id": "whoosh-s07",
+      "gen": "whoosh",
+      "t": 21.30802083333333,
+      "end": 22.208020833333332,
+      "peak_t": 21.9,
+      "gain": 0.4,
+      "pan": 0.0,
+      "group": "sfx",
+      "align": "peak"
+    },
+    {
+      "id": "whoosh-s08",
+      "gen": "whoosh",
+      "t": 23.293020833333333,
+      "end": 24.193020833333332,
+      "peak_t": 23.8,
+      "gain": 0.4,
+      "pan": 0.0,
+      "group": "sfx",
+      "align": "peak"
+    },
+    {
+      "id": "impact-cap",
+      "gen": "impact",
+      "t": 26.992333333333335,
+      "end": 28.592333333333332,
+      "peak_t": 27.0,
+      "gain": 1.0,
+      "pan": 0.0,
+      "group": "sfx",
+      "align": "peak"
+    },
+    {
+      "id": "chime-cap",
+      "gen": "chime",
+      "t": 27.02,
+      "end": 29.42,
+      "peak_t": 27.03002083333333,
+      "gain": 0.5,
+      "pan": 0.0,
+      "group": "score"
+    },
+    {
+      "id": "sub-cap",
+      "gen": "sub",
+      "t": 27.0,
+      "end": 29.4,
+      "peak_t": 27.214395833333334,
+      "gain": 0.6,
+      "pan": 0.0,
+      "group": "sfx"
+    }
+  ],
+  "silence": [
+    [
+      25.0,
+      27.0
+    ]
+  ],
+  "duration": 30.0
+}

@@ -1,0 +1,19 @@
+{
+  "name": "worldfilm-studio",
+  "version": "1.0.0",
+  "description": "worldfilm studio: the HyperFrames renderer, Playwright and three.js for worldfilm projects",
+  "scripts": {
+    "test": "bash ../workflow/tests/run.sh",
+    "doctor": "bash ../workflow/scripts/doctor.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "hyperframes": "^0.8.143",
+    "playwright": "^1.64.0",
+    "three": "^0.186.1"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gate": "luma",
+  "status": "PASS",
+  "video": "studio/projects/block-space/renders/block-space-1080p60-docker.mp4",
+  "fps": 60.0,
+  "frames": 1800,
+  "measured": {
+    "min_window_mean": 52.2,
+    "min_at_s": 21.317,
+    "mean": 66.41,
+    "dark_seconds": 0.0,
+    "stretches": []
+  },
+  "threshold": {
+    "min": 35.0,
+    "window_s": 0.5,
+    "tail_exempt_s": 0.0
+  }
+}

@@ -1,0 +1,9 @@
+# studio/requirements.txt — the Python side of worldfilm (gates, audio, spec validation)
+# uv venv --python 3.13 studio/.venv && uv pip install -r studio/requirements.txt --python studio/.venv/bin/python
+numpy==2.5.3
+scipy==1.18.1
+librosa==1.0.0
+soundfile==0.14.0
+jsonschema==4.26.0
+referencing==0.37.0
+

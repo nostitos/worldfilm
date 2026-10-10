@@ -1,0 +1,13 @@
+{
+ "F-EXAMPLE": {
+  "claim": "Replace with the first fact that reaches the screen.",
+  "value": 0,
+  "kind": "measurement",
+  "source": "",
+  "url": "",
+  "retrieved": "",
+  "display": [
+   "0"
+  ]
+ }
+}

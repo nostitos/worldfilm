@@ -1,0 +1,2877 @@
+{
+ "spec_version": "0.1",
+ "project": {
+  "title": "Block Space",
+  "fps": 60,
+  "duration": 30.0,
+  "sizes": [
+   {
+    "w": 1920,
+    "h": 1080,
+    "label": "landscape"
+   },
+   {
+    "w": 1080,
+    "h": 1920,
+    "label": "vertical"
+   }
+  ],
+  "audience": "people who have heard 'there will only be 21 million' and have never seen the schedule as a place",
+  "cta": "none: the film ends on the number",
+  "brand": {
+   "name": "Block Space",
+   "colors": {
+    "ground": "#0B0D10",
+    "concrete": "#1B1F26",
+    "ink": "#E9E4D8",
+    "accent": "#F7931A",
+    "fog": "#0E1116"
+   },
+   "fonts": [
+    "IBM Plex Mono",
+    "Newsreader"
+   ]
+  },
+  "facts_file": "facts.json",
+  "style": {
+   "id": "custom",
+   "palette": [
+    "#0B0D10",
+    "#1B1F26",
+    "#E9E4D8",
+    "#F7931A",
+    "#0E1116"
+   ],
+   "notes": "a night city of concrete slabs, edges drawn in bone ink, one orange accent reserved for the halving gates and the number; fog eats the far end; the future is wireframe (scheduled, not mined)"
+  },
+  "motion_tokens": {
+   "energy": 0.7,
+   "tone": "monumental, measured, cold",
+   "base_duration_s": 0.5,
+   "ease_in": "expo.out",
+   "ease_out": "expo.in",
+   "overshoot": 0,
+   "no_linear": true
+  },
+  "music": {
+   "src": "assets/mix.wav",
+   "bpm": 120,
+   "beat_offset_s": 0.0,
+   "beat_grid": [
+    0.0,
+    0.5,
+    1.0,
+    1.5,
+    2.0,
+    2.5,
+    3.0,
+    3.5,
+    4.0,
+    4.5,
+    5.0,
+    5.5,
+    6.0,
+    6.5,
+    7.0,
+    7.5,
+    8.0,
+    8.5,
+    9.0,
+    9.5,
+    10.0,
+    10.5,
+    11.0,
+    11.5,
+    12.0,
+    12.5,
+    13.0,
+    13.5,
+    14.0,
+    14.5,
+    15.0,
+    15.5,
+    16.0,
+    16.5,
+    17.0,
+    17.5,
+    18.0,
+    18.5,
+    19.0,
+    19.5,
+    20.0,
+    20.5,
+    21.0,
+    21.5,
+    22.0,
+    22.5,
+    23.0,
+    23.5,
+    24.0,
+    24.5,
+    25.0,
+    25.5,
+    26.0,
+    26.5,
+    27.0,
+    27.5,
+    28.0,
+    28.5,
+    29.0,
+    29.5,
+    30.0
+   ],
+   "license": "original, synthesized: audio/cues.json via worldfilm synth_sfx.py"
+  },
+  "camera": {
+   "dial": 4,
+   "signature_moves": [
+    "dolly",
+    "crane"
+   ],
+   "max_hold_s": 0.5,
+   "log_space": true,
+   "notes": "Flowing: the camera is in motion in every shot; height and look-ahead are keyed in log space; momentum hands shot to shot. The bar is tighter than the house default: hold_max_s 0.3 (the designed NOW stop measures 0.2 s), frozen_max_s_per_30s 1.0; the end card (27-30 s) is the CTA tail."
+  },
+  "reference": {
+   "sources": [
+    "references/engine.reference.json",
+    "references/twenty-one-million.reference.json"
+   ],
+   "approved": false
+  },
+  "blur": {
+   "samples_per_frame": 4,
+   "shutter_angle": 180,
+   "shutter_phase": -90,
+   "route": "playwright"
+  },
+  "world": {
+   "module": "world.js",
+   "kind": "three",
+   "seed": 21,
+   "data_files": [
+    "data/periods.csv"
+   ],
+   "precompute_note": "3,438 buildings (one per period) are laid out once at load into instanced geometry; render(t) only moves the camera and the labels"
+  },
+  "quality_bar": {
+   "frozen_max_s_per_30s": 1.0,
+   "hold_max_s": 0.3,
+   "contrast_min": 4.5,
+   "lufs_target": -14,
+   "true_peak_max_dbtp": -1,
+   "cut_error_max_frames": 2,
+   "handoff_max_mean_abs_diff": 6,
+   "palette_max_distance": 40
+  }
+ },
+ "shots": [
+  {
+   "id": "s01",
+   "t_in": 0.0,
+   "t_out": 3.0,
+   "purpose": "cold open: the genesis slab and the canyon of the first epoch, already moving; the rule in one caption",
+   "card": "opening/world-establish",
+   "mechanism": "foreground fly-through",
+   "style_move": "crane settle toward the roof line",
+   "signature": true,
+   "subject": {
+    "what": "the genesis slab and the first epoch",
+    "fill_ratio": 0.7,
+    "layout": "wide"
+   },
+   "camera": {
+    "move": "crane-down",
+    "poses": [
+     {
+      "t": 0.0,
+      "x": -18.0,
+      "y": 24.0,
+      "z": 4.0,
+      "ahead": 18.0,
+      "fov": 44,
+      "pos": [
+       -18.0,
+       24.0,
+       4.0
+      ],
+      "look": [
+       0.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 3.0,
+      "x": 14.0,
+      "y": 17.0,
+      "z": 1.0,
+      "ahead": 60.0,
+      "fov": 48,
+      "pos": [
+       14.0,
+       17.0,
+       1.0
+      ],
+      "look": [
+       74.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 1.3,
+    "settle_s": 2.8
+   },
+   "text": [
+    {
+     "id": "C1",
+     "content": "EVERY 2,016 BLOCKS, ONE BUILDING. ITS HEIGHT: THE NEW COINS IN EACH BLOCK.",
+     "fact_ids": [
+      "F-PERIOD",
+      "F-RULE"
+     ],
+     "role": "caption",
+     "at_s": 0.3,
+     "until_s": 6.5,
+     "min_hold_s": 6.2
+    }
+   ],
+   "world_anchors": [],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 6
+   }
+  },
+  {
+   "id": "s02",
+   "t_in": 3.0,
+   "t_out": 7.0,
+   "purpose": "the first epoch above the roof line; the camera gathers speed then eases to a near-stop at the first gate: 50 next to 25 in one frame, on the kick",
+   "card": "travel/dolly-through",
+   "mechanism": "continuous canvas",
+   "style_move": "dolly, ease to near-stop at the gate",
+   "signature": true,
+   "subject": {
+    "what": "the 50-coin roof line meeting the 25-coin one",
+    "fill_ratio": 0.8,
+    "layout": "close"
+   },
+   "camera": {
+    "move": "dolly-profile",
+    "poses": [
+     {
+      "t": 3.0,
+      "x": 14.0,
+      "y": 17.0,
+      "z": 1.0,
+      "ahead": 60.0,
+      "fov": 48,
+      "pos": [
+       14.0,
+       17.0,
+       1.0
+      ],
+      "look": [
+       74.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 5.3,
+      "x": 86.16666666666667,
+      "y": 17.0,
+      "z": 5.0,
+      "ahead": 18.0,
+      "fov": 50,
+      "pos": [
+       86.1667,
+       17.0,
+       5.0
+      ],
+      "look": [
+       104.1667,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 5.8,
+      "x": 97.16666666666667,
+      "y": 26.0,
+      "z": 17.0,
+      "look_at": [
+       104.16666666666667,
+       5.0,
+       0.0
+      ],
+      "fov": 48,
+      "pos": [
+       97.1667,
+       26.0,
+       17.0
+      ],
+      "look": [
+       104.1667,
+       5.0,
+       0.0
+      ]
+     },
+     {
+      "t": 7.0,
+      "x": 98.66666666666667,
+      "y": 25.0,
+      "z": 16.0,
+      "look_at": [
+       104.66666666666667,
+       5.0,
+       0.0
+      ],
+      "fov": 48,
+      "pos": [
+       98.6667,
+       25.0,
+       16.0
+      ],
+      "look": [
+       104.6667,
+       5.0,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 5.2,
+    "settle_s": 6.4
+   },
+   "text": [
+    {
+     "id": "L-h1",
+     "content": "HALVING 1 \u00b7 25 BTC",
+     "fact_ids": [
+      "F-H1"
+     ],
+     "role": "label",
+     "at_s": 3.8,
+     "until_s": 7.1,
+     "min_hold_s": 3.3
+    }
+   ],
+   "world_anchors": [
+    {
+     "id": "A-h1",
+     "anchor": "halving-1",
+     "text_id": "L-h1",
+     "offset_px": [
+      300,
+      -60
+     ],
+     "occlusion": "fade"
+    }
+   ],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 14
+   }
+  },
+  {
+   "id": "s03",
+   "t_in": 7.0,
+   "t_out": 10.0,
+   "purpose": "second epoch: through gate 1 and down the 25-coin street; halving 2 on the kick",
+   "card": "travel/dolly-through",
+   "mechanism": "continuous canvas",
+   "style_move": "dolly, lateral drift",
+   "signature": false,
+   "subject": {
+    "what": "the 25-coin street",
+    "fill_ratio": 0.75,
+    "layout": "close"
+   },
+   "camera": {
+    "move": "dolly",
+    "poses": [
+     {
+      "t": 7.0,
+      "x": 98.66666666666667,
+      "y": 25.0,
+      "z": 16.0,
+      "look_at": [
+       104.66666666666667,
+       5.0,
+       0.0
+      ],
+      "fov": 48,
+      "pos": [
+       98.6667,
+       25.0,
+       16.0
+      ],
+      "look": [
+       104.6667,
+       5.0,
+       0.0
+      ]
+     },
+     {
+      "t": 7.7,
+      "x": 112.16666666666667,
+      "y": 11.5,
+      "z": 1.2,
+      "ahead": 22.0,
+      "fov": 52,
+      "pos": [
+       112.1667,
+       11.5,
+       1.2
+      ],
+      "look": [
+       134.1667,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 10.0,
+      "x": 200.83333333333334,
+      "y": 9.5,
+      "z": -1.2,
+      "ahead": 16.0,
+      "fov": 52,
+      "pos": [
+       200.8333,
+       9.5,
+       -1.2
+      ],
+      "look": [
+       216.8333,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 8.6,
+    "settle_s": 9.7
+   },
+   "text": [
+    {
+     "id": "L-h2",
+     "content": "HALVING 2 \u00b7 12.5 BTC",
+     "fact_ids": [
+      "F-H2"
+     ],
+     "role": "label",
+     "at_s": 7.2,
+     "until_s": 10.1,
+     "min_hold_s": 2.9
+    }
+   ],
+   "world_anchors": [
+    {
+     "id": "A-h2",
+     "anchor": "halving-2",
+     "text_id": "L-h2",
+     "offset_px": [
+      0,
+      -28
+     ],
+     "occlusion": "fade"
+    }
+   ],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 20
+   }
+  },
+  {
+   "id": "s04",
+   "t_in": 10.0,
+   "t_out": 13.0,
+   "purpose": "third epoch at 12.5: the slabs are a quarter of the first; halving 3 on the kick",
+   "card": "travel/dolly-through",
+   "mechanism": "continuous canvas",
+   "style_move": "dolly, lower",
+   "signature": false,
+   "subject": {
+    "what": "the 12.5-coin street",
+    "fill_ratio": 0.7,
+    "layout": "close"
+   },
+   "camera": {
+    "move": "dolly-swell",
+    "poses": [
+     {
+      "t": 10.0,
+      "x": 200.83333333333334,
+      "y": 9.5,
+      "z": -1.2,
+      "ahead": 16.0,
+      "fov": 52,
+      "pos": [
+       200.8333,
+       9.5,
+       -1.2
+      ],
+      "look": [
+       216.8333,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 11.4,
+      "x": 260.33333333333337,
+      "y": 6.5,
+      "z": 0.4,
+      "ahead": 12.0,
+      "fov": 54,
+      "pos": [
+       260.3333,
+       6.5,
+       0.4
+      ],
+      "look": [
+       272.3333,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 13.0,
+      "x": 305.0,
+      "y": 5.15,
+      "z": 1.1,
+      "ahead": 14.0,
+      "fov": 54,
+      "pos": [
+       305.0,
+       5.15,
+       1.1
+      ],
+      "look": [
+       319.0,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 11.0,
+    "settle_s": 12.7
+   },
+   "text": [
+    {
+     "id": "L-h3",
+     "content": "HALVING 3 \u00b7 6.25 BTC",
+     "fact_ids": [
+      "F-H3"
+     ],
+     "role": "label",
+     "at_s": 10.1,
+     "until_s": 13.0,
+     "min_hold_s": 2.9
+    }
+   ],
+   "world_anchors": [
+    {
+     "id": "A-h3",
+     "anchor": "halving-3",
+     "text_id": "L-h3",
+     "offset_px": [
+      0,
+      -28
+     ],
+     "occlusion": "fade"
+    }
+   ],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 26
+   }
+  },
+  {
+   "id": "s05",
+   "t_in": 13.0,
+   "t_out": 15.5,
+   "purpose": "fourth epoch at 6.25: walls, not towers; halving 4 on the kick",
+   "card": "travel/dolly-through",
+   "mechanism": "continuous canvas",
+   "style_move": "dolly, faster",
+   "signature": false,
+   "subject": {
+    "what": "the 6.25-coin street",
+    "fill_ratio": 0.65,
+    "layout": "close"
+   },
+   "camera": {
+    "move": "dolly",
+    "poses": [
+     {
+      "t": 13.0,
+      "x": 305.0,
+      "y": 5.15,
+      "z": 1.1,
+      "ahead": 14.0,
+      "fov": 54,
+      "pos": [
+       305.0,
+       5.15,
+       1.1
+      ],
+      "look": [
+       319.0,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 15.5,
+      "x": 409.1666666666667,
+      "y": 3.975,
+      "z": -0.9,
+      "ahead": 14.0,
+      "fov": 56,
+      "pos": [
+       409.1667,
+       3.975,
+       -0.9
+      ],
+      "look": [
+       423.1667,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 14.3,
+    "settle_s": 15.3
+   },
+   "text": [
+    {
+     "id": "L-h4",
+     "content": "HALVING 4 \u00b7 3.125 BTC",
+     "fact_ids": [
+      "F-H4"
+     ],
+     "role": "label",
+     "at_s": 13.0,
+     "until_s": 15.65,
+     "min_hold_s": 2.65
+    }
+   ],
+   "world_anchors": [
+    {
+     "id": "A-h4",
+     "anchor": "halving-4",
+     "text_id": "L-h4",
+     "offset_px": [
+      0,
+      -28
+     ],
+     "occlusion": "fade"
+    }
+   ],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 31
+   }
+  },
+  {
+   "id": "s06",
+   "t_in": 15.5,
+   "t_out": 19.5,
+   "purpose": "the present: the camera arrives at block 970,440 and stops (drift only) for two seconds; the issued supply so far is the one number held",
+   "card": "reveal/arrive-and-hold",
+   "mechanism": "object as landmark",
+   "style_move": "stop with micro-drift",
+   "signature": true,
+   "subject": {
+    "what": "the NOW gate at block 970,440",
+    "fill_ratio": 0.7,
+    "layout": "wide"
+   },
+   "camera": {
+    "move": "stop",
+    "poses": [
+     {
+      "t": 15.5,
+      "x": 409.1666666666667,
+      "y": 3.975,
+      "z": -0.9,
+      "ahead": 14.0,
+      "fov": 56,
+      "pos": [
+       409.1667,
+       3.975,
+       -0.9
+      ],
+      "look": [
+       423.1667,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 17.4,
+      "x": 473.3690476190476,
+      "y": 4.0,
+      "z": 0.9,
+      "ahead": 8.0,
+      "fov": 52,
+      "pos": [
+       473.369,
+       4.0,
+       0.9
+      ],
+      "look": [
+       481.369,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 19.3,
+      "x": 473.3690476190476,
+      "y": 4.0,
+      "z": 0.9,
+      "ahead": 8.0,
+      "fov": 52,
+      "pos": [
+       473.369,
+       4.0,
+       0.9
+      ],
+      "look": [
+       481.369,
+       0.0,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 16.0,
+    "settle_s": 17.4
+   },
+   "text": [
+    {
+     "id": "L-now",
+     "content": "NOW \u00b7 BLOCK 970,440 \u00b7 OCT 2026",
+     "fact_ids": [
+      "F-NOW"
+     ],
+     "role": "label",
+     "at_s": 16.3,
+     "until_s": 19.8,
+     "min_hold_s": 3.5
+    },
+    {
+     "id": "C2",
+     "content": "20,095,128 COINS ISSUED SO FAR.",
+     "fact_ids": [
+      "F-NOW"
+     ],
+     "role": "caption",
+     "at_s": 16.2,
+     "until_s": 19.5,
+     "min_hold_s": 3.3
+    }
+   ],
+   "world_anchors": [
+    {
+     "id": "A-now",
+     "anchor": "now",
+     "text_id": "L-now",
+     "offset_px": [
+      0,
+      -28
+     ],
+     "occlusion": "always"
+    }
+   ],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 39
+   }
+  },
+  {
+   "id": "s07",
+   "t_in": 19.5,
+   "t_out": 23.0,
+   "purpose": "the written future: the camera cranes up and races along 28 more halvings as the slabs thin to hairlines",
+   "card": "travel/crane-race",
+   "mechanism": "scale collapse",
+   "style_move": "crane up, accelerate, log-space pull",
+   "signature": true,
+   "subject": {
+    "what": "the thinning schedule to 2140",
+    "fill_ratio": 0.8,
+    "layout": "overhead"
+   },
+   "camera": {
+    "move": "crane-race",
+    "poses": [
+     {
+      "t": 19.5,
+      "x": 473.3690476190476,
+      "y": 4.0,
+      "z": 0.9,
+      "ahead": 8.0,
+      "fov": 52,
+      "pos": [
+       473.369,
+       4.0,
+       0.9
+      ],
+      "look": [
+       481.369,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 20.8,
+      "x": 531.3690476190476,
+      "y": 30.0,
+      "z": 5.0,
+      "ahead": 260.0,
+      "fov": 50,
+      "pos": [
+       531.369,
+       30.0,
+       5.0
+      ],
+      "look": [
+       791.369,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 21.5,
+      "x": 1381.3690476190477,
+      "y": 34.0,
+      "z": 2.0,
+      "ahead": 350.0,
+      "fov": 51,
+      "pos": [
+       1381.369,
+       34.0,
+       2.0
+      ],
+      "look": [
+       1731.369,
+       0.0,
+       0.0
+      ]
+     },
+     {
+      "t": 22.3,
+      "x": 3312.4995,
+      "y": 52.0,
+      "z": 0.0,
+      "look_at": [
+       3382.4995,
+       -21.818,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3312.4995,
+       52.0,
+       0.0
+      ],
+      "look": [
+       3382.4995,
+       -21.818,
+       0.0
+      ]
+     },
+     {
+      "t": 22.4,
+      "x": 3320.2773,
+      "y": 50.4444,
+      "z": 0.0,
+      "look_at": [
+       3385.0921,
+       -19.1469,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3320.2773,
+       50.4444,
+       0.0
+      ],
+      "look": [
+       3385.0921,
+       -19.1469,
+       0.0
+      ]
+     },
+     {
+      "t": 22.5,
+      "x": 3334.7217,
+      "y": 47.5556,
+      "z": 0.0,
+      "look_at": [
+       3389.9069,
+       -14.2582,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3334.7217,
+       47.5556,
+       0.0
+      ],
+      "look": [
+       3389.9069,
+       -14.2582,
+       0.0
+      ]
+     },
+     {
+      "t": 22.6,
+      "x": 3342.4995,
+      "y": 46.0,
+      "z": 0.0,
+      "look_at": [
+       3392.4995,
+       -11.6524,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3342.4995,
+       46.0,
+       0.0
+      ],
+      "look": [
+       3392.4995,
+       -11.6524,
+       0.0
+      ]
+     },
+     {
+      "t": 22.7,
+      "x": 3347.9683,
+      "y": 45.0625,
+      "z": 0.0,
+      "look_at": [
+       3394.8433,
+       -10.4035,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3347.9683,
+       45.0625,
+       0.0
+      ],
+      "look": [
+       3394.8433,
+       -10.4035,
+       0.0
+      ]
+     },
+     {
+      "t": 22.8,
+      "x": 3359.9995,
+      "y": 43.0,
+      "z": 0.0,
+      "look_at": [
+       3399.9995,
+       -7.7923,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3359.9995,
+       43.0,
+       0.0
+      ],
+      "look": [
+       3399.9995,
+       -7.7923,
+       0.0
+      ]
+     },
+     {
+      "t": 22.9,
+      "x": 3372.0308,
+      "y": 40.9375,
+      "z": 0.0,
+      "look_at": [
+       3405.1558,
+       -5.4092,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3372.0308,
+       40.9375,
+       0.0
+      ],
+      "look": [
+       3405.1558,
+       -5.4092,
+       0.0
+      ]
+     },
+     {
+      "t": 23.0,
+      "x": 3377.4995,
+      "y": 40.0,
+      "z": 0.0,
+      "look_at": [
+       3407.4995,
+       -4.4245,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3377.4995,
+       40.0,
+       0.0
+      ],
+      "look": [
+       3407.4995,
+       -4.4245,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 21.9,
+    "settle_s": 23.0
+   },
+   "text": [
+    {
+     "id": "C3",
+     "content": "28 MORE HALVINGS STILL PAY OUT.",
+     "fact_ids": [
+      "F-FUTURE"
+     ],
+     "role": "caption",
+     "at_s": 19.6,
+     "until_s": 23.2,
+     "min_hold_s": 3.6
+    },
+    {
+     "id": "L-h5",
+     "content": "HALVING 5 \u00b7 1.5625 BTC",
+     "fact_ids": [
+      "F-FUTURE"
+     ],
+     "role": "projection",
+     "at_s": 19.9,
+     "until_s": 22.9,
+     "min_hold_s": 3.0
+    }
+   ],
+   "world_anchors": [
+    {
+     "id": "A-h5",
+     "anchor": "halving-5",
+     "text_id": "L-h5",
+     "offset_px": [
+      0,
+      -28
+     ],
+     "occlusion": "fade"
+    }
+   ],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 46
+   }
+  },
+  {
+   "id": "s08",
+   "t_in": 23.0,
+   "t_out": 27.0,
+   "purpose": "the end of the schedule: one hairline running out to the last block, seen from the street axis; the ground's edge settles in the top fifth; two seconds of digital silence",
+   "card": "reveal/overhead-end",
+   "mechanism": "object as landmark",
+   "style_move": "settle, pitched; drift through the silence",
+   "signature": false,
+   "subject": {
+    "what": "the last subsidy block and the void after it",
+    "fill_ratio": 0.6,
+    "layout": "overhead"
+   },
+   "camera": {
+    "move": "settle-pitched",
+    "poses": [
+     {
+      "t": 23.0,
+      "x": 3377.4995,
+      "y": 40.0,
+      "z": 0.0,
+      "look_at": [
+       3407.4995,
+       -4.4245,
+       0.0
+      ],
+      "fov": 52.0,
+      "pos": [
+       3377.4995,
+       40.0,
+       0.0
+      ],
+      "look": [
+       3407.4995,
+       -4.4245,
+       0.0
+      ]
+     },
+     {
+      "t": 23.1,
+      "x": 3377.7025,
+      "y": 39.8042,
+      "z": 0.0,
+      "look_at": [
+       3407.775,
+       -4.5537,
+       0.0
+      ],
+      "fov": 51.942,
+      "pos": [
+       3377.7025,
+       39.8042,
+       0.0
+      ],
+      "look": [
+       3407.775,
+       -4.5537,
+       0.0
+      ]
+     },
+     {
+      "t": 23.2,
+      "x": 3378.2835,
+      "y": 39.244,
+      "z": 0.0,
+      "look_at": [
+       3408.5635,
+       -4.9217,
+       0.0
+      ],
+      "fov": 51.776,
+      "pos": [
+       3378.2835,
+       39.244,
+       0.0
+      ],
+      "look": [
+       3408.5635,
+       -4.9217,
+       0.0
+      ]
+     },
+     {
+      "t": 23.3,
+      "x": 3379.2005,
+      "y": 38.3597,
+      "z": 0.0,
+      "look_at": [
+       3409.808,
+       -5.4965,
+       0.0
+      ],
+      "fov": 51.514,
+      "pos": [
+       3379.2005,
+       38.3597,
+       0.0
+      ],
+      "look": [
+       3409.808,
+       -5.4965,
+       0.0
+      ]
+     },
+     {
+      "t": 23.4,
+      "x": 3380.4115,
+      "y": 37.192,
+      "z": 0.0,
+      "look_at": [
+       3411.4515,
+       -6.2442,
+       0.0
+      ],
+      "fov": 51.168,
+      "pos": [
+       3380.4115,
+       37.192,
+       0.0
+      ],
+      "look": [
+       3411.4515,
+       -6.2442,
+       0.0
+      ]
+     },
+     {
+      "t": 23.5,
+      "x": 3381.8745,
+      "y": 35.7812,
+      "z": 0.0,
+      "look_at": [
+       3413.437,
+       -7.129,
+       0.0
+      ],
+      "fov": 50.75,
+      "pos": [
+       3381.8745,
+       35.7812,
+       0.0
+      ],
+      "look": [
+       3413.437,
+       -7.129,
+       0.0
+      ]
+     },
+     {
+      "t": 23.6,
+      "x": 3383.5475,
+      "y": 34.168,
+      "z": 0.0,
+      "look_at": [
+       3415.7075,
+       -8.1138,
+       0.0
+      ],
+      "fov": 50.272,
+      "pos": [
+       3383.5475,
+       34.168,
+       0.0
+      ],
+      "look": [
+       3415.7075,
+       -8.1138,
+       0.0
+      ]
+     },
+     {
+      "t": 23.7,
+      "x": 3385.3885,
+      "y": 32.3928,
+      "z": 0.0,
+      "look_at": [
+       3418.206,
+       -9.161,
+       0.0
+      ],
+      "fov": 49.746,
+      "pos": [
+       3385.3885,
+       32.3928,
+       0.0
+      ],
+      "look": [
+       3418.206,
+       -9.161,
+       0.0
+      ]
+     },
+     {
+      "t": 23.8,
+      "x": 3387.3555,
+      "y": 30.496,
+      "z": 0.0,
+      "look_at": [
+       3420.8755,
+       -10.2329,
+       0.0
+      ],
+      "fov": 49.184,
+      "pos": [
+       3387.3555,
+       30.496,
+       0.0
+      ],
+      "look": [
+       3420.8755,
+       -10.2329,
+       0.0
+      ]
+     },
+     {
+      "t": 23.9,
+      "x": 3389.4065,
+      "y": 28.5183,
+      "z": 0.0,
+      "look_at": [
+       3423.659,
+       -11.2925,
+       0.0
+      ],
+      "fov": 48.598,
+      "pos": [
+       3389.4065,
+       28.5183,
+       0.0
+      ],
+      "look": [
+       3423.659,
+       -11.2925,
+       0.0
+      ]
+     },
+     {
+      "t": 24.0,
+      "x": 3391.4995,
+      "y": 26.5,
+      "z": 0.0,
+      "look_at": [
+       3426.4995,
+       -12.3043,
+       0.0
+      ],
+      "fov": 48.0,
+      "pos": [
+       3391.4995,
+       26.5,
+       0.0
+      ],
+      "look": [
+       3426.4995,
+       -12.3043,
+       0.0
+      ]
+     },
+     {
+      "t": 24.1,
+      "x": 3393.5925,
+      "y": 24.4817,
+      "z": 0.0,
+      "look_at": [
+       3429.34,
+       -13.2358,
+       0.0
+      ],
+      "fov": 47.402,
+      "pos": [
+       3393.5925,
+       24.4817,
+       0.0
+      ],
+      "look": [
+       3429.34,
+       -13.2358,
+       0.0
+      ]
+     },
+     {
+      "t": 24.2,
+      "x": 3395.6435,
+      "y": 22.504,
+      "z": 0.0,
+      "look_at": [
+       3432.1235,
+       -14.0591,
+       0.0
+      ],
+      "fov": 46.816,
+      "pos": [
+       3395.6435,
+       22.504,
+       0.0
+      ],
+      "look": [
+       3432.1235,
+       -14.0591,
+       0.0
+      ]
+     },
+     {
+      "t": 24.3,
+      "x": 3397.6105,
+      "y": 20.6072,
+      "z": 0.0,
+      "look_at": [
+       3434.793,
+       -14.7528,
+       0.0
+      ],
+      "fov": 46.254,
+      "pos": [
+       3397.6105,
+       20.6072,
+       0.0
+      ],
+      "look": [
+       3434.793,
+       -14.7528,
+       0.0
+      ]
+     },
+     {
+      "t": 24.4,
+      "x": 3399.4515,
+      "y": 18.832,
+      "z": 0.0,
+      "look_at": [
+       3437.2915,
+       -15.3039,
+       0.0
+      ],
+      "fov": 45.728,
+      "pos": [
+       3399.4515,
+       18.832,
+       0.0
+      ],
+      "look": [
+       3437.2915,
+       -15.3039,
+       0.0
+      ]
+     },
+     {
+      "t": 24.5,
+      "x": 3401.1245,
+      "y": 17.2188,
+      "z": 0.0,
+      "look_at": [
+       3439.562,
+       -15.7103,
+       0.0
+      ],
+      "fov": 45.25,
+      "pos": [
+       3401.1245,
+       17.2188,
+       0.0
+      ],
+      "look": [
+       3439.562,
+       -15.7103,
+       0.0
+      ]
+     },
+     {
+      "t": 24.6,
+      "x": 3402.5875,
+      "y": 15.808,
+      "z": 0.0,
+      "look_at": [
+       3441.5475,
+       -15.9817,
+       0.0
+      ],
+      "fov": 44.832,
+      "pos": [
+       3402.5875,
+       15.808,
+       0.0
+      ],
+      "look": [
+       3441.5475,
+       -15.9817,
+       0.0
+      ]
+     },
+     {
+      "t": 24.7,
+      "x": 3403.7985,
+      "y": 14.6403,
+      "z": 0.0,
+      "look_at": [
+       3443.191,
+       -16.1397,
+       0.0
+      ],
+      "fov": 44.486,
+      "pos": [
+       3403.7985,
+       14.6403,
+       0.0
+      ],
+      "look": [
+       3443.191,
+       -16.1397,
+       0.0
+      ]
+     },
+     {
+      "t": 24.8,
+      "x": 3404.7155,
+      "y": 13.756,
+      "z": 0.0,
+      "look_at": [
+       3444.4355,
+       -16.2148,
+       0.0
+      ],
+      "fov": 44.224,
+      "pos": [
+       3404.7155,
+       13.756,
+       0.0
+      ],
+      "look": [
+       3444.4355,
+       -16.2148,
+       0.0
+      ]
+     },
+     {
+      "t": 24.9,
+      "x": 3405.2965,
+      "y": 13.1958,
+      "z": 0.0,
+      "look_at": [
+       3445.224,
+       -16.241,
+       0.0
+      ],
+      "fov": 44.058,
+      "pos": [
+       3405.2965,
+       13.1958,
+       0.0
+      ],
+      "look": [
+       3445.224,
+       -16.241,
+       0.0
+      ]
+     },
+     {
+      "t": 25.0,
+      "x": 3405.4995,
+      "y": 13.0,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -16.246,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3405.4995,
+       13.0,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -16.246,
+       0.0
+      ]
+     },
+     {
+      "t": 25.1,
+      "x": 3405.5611,
+      "y": 12.9768,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -16.2205,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3405.5611,
+       12.9768,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -16.2205,
+       0.0
+      ]
+     },
+     {
+      "t": 25.2,
+      "x": 3405.7375,
+      "y": 12.9104,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -16.1473,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3405.7375,
+       12.9104,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -16.1473,
+       0.0
+      ]
+     },
+     {
+      "t": 25.3,
+      "x": 3406.0159,
+      "y": 12.8056,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -16.0323,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3406.0159,
+       12.8056,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -16.0323,
+       0.0
+      ]
+     },
+     {
+      "t": 25.4,
+      "x": 3406.3835,
+      "y": 12.6672,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -15.8811,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3406.3835,
+       12.6672,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -15.8811,
+       0.0
+      ]
+     },
+     {
+      "t": 25.5,
+      "x": 3406.8276,
+      "y": 12.5,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -15.6996,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3406.8276,
+       12.5,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -15.6996,
+       0.0
+      ]
+     },
+     {
+      "t": 25.6,
+      "x": 3407.3355,
+      "y": 12.3088,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -15.4935,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3407.3355,
+       12.3088,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -15.4935,
+       0.0
+      ]
+     },
+     {
+      "t": 25.7,
+      "x": 3407.8944,
+      "y": 12.0984,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -15.2685,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3407.8944,
+       12.0984,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -15.2685,
+       0.0
+      ]
+     },
+     {
+      "t": 25.8,
+      "x": 3408.4915,
+      "y": 11.8736,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -15.0303,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3408.4915,
+       11.8736,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -15.0303,
+       0.0
+      ]
+     },
+     {
+      "t": 25.9,
+      "x": 3409.1141,
+      "y": 11.6392,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -14.7843,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3409.1141,
+       11.6392,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -14.7843,
+       0.0
+      ]
+     },
+     {
+      "t": 26.0,
+      "x": 3409.7495,
+      "y": 11.4,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -14.5357,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3409.7495,
+       11.4,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -14.5357,
+       0.0
+      ]
+     },
+     {
+      "t": 26.1,
+      "x": 3410.3849,
+      "y": 11.1608,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -14.2897,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3410.3849,
+       11.1608,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -14.2897,
+       0.0
+      ]
+     },
+     {
+      "t": 26.2,
+      "x": 3411.0075,
+      "y": 10.9264,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -14.0511,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3411.0075,
+       10.9264,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -14.0511,
+       0.0
+      ]
+     },
+     {
+      "t": 26.3,
+      "x": 3411.6046,
+      "y": 10.7016,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -13.8246,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3411.6046,
+       10.7016,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -13.8246,
+       0.0
+      ]
+     },
+     {
+      "t": 26.4,
+      "x": 3412.1635,
+      "y": 10.4912,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -13.6148,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3412.1635,
+       10.4912,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -13.6148,
+       0.0
+      ]
+     },
+     {
+      "t": 26.5,
+      "x": 3412.6714,
+      "y": 10.3,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -13.4258,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3412.6714,
+       10.3,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -13.4258,
+       0.0
+      ]
+     },
+     {
+      "t": 26.6,
+      "x": 3413.1155,
+      "y": 10.1328,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -13.262,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3413.1155,
+       10.1328,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -13.262,
+       0.0
+      ]
+     },
+     {
+      "t": 26.7,
+      "x": 3413.4831,
+      "y": 9.9944,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -13.1274,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3413.4831,
+       9.9944,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -13.1274,
+       0.0
+      ]
+     },
+     {
+      "t": 26.8,
+      "x": 3413.7615,
+      "y": 9.8896,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -13.0261,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3413.7615,
+       9.8896,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -13.0261,
+       0.0
+      ]
+     },
+     {
+      "t": 26.9,
+      "x": 3413.9379,
+      "y": 9.8232,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.9622,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3413.9379,
+       9.8232,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.9622,
+       0.0
+      ]
+     },
+     {
+      "t": 27.0,
+      "x": 3413.9995,
+      "y": 9.8,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.9399,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3413.9995,
+       9.8,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.9399,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 23.8,
+    "settle_s": 25.0
+   },
+   "text": [
+    {
+     "id": "C4",
+     "content": "THE LAST NEW COIN.",
+     "fact_ids": [
+      "F-LAST"
+     ],
+     "role": "caption",
+     "at_s": 24.1,
+     "until_s": 26.95,
+     "min_hold_s": 2.85
+    },
+    {
+     "id": "L-last",
+     "content": "LAST BLOCK \u00b7 6,929,999",
+     "fact_ids": [
+      "F-LAST"
+     ],
+     "role": "projection",
+     "at_s": 23.8,
+     "until_s": 26.9,
+     "min_hold_s": 3.1
+    }
+   ],
+   "world_anchors": [
+    {
+     "id": "A-last",
+     "anchor": "last",
+     "text_id": "L-last",
+     "offset_px": [
+      0,
+      -40
+     ],
+     "occlusion": "always"
+    }
+   ],
+   "transition_out": {
+    "type": "continuous",
+    "duration_s": 0,
+    "on_beat": 54
+   }
+  },
+  {
+   "id": "s09",
+   "t_in": 27.0,
+   "t_out": 30.0,
+   "purpose": "payoff after the silence: the cap, loudest moment of the film, with a slow dolly in under the number (the edge holds still)",
+   "card": "closing/number-card",
+   "mechanism": "full-frame type",
+   "style_move": "slow dolly under the number",
+   "signature": false,
+   "subject": {
+    "what": "21,000,000",
+    "fill_ratio": 0.6,
+    "layout": "full-frame-type"
+   },
+   "camera": {
+    "move": "push",
+    "poses": [
+     {
+      "t": 27.0,
+      "x": 3413.9995,
+      "y": 9.8,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.9399,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3413.9995,
+       9.8,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.9399,
+       0.0
+      ]
+     },
+     {
+      "t": 27.1,
+      "x": 3414.0207,
+      "y": 9.7876,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.9309,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3414.0207,
+       9.7876,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.9309,
+       0.0
+      ]
+     },
+     {
+      "t": 27.2,
+      "x": 3414.0823,
+      "y": 9.7516,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.9044,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3414.0823,
+       9.7516,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.9044,
+       0.0
+      ]
+     },
+     {
+      "t": 27.3,
+      "x": 3414.1815,
+      "y": 9.6936,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.8619,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3414.1815,
+       9.6936,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.8619,
+       0.0
+      ]
+     },
+     {
+      "t": 27.4,
+      "x": 3414.3154,
+      "y": 9.6153,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.8044,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3414.3154,
+       9.6153,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.8044,
+       0.0
+      ]
+     },
+     {
+      "t": 27.5,
+      "x": 3414.481,
+      "y": 9.5185,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.7331,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3414.481,
+       9.5185,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.7331,
+       0.0
+      ]
+     },
+     {
+      "t": 27.6,
+      "x": 3414.6755,
+      "y": 9.4048,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.6491,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3414.6755,
+       9.4048,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.6491,
+       0.0
+      ]
+     },
+     {
+      "t": 27.7,
+      "x": 3414.896,
+      "y": 9.2759,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.5537,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3414.896,
+       9.2759,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.5537,
+       0.0
+      ]
+     },
+     {
+      "t": 27.8,
+      "x": 3415.1397,
+      "y": 9.1335,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.448,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3415.1397,
+       9.1335,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.448,
+       0.0
+      ]
+     },
+     {
+      "t": 27.9,
+      "x": 3415.4035,
+      "y": 8.9792,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.333,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3415.4035,
+       8.9792,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.333,
+       0.0
+      ]
+     },
+     {
+      "t": 28.0,
+      "x": 3415.6847,
+      "y": 8.8148,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.2101,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3415.6847,
+       8.8148,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.2101,
+       0.0
+      ]
+     },
+     {
+      "t": 28.1,
+      "x": 3415.9803,
+      "y": 8.642,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -12.0803,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3415.9803,
+       8.642,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -12.0803,
+       0.0
+      ]
+     },
+     {
+      "t": 28.2,
+      "x": 3416.2875,
+      "y": 8.4624,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -11.9447,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3416.2875,
+       8.4624,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -11.9447,
+       0.0
+      ]
+     },
+     {
+      "t": 28.3,
+      "x": 3416.6034,
+      "y": 8.2777,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -11.8047,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3416.6034,
+       8.2777,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -11.8047,
+       0.0
+      ]
+     },
+     {
+      "t": 28.4,
+      "x": 3416.925,
+      "y": 8.0897,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -11.6614,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3416.925,
+       8.0897,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -11.6614,
+       0.0
+      ]
+     },
+     {
+      "t": 28.5,
+      "x": 3417.2495,
+      "y": 7.9,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -11.516,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3417.2495,
+       7.9,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -11.516,
+       0.0
+      ]
+     },
+     {
+      "t": 28.6,
+      "x": 3417.574,
+      "y": 7.7103,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -11.3697,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3417.574,
+       7.7103,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -11.3697,
+       0.0
+      ]
+     },
+     {
+      "t": 28.7,
+      "x": 3417.8957,
+      "y": 7.5223,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -11.2239,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3417.8957,
+       7.5223,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -11.2239,
+       0.0
+      ]
+     },
+     {
+      "t": 28.8,
+      "x": 3418.2115,
+      "y": 7.3376,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -11.0798,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3418.2115,
+       7.3376,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -11.0798,
+       0.0
+      ]
+     },
+     {
+      "t": 28.9,
+      "x": 3418.5187,
+      "y": 7.158,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.9388,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3418.5187,
+       7.158,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.9388,
+       0.0
+      ]
+     },
+     {
+      "t": 29.0,
+      "x": 3418.8143,
+      "y": 6.9852,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.8022,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3418.8143,
+       6.9852,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.8022,
+       0.0
+      ]
+     },
+     {
+      "t": 29.1,
+      "x": 3419.0955,
+      "y": 6.8208,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.6715,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3419.0955,
+       6.8208,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.6715,
+       0.0
+      ]
+     },
+     {
+      "t": 29.2,
+      "x": 3419.3594,
+      "y": 6.6665,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.5481,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3419.3594,
+       6.6665,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.5481,
+       0.0
+      ]
+     },
+     {
+      "t": 29.3,
+      "x": 3419.603,
+      "y": 6.5241,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.4335,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3419.603,
+       6.5241,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.4335,
+       0.0
+      ]
+     },
+     {
+      "t": 29.4,
+      "x": 3419.8235,
+      "y": 6.3952,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.3291,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3419.8235,
+       6.3952,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.3291,
+       0.0
+      ]
+     },
+     {
+      "t": 29.5,
+      "x": 3420.018,
+      "y": 6.2815,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.2366,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3420.018,
+       6.2815,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.2366,
+       0.0
+      ]
+     },
+     {
+      "t": 29.6,
+      "x": 3420.1837,
+      "y": 6.1847,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.1575,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3420.1837,
+       6.1847,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.1575,
+       0.0
+      ]
+     },
+     {
+      "t": 29.7,
+      "x": 3420.3175,
+      "y": 6.1064,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.0933,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3420.3175,
+       6.1064,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.0933,
+       0.0
+      ]
+     },
+     {
+      "t": 29.8,
+      "x": 3420.4167,
+      "y": 6.0484,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.0456,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3420.4167,
+       6.0484,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.0456,
+       0.0
+      ]
+     },
+     {
+      "t": 29.9,
+      "x": 3420.4783,
+      "y": 6.0124,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.0159,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3420.4783,
+       6.0124,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.0159,
+       0.0
+      ]
+     },
+     {
+      "t": 30.0,
+      "x": 3420.4995,
+      "y": 6.0,
+      "z": 0.0,
+      "look_at": [
+       3445.4995,
+       -10.0057,
+       0.0
+      ],
+      "fov": 44.0,
+      "pos": [
+       3420.4995,
+       6.0,
+       0.0
+      ],
+      "look": [
+       3445.4995,
+       -10.0057,
+       0.0
+      ]
+     }
+    ],
+    "velocity_peak_s": 28.3,
+    "settle_s": 27.0
+   },
+   "text": [
+    {
+     "id": "H-cap",
+     "content": "21,000,000",
+     "fact_ids": [
+      "F-CAP"
+     ],
+     "role": "headline",
+     "at_s": 27.0,
+     "until_s": 30.0,
+     "min_hold_s": 3.0
+    },
+    {
+     "id": "K-cap",
+     "content": "NEVER MORE.",
+     "fact_ids": [],
+     "role": "kicker",
+     "at_s": 27.3,
+     "until_s": 30.0,
+     "min_hold_s": 2.7
+    },
+    {
+     "id": "X-cap",
+     "content": "20,999,999.9769 BTC",
+     "fact_ids": [
+      "F-CAP"
+     ],
+     "role": "note",
+     "at_s": 27.1,
+     "until_s": 30.0,
+     "min_hold_s": 2.9
+    }
+   ],
+   "world_anchors": [],
+   "transition_out": {
+    "type": "end",
+    "duration_s": 0
+   }
+  }
+ ],
+ "audio": {
+  "cue_sheet": "audio/cues.json",
+  "synth_report": "gates/audio-synth.json",
+  "silence": [
+   [
+    25.0,
+    27.0
+   ]
+  ],
+  "cues": [
+   {
+    "id": "kick-h1",
+    "t": 7.0,
+    "gen": "kick",
+    "group": "sfx",
+    "audibility_db": 6,
+    "event": "halving-1"
+   },
+   {
+    "id": "kick-h2",
+    "t": 10.0,
+    "gen": "kick",
+    "group": "sfx",
+    "audibility_db": 6,
+    "event": "halving-2"
+   },
+   {
+    "id": "kick-h3",
+    "t": 13.0,
+    "gen": "kick",
+    "group": "sfx",
+    "audibility_db": 6,
+    "event": "halving-3"
+   },
+   {
+    "id": "kick-h4",
+    "t": 15.5,
+    "gen": "kick",
+    "group": "sfx",
+    "audibility_db": 6,
+    "event": "halving-4"
+   },
+   {
+    "id": "whoosh-s01",
+    "t": 1.3,
+    "gen": "whoosh",
+    "group": "sfx",
+    "audibility_db": 4,
+    "event": "open"
+   },
+   {
+    "id": "arrive-now",
+    "t": 17.4,
+    "gen": "blip",
+    "group": "sfx",
+    "audibility_db": 4,
+    "event": "now"
+   },
+   {
+    "id": "riser",
+    "t": 24.95,
+    "gen": "riser",
+    "group": "sfx",
+    "audibility_db": 4,
+    "event": "end"
+   },
+   {
+    "id": "impact-cap",
+    "t": 27.0,
+    "gen": "impact",
+    "group": "sfx",
+    "audibility_db": 6,
+    "event": "cap"
+   }
+  ]
+ }
+}

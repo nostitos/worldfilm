@@ -1,0 +1,34 @@
+# local only: research notes, linked dependencies, installed packages
+research/
+studio/kits/*
+!studio/kits/README.md
+studio/node_modules/
+studio/.venv/
+studio/wf-debug*.mjs
+__pycache__/
+*.pyc
+.DS_Store
+
+# test output, and third-party test footage (download it: workflow/tests/README.md)
+workflow/tests/out/
+workflow/tests/footage/*.mp4
+workflow/tests/footage/*.jpg
+workflow/tests/footage/talking-head-3s-sep/
+
+# per-project build output (finished masters are attached to GitHub releases)
+studio/projects/*/renders/*.mp4
+studio/projects/*/renders/*.wav
+studio/projects/*/renders/*.log
+studio/projects/*/renders/*.json
+studio/projects/*/renders/abandoned/
+studio/projects/*/stills/
+studio/projects/*/gates/draft*/
+studio/projects/*/gates/*/contact-sheet.jpg
+studio/projects/*/gates/*/cut-*.jpg
+studio/projects/*/assets/*.wav
+studio/projects/*/assets/stems/
+
+# third-party reference material, measured locally and never redistributed
+studio/projects/block-space/references/engine.reference.*
+studio/projects/block-space/gates/compare-sheet.png
+

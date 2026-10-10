@@ -1,0 +1,10 @@
+{
+  "source": "assets/stems/score.wav",
+  "out": "assets/music-only.wav",
+  "source_lufs": -16.31284248173589,
+  "source_peak_db": -4.060703792728387,
+  "gain_db": 2.060703792728387,
+  "lufs": -14.252138689007715,
+  "peak_db": -2.0,
+  "ceiling_limited": true
+}

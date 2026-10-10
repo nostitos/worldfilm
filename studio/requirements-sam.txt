@@ -1,0 +1,8 @@
+# studio/requirements-sam.txt — only for sam_separate.py (real footage as a separated subject layer, SAM 2.1)
+# uv pip install -r studio/requirements-sam.txt --python studio/.venv/bin/python   (the model downloads on first run)
+-r requirements.txt
+torch==2.14.1
+torchvision==0.29.1
+transformers==5.19.0
+opencv-python-headless==5.0.0.93
+

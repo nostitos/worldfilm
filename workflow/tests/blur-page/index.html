@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>blur A/B fixture</title>
+<style>html,body{margin:0;background:#101418;overflow:hidden}#stage{position:absolute;left:0;top:0}</style></head>
+<body><canvas id="stage" width="640" height="360"></canvas>
+<script>
+// A pure render(t): a square crosses the frame in 0.8 s (fast: ~20 px per frame at 30 fps); at t = 0.97 the
+// background flips (a hard cut, placed so frame 29's shutter window straddles it) and the square restarts from
+// the left. No timers, no randomness.
+const c = document.getElementById('stage'), g = c.getContext('2d');
+function render(t) {
+  const cut = t >= 0.97;
+  g.fillStyle = cut ? '#e8e2d4' : '#101418'; g.fillRect(0, 0, 640, 360);
+  const u = (cut ? t - 0.97 : t) / 0.8;
+  const x = 40 + Math.min(1, u) * 480;
+  g.fillStyle = cut ? '#1d3b8a' : '#f2b134'; g.fillRect(x, 140, 80, 80);
+  g.fillStyle = cut ? '#101418' : '#e8e2d4'; g.font = '28px sans-serif'; g.fillText('t=' + t.toFixed(3), 20, 40);
+}
+window.seek = (t) => render(t);
+render(0);
+</script></body></html>

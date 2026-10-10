@@ -1,0 +1,245 @@
+{
+ "F-RULE": {
+  "claim": "The block subsidy starts at 50 coins (5,000,000,000 satoshi) and is right-shifted (halved, truncating to whole satoshi) every 210,000 blocks.",
+  "value": {
+   "subsidy0": 50,
+   "subsidy0_sats": 5000000000,
+   "halving_interval": 210000
+  },
+  "kind": "measurement",
+  "source": "references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval)",
+  "url": "https://github.com/bitcoin/bitcoin/blob/master/src/validation.cpp",
+  "retrieved": "2026-10-08",
+  "display": [
+   "50",
+   "210,000"
+  ]
+ },
+ "F-PERIOD": {
+  "claim": "The difficulty adjusts every 2,016 blocks (two weeks at ten minutes a block): one building per period.",
+  "value": 2016,
+  "kind": "measurement",
+  "source": "references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval)",
+  "url": "https://github.com/bitcoin/bitcoin/blob/master/src/chainparams.cpp",
+  "retrieved": "2026-10-08",
+  "display": [
+   "2,016",
+   "2016"
+  ]
+ },
+ "F-GENESIS": {
+  "claim": "Block 0 (the genesis block) has header time 2009-01-03 18:15:05 UTC; its subsidy was 50 coins.",
+  "value": {
+   "height": 0,
+   "utc": "2009-01-03 18:15:05",
+   "subsidy": 50
+  },
+  "kind": "measurement",
+  "source": "references/sources/blockstream_block_timestamps.json",
+  "url": "https://blockstream.info/api/block-height/0",
+  "retrieved": "2026-10-08",
+  "display": [
+   "0",
+   "JAN 2009",
+   "2009",
+   "50"
+  ]
+ },
+ "F-H1": {
+  "claim": "Halving 1 at block 210,000 (2012-11-28 15:24:38): the subsidy fell to 25 coins; 10500000 coins had been issued before it.",
+  "value": {
+   "height": 210000,
+   "utc": "2012-11-28 15:24:38",
+   "subsidy": 25.0,
+   "coins_before": 10500000.0
+  },
+  "kind": "measurement",
+  "source": "references/sources/blockstream_block_timestamps.json; references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval)",
+  "url": "https://blockstream.info/api/block-height/210000",
+  "retrieved": "2026-10-08",
+  "display": [
+   "210,000",
+   "NOV 2012",
+   "2012",
+   "25",
+   "10,500,000"
+  ]
+ },
+ "F-H2": {
+  "claim": "Halving 2 at block 420,000 (2016-07-09 16:46:13): the subsidy fell to 12.5 coins; 15750000 coins had been issued before it.",
+  "value": {
+   "height": 420000,
+   "utc": "2016-07-09 16:46:13",
+   "subsidy": 12.5,
+   "coins_before": 15750000.0
+  },
+  "kind": "measurement",
+  "source": "references/sources/blockstream_block_timestamps.json; references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval)",
+  "url": "https://blockstream.info/api/block-height/420000",
+  "retrieved": "2026-10-08",
+  "display": [
+   "420,000",
+   "JUL 2016",
+   "2016",
+   "12.5",
+   "15,750,000"
+  ]
+ },
+ "F-H3": {
+  "claim": "Halving 3 at block 630,000 (2020-05-11 19:23:43): the subsidy fell to 6.25 coins; 18375000 coins had been issued before it.",
+  "value": {
+   "height": 630000,
+   "utc": "2020-05-11 19:23:43",
+   "subsidy": 6.25,
+   "coins_before": 18375000.0
+  },
+  "kind": "measurement",
+  "source": "references/sources/blockstream_block_timestamps.json; references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval)",
+  "url": "https://blockstream.info/api/block-height/630000",
+  "retrieved": "2026-10-08",
+  "display": [
+   "630,000",
+   "MAY 2020",
+   "2020",
+   "6.25",
+   "18,375,000"
+  ]
+ },
+ "F-H4": {
+  "claim": "Halving 4 at block 840,000 (2024-04-20 00:09:27): the subsidy fell to 3.125 coins; 19687500 coins had been issued before it.",
+  "value": {
+   "height": 840000,
+   "utc": "2024-04-20 00:09:27",
+   "subsidy": 3.125,
+   "coins_before": 19687500.0
+  },
+  "kind": "measurement",
+  "source": "references/sources/blockstream_block_timestamps.json; references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval)",
+  "url": "https://blockstream.info/api/block-height/840000",
+  "retrieved": "2026-10-08",
+  "display": [
+   "840,000",
+   "APR 2024",
+   "2024",
+   "3.125",
+   "19,687,500"
+  ]
+ },
+ "F-NOW": {
+  "claim": "At retrieval the chain tip was block 970,440 (header time 2026-10-08 04:41:49 UTC); 20095128.125 coins had been issued through it (20095125 before it); the subsidy is 3.125 coins.",
+  "value": {
+   "height": 970440,
+   "utc": "2026-10-08 04:41:49",
+   "coins_through_tip": 20095128.125,
+   "coins_through_tip_whole": 20095128,
+   "coins_before_tip": 20095125.0,
+   "subsidy": 3.125
+  },
+  "kind": "measurement",
+  "source": "references/sources/blockstream_block_timestamps.json",
+  "url": "https://blockstream.info/api/blocks/tip/height",
+  "retrieved": "2026-10-08",
+  "display": [
+   "970,440",
+   "OCT 2026",
+   "2026",
+   "20,095,128",
+   "3.125"
+  ]
+ },
+ "F-FUTURE": {
+  "claim": "28 more halvings remain with a non-zero subsidy (blocks 1,050,000 to 6,720,000: 1.5625 coins down to 1 satoshi); their dates assume ten-minute blocks and are estimates.",
+  "value": {
+   "count": 28,
+   "first": {
+    "k": 5,
+    "height": 1050000,
+    "subsidy": 1.5625,
+    "year_est": 2028.28
+   },
+   "heights": [
+    1050000,
+    1260000,
+    1470000,
+    1680000,
+    1890000,
+    2100000,
+    2310000,
+    2520000,
+    2730000,
+    2940000,
+    3150000,
+    3360000,
+    3570000,
+    3780000,
+    3990000,
+    4200000,
+    4410000,
+    4620000,
+    4830000,
+    5040000,
+    5250000,
+    5460000,
+    5670000,
+    5880000,
+    6090000,
+    6300000,
+    6510000,
+    6720000
+   ]
+  },
+  "kind": "projection",
+  "source": "data/schedule.csv (derived from F-RULE); dates: ten-minute spacing from the tip",
+  "url": "",
+  "retrieved": "2026-10-08",
+  "display": [
+   "28",
+   "5",
+   "1,050,000",
+   "1.5625",
+   "2028",
+   "6,720,000"
+  ]
+ },
+ "F-LAST": {
+  "claim": "Block 6,929,999 is the last block with a subsidy (1 satoshi); from block 6,930,000 the subsidy is 0. At ten minutes a block that is around the year 2140.",
+  "value": {
+   "height": 6929999,
+   "year_est": 2140.08
+  },
+  "kind": "projection",
+  "source": "references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval); data/schedule.csv",
+  "url": "",
+  "retrieved": "2026-10-08",
+  "display": [
+   "6,929,999",
+   "2140",
+   "0",
+   "0.00000001"
+  ]
+ },
+ "F-CAP": {
+  "claim": "The schedule sums to 20,999,999.9769 coins: 21,000,000 when rounded (the v0.1 announcement: \"Total circulation will be 21,000,000 coins\"); Bitcoin Core MAX_MONEY = 21,000,000 is a validity bound.",
+  "value": 21000000,
+  "kind": "measurement",
+  "source": "references/sources/bitcoin_commit.txt (Bitcoin Core db0bde16b910: validation.cpp GetBlockSubsidy, chainparams.cpp nSubsidyHalvingInterval / DifficultyAdjustmentInterval); metzdowd cryptography list, 2009-01-08",
+  "url": "https://www.metzdowd.com/pipermail/cryptography/2009-January/014994.html",
+  "retrieved": "2026-10-08",
+  "schedule_sum": 20999999.9769,
+  "display": [
+   "21,000,000",
+   "20,999,999.9769"
+  ]
+ },
+ "F-SERIES": {
+  "claim": "One row per difficulty period (3,438 periods from block 0 to 6,929,999): data/periods.csv, derived from F-RULE, F-PERIOD and the measured block times.",
+  "value": "data/periods.csv",
+  "kind": "measurement",
+  "source": "tools/build.py",
+  "url": "",
+  "retrieved": "2026-10-08",
+  "display": [
+   "3,438"
+  ]
+ }
+}

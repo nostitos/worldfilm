@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Block Space (vertical)</title>
+<style>
+@font-face{font-family:'IBM Plex Mono';src:url('fonts/IBMPlexMono-Regular.ttf') format('truetype');font-weight:400}
+@font-face{font-family:'IBM Plex Mono';src:url('fonts/IBMPlexMono-Medium.ttf') format('truetype');font-weight:500}
+@font-face{font-family:'Newsreader';src:url('fonts/Newsreader-VF.ttf') format('truetype');font-weight:200 800}
+html,body{margin:0;background:#0B0D10;overflow:hidden}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0B0D10}
+#stage{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#hud{position:absolute;left:0;top:0;width:1080px;height:1920px;pointer-events:none}
+.hf-text{position:absolute;white-space:nowrap;color:#E9E4D8}
+.anchored{left:0;top:0;font:500 34px/1 'IBM Plex Mono',monospace;letter-spacing:.04em;padding:10px 16px;background:rgba(11,13,16,.82);border-left:4px solid #E9E4D8;will-change:transform}
+.caption{left:64px;bottom:300px;max-width:952px;white-space:normal;font:400 44px/1.25 'Newsreader',serif;letter-spacing:.005em;color:#E9E4D8;padding:14px 20px;background:rgba(11,13,16,.8);border-radius:3px}
+.projection{color:#E9E4D8}
+.anchored.beside::before{content:'';position:absolute;left:-24px;top:50%;width:24px;height:2px;background:#E9E4D8}
+.anchored.beside-left::after{content:'';position:absolute;right:-24px;top:50%;width:24px;height:2px;background:#E9E4D8}
+.headline{left:0;right:0;top:40%;text-align:center;font:700 150px/1 'Newsreader',serif;letter-spacing:-.01em;color:#F7931A;text-shadow:0 4px 60px rgba(0,0,0,.9)}
+.kicker{left:0;right:0;top:51%;text-align:center;font:500 36px/1 'IBM Plex Mono',monospace;letter-spacing:.3em;color:#E9E4D8}
+.note{left:0;right:0;top:56%;text-align:center;font:400 28px/1 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#E9E4D8;opacity:.8}
+#corner{position:absolute;right:64px;top:120px;font:500 28px/1.4 'IBM Plex Mono',monospace;color:#E9E4D8;text-align:right;letter-spacing:.04em;opacity:0;padding:12px 16px;background:rgba(11,13,16,.6);border-radius:3px}
+#corner .k{display:block;font-size:16px;color:#E9E4D8;letter-spacing:.3em;margin-top:8px}
+</style>
+<script src="vendor/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="30" data-fps="60" data-width="1080" data-height="1920">
+  <canvas id="stage" width="1080" height="1920" data-layout-allow-overflow></canvas>
+  <div id="hud"><div id="corner"></div></div>
+  <audio id="mix" src="assets/mix.wav" data-start="0" data-duration="30" data-volume="1"></audio>
+</div>
+<script>
+  // hold render/preview until the module below has laid out the world and registered the timeline
+  window.__hf = window.__hf || {};
+  window.__hf.buildReady = window.__hf.buildReady || {};
+  window.__filmReady = new Promise(function (resolve) { window.__filmResolve = resolve; });
+  window.__hf.buildReady["block-space"] = window.__filmReady;
+</script>
+<script type="module">
+import { boot } from './film/main.js';
+const { tl } = await boot({ canvas: document.getElementById('stage'), hud: document.getElementById('hud'), width: 1080, height: 1920, vertical: true });
+window.__timelines = window.__timelines || {};
+window.__timelines.main = tl;
+if (window.__hfForceTimelineRebind) window.__hfForceTimelineRebind();
+window.__filmResolve();
+</script>
+</body>
+</html>

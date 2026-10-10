@@ -1,0 +1,134 @@
+{
+  "gate": "pops",
+  "status": "WARN",
+  "video": "studio/projects/block-space/renders/picture-blur.mp4",
+  "fps": 60.0,
+  "frames": 1800,
+  "analysis_size": [
+    180,
+    102
+  ],
+  "thresholds": {
+    "ratio": 3.0,
+    "floor": 0.75,
+    "block": 16,
+    "block_floor": 6.0,
+    "block_min": 2,
+    "block_fail": 6,
+    "flash": 40.0
+  },
+  "measured": {
+    "pops": 0,
+    "flashes": 0,
+    "allowed_hits": 0,
+    "shimmer_frames": 20,
+    "median_frame_diff": 1.024,
+    "detected_cuts": 0
+  },
+  "pops": [],
+  "flashes": [],
+  "shimmer": [
+    {
+      "frame": 231,
+      "t": 3.85,
+      "blocks": 2
+    },
+    {
+      "frame": 233,
+      "t": 3.8833,
+      "blocks": 3
+    },
+    {
+      "frame": 234,
+      "t": 3.9,
+      "blocks": 3
+    },
+    {
+      "frame": 235,
+      "t": 3.9167,
+      "blocks": 4
+    },
+    {
+      "frame": 236,
+      "t": 3.9333,
+      "blocks": 4
+    },
+    {
+      "frame": 237,
+      "t": 3.95,
+      "blocks": 2
+    },
+    {
+      "frame": 238,
+      "t": 3.9667,
+      "blocks": 3
+    },
+    {
+      "frame": 239,
+      "t": 3.9833,
+      "blocks": 2
+    },
+    {
+      "frame": 240,
+      "t": 4.0,
+      "blocks": 3
+    },
+    {
+      "frame": 241,
+      "t": 4.0167,
+      "blocks": 2
+    },
+    {
+      "frame": 243,
+      "t": 4.05,
+      "blocks": 4
+    },
+    {
+      "frame": 246,
+      "t": 4.1,
+      "blocks": 3
+    },
+    {
+      "frame": 247,
+      "t": 4.1167,
+      "blocks": 3
+    },
+    {
+      "frame": 248,
+      "t": 4.1333,
+      "blocks": 3
+    },
+    {
+      "frame": 250,
+      "t": 4.1667,
+      "blocks": 2
+    },
+    {
+      "frame": 251,
+      "t": 4.1833,
+      "blocks": 4
+    },
+    {
+      "frame": 252,
+      "t": 4.2,
+      "blocks": 5
+    },
+    {
+      "frame": 253,
+      "t": 4.2167,
+      "blocks": 2
+    },
+    {
+      "frame": 259,
+      "t": 4.3167,
+      "blocks": 2
+    },
+    {
+      "frame": 607,
+      "t": 10.1167,
+      "blocks": 3
+    }
+  ],
+  "detected_cuts": [],
+  "intended_cuts": []
+}

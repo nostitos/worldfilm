@@ -1,0 +1,175 @@
+{
+ "source": "twenty-one-million/renders/twenty-one-million-1080p24.mp4",
+ "kind": "video",
+ "measured_at_width": 320,
+ "video": {
+  "fps": 24.0,
+  "duration": 90.0,
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "palette": [
+  {
+   "hex": "#f5f1ea",
+   "rgb": [
+    245,
+    241,
+    234
+   ],
+   "share": 0.7052
+  },
+  {
+   "hex": "#f3efe7",
+   "rgb": [
+    243,
+    239,
+    231
+   ],
+   "share": 0.1912
+  },
+  {
+   "hex": "#eeebe3",
+   "rgb": [
+    238,
+    235,
+    227
+   ],
+   "share": 0.024
+  },
+  {
+   "hex": "#e8e4dc",
+   "rgb": [
+    232,
+    228,
+    220
+   ],
+   "share": 0.0099
+  },
+  {
+   "hex": "#dcd9d3",
+   "rgb": [
+    220,
+    217,
+    211
+   ],
+   "share": 0.0064
+  },
+  {
+   "hex": "#d6d3cc",
+   "rgb": [
+    214,
+    211,
+    204
+   ],
+   "share": 0.0052
+  },
+  {
+   "hex": "#e2ddd6",
+   "rgb": [
+    226,
+    221,
+    214
+   ],
+   "share": 0.0048
+  },
+  {
+   "hex": "#c6c3bb",
+   "rgb": [
+    198,
+    195,
+    187
+   ],
+   "share": 0.0043
+  }
+ ],
+ "accents": {
+  "share": 0.0036,
+  "families": [
+   {
+    "family": "yellow",
+    "share": 0.391,
+    "core": "#d09f69",
+    "halo": "#926026"
+   },
+   {
+    "family": "cyan",
+    "share": 0.31,
+    "core": "#5a7d9f",
+    "halo": "#356085"
+   },
+   {
+    "family": "pink-red",
+    "share": 0.24,
+    "core": "#ca7881",
+    "halo": "#a24c56"
+   },
+   {
+    "family": "azure",
+    "share": 0.058,
+    "core": "#5e7ea2",
+    "halo": "#45698a"
+   }
+  ]
+ },
+ "line_weight": {
+  "px_at_1080p": 12.0,
+  "p25": 6.0,
+  "p75": 24.0,
+  "samples": 20985
+ },
+ "texture": {
+  "grain_index": 0.0205,
+  "block_variance_median": 2.0
+ },
+ "luminance": {
+  "mean": 235.9,
+  "deciles": [
+   236.1,
+   239.4,
+   240.2,
+   240.4,
+   240.4,
+   242.1,
+   242.1,
+   242.1,
+   243.1
+  ],
+  "dark_share": 0.003,
+  "light_share": 0.943,
+  "contrast_std": 22.5
+ },
+ "motion": {
+  "series_fps": 24.0,
+  "mean_diff": 1.187,
+  "median_diff": 0.846,
+  "p95_diff": 3.683,
+  "cv": 0.996,
+  "still_share": 0.272,
+  "histogram": [
+   588,
+   590,
+   618,
+   275,
+   88,
+   0,
+   0
+  ]
+ },
+ "cut_rhythm": {
+  "count": 1,
+  "cuts_per_30s": 0.33,
+  "times": [
+   64.0
+  ],
+  "shot_s": {
+   "mean": 45.0,
+   "median": 45.0,
+   "min": 26.0,
+   "max": 64.0,
+   "cv": 0.422
+  }
+ },
+ "note": "reference pixels are study material; derive tokens, never copy frames"
+}

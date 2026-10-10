@@ -1,0 +1,21 @@
+{
+  "gate": "frame_hash",
+  "status": "PASS",
+  "a": "studio/projects/block-space/renders/picture-a.mp4",
+  "b": "studio/projects/block-space/renders/picture-b.mp4",
+  "frames": [
+    1800,
+    1800
+  ],
+  "measured": {
+    "differing_frames": 0,
+    "tolerated": 0,
+    "beyond_tolerance": 0,
+    "first_differences": []
+  },
+  "threshold": {
+    "psnr_min": null
+  },
+  "beyond_tolerance": [],
+  "tolerated_sample": []
+}

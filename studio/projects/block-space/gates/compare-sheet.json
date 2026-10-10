@@ -1,0 +1,119 @@
+{
+  "sheet": "studio/projects/block-space/gates/compare-sheet.png",
+  "pairs": [
+    {
+      "styleframe": "studio/projects/block-space/styleframes/sf-01-street.png",
+      "reference": "engine.gif @ 2.0s",
+      "palette_distance": 24.02320980830068,
+      "luma_mean": [
+        42.971428288971325,
+        71.70699089410267
+      ],
+      "luma_std": [
+        19.177984119382533,
+        39.695359778890996
+      ],
+      "saturation": [
+        0.16640393066032313,
+        0.40702725849160987
+      ],
+      "edge_density": [
+        0.04610339506172839,
+        0.08530815972222222
+      ],
+      "palette_style": [
+        "#28282a",
+        "#11161e",
+        "#343538",
+        "#373a42",
+        "#2c2d32",
+        "#171b24"
+      ],
+      "palette_ref": [
+        "#3d3364",
+        "#44386a",
+        "#3b325c",
+        "#372e58",
+        "#1d1930",
+        "#4e4175"
+      ],
+      "verdict": "near"
+    },
+    {
+      "styleframe": "studio/projects/block-space/styleframes/sf-02-now.png",
+      "reference": "engine.gif @ 4.5s",
+      "palette_distance": 85.99129078411939,
+      "luma_mean": [
+        45.63501402392217,
+        121.43964968750468
+      ],
+      "luma_std": [
+        23.264923162115096,
+        44.78234817353535
+      ],
+      "saturation": [
+        0.18267287834689006,
+        0.23786496391176928
+      ],
+      "edge_density": [
+        0.06746720679012345,
+        0.06508246527777778
+      ],
+      "palette_style": [
+        "#29282a",
+        "#11161e",
+        "#333437",
+        "#2d2e32",
+        "#3a3d44",
+        "#4d525a"
+      ],
+      "palette_ref": [
+        "#577887",
+        "#4e556a",
+        "#456a8a",
+        "#b98a75",
+        "#55645a",
+        "#6a8276"
+      ],
+      "verdict": "far"
+    },
+    {
+      "styleframe": "studio/projects/block-space/styleframes/sf-03-cap.png",
+      "reference": "twenty-one-million-1080p24.mp4 @ 81.0s",
+      "palette_distance": 302.5230384609016,
+      "luma_mean": [
+        41.182007079474445,
+        231.63307539544667
+      ],
+      "luma_std": [
+        34.200931606534546,
+        19.301956377169397
+      ],
+      "saturation": [
+        0.05968590663524356,
+        0.05450553466983831
+      ],
+      "edge_density": [
+        0.08473186728395062,
+        0.0959201388888889
+      ],
+      "palette_style": [
+        "#212122",
+        "#1f1f21",
+        "#2c2e32",
+        "#201f21",
+        "#1b1b1c",
+        "#e9e4d8"
+      ],
+      "palette_ref": [
+        "#f1eee6",
+        "#eeeae3",
+        "#f3f0e9",
+        "#eae4dc",
+        "#d8d5cd",
+        "#e6dbd5"
+      ],
+      "verdict": "far"
+    }
+  ]
+}

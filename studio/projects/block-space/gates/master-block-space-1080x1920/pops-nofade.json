@@ -1,0 +1,73 @@
+{
+  "gate": "pops",
+  "status": "FAIL",
+  "video": "studio/projects/block-space/renders/block-space-1080x1920.mp4",
+  "fps": 60.0,
+  "frames": 1800,
+  "analysis_size": [
+    102,
+    180
+  ],
+  "thresholds": {
+    "ratio": 3.0,
+    "floor": 0.75,
+    "block": 16,
+    "block_floor": 6.0,
+    "block_min": 2,
+    "block_fail": 6,
+    "flash": 40.0
+  },
+  "measured": {
+    "pops": 2,
+    "flashes": 0,
+    "allowed_hits": 0,
+    "shimmer_frames": 4,
+    "median_frame_diff": 2.29,
+    "detected_cuts": 0
+  },
+  "pops": [
+    {
+      "frame": 790,
+      "t": 13.1667,
+      "diff_in": 28.12,
+      "diff_out": 21.68,
+      "skip_diff": 19.8,
+      "where": "blocks:7",
+      "allowed": false
+    },
+    {
+      "frame": 937,
+      "t": 15.6167,
+      "diff_in": 28.58,
+      "diff_out": 26.62,
+      "skip_diff": 18.96,
+      "where": "blocks:8",
+      "allowed": false
+    }
+  ],
+  "flashes": [],
+  "shimmer": [
+    {
+      "frame": 609,
+      "t": 10.15,
+      "blocks": 4
+    },
+    {
+      "frame": 787,
+      "t": 13.1167,
+      "blocks": 2
+    },
+    {
+      "frame": 938,
+      "t": 15.6333,
+      "blocks": 5
+    },
+    {
+      "frame": 1202,
+      "t": 20.0333,
+      "blocks": 2
+    }
+  ],
+  "detected_cuts": [],
+  "intended_cuts": []
+}
