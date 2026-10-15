@@ -1,8 +1,6 @@
 // sweep_lib.mjs — the per-frame assertions a worldfilm project runs on its pure functions (no DOM, no renderer).
 // A project's tools/sweep.mjs (from templates/sweep.template.mjs) wires its camera/readout/projector into these
-// checks and runs them every frame. Lineage: block-space/tools/sweep.mjs, where each check first caught a real
-// defect (block 210,000 shown beside 50 BTC; a float subsidy where Bitcoin pays integer satoshi; a label plate on
-// the gate it named; an end edge that crept back up during the settle).
+// checks and runs them every frame: data accuracy, framing targets, label collisions and visibility windows.
 //
 // Every check returns { name, todo, run() -> string[] }. runSweep() prints one line per violation (max 20),
 // exits 1 on violations and 2 while any check is still marked todo (a new project cannot pass stage 7 on the
@@ -64,8 +62,8 @@ export function noTimeOverlap(name, intervals, { todo = false } = {}) {
 
 export function labelsClear(name, labels, { fps = 60, pad = 4, minTargetPx = 6, todo = false } = {}) {
   // labels: [{ id, at, until, plate(t) -> {x, y, w, h} | null, target(t) -> {x0, y0, x1, y1} | null }]
-  // The plate (same placement rule as the HUD: above, then beside the right post, then the left, clamped to the safe
-  // area) may never overlap the thing it names while it is up; targets smaller than minTargetPx are ignored (far away).
+  // The plate (same placement function as the HUD, using the subject's attachment points and the configured safe
+  // area) may never overlap the subject it names while it is up; targets smaller than minTargetPx are ignored (far away).
   return { name, todo, run() {
     const errs = [];
     for (const L of labels) {
@@ -82,7 +80,7 @@ export function labelsClear(name, labels, { fps = 60, pad = 4, minTargetPx = 6, 
 }
 
 export function invisibleWhile(name, opacityAt, { from, to, fps = 60, max = 0.01, todo = false }) {
-  // Something that must be gone (a ladder under the headline, a concept layer after its label) stays under `max` opacity.
+  // A layer declared hidden by the shot stays under `max` opacity for the specified window.
   return { name, todo, run() {
     const errs = [];
     for (let f = Math.ceil(from * fps); f <= Math.floor(to * fps); f++) { const o = opacityAt(f / fps); if (o > max) errs.push(name + ': frame ' + f + ': visible (' + o.toFixed(2) + ')'); }

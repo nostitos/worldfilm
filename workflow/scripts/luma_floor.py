@@ -4,7 +4,7 @@ styleframes can still be a black tunnel on a phone for seconds at a time. Uses f
 
 usage: luma_floor.py video.mp4 [--min 35] [--window 0.5] [--tail 0] [--out gates/luma.json]
   A frame fails when the mean luma of the `--window`-second window around it is below --min; --tail seconds at the end
-  are reported but exempt (a fade to black). Lineage: critic round 1 of Block Space ("luma is not measured by any gate").
+  are reported but exempt (a fade to black). Choose the floor to match the approved look and delivery requirements.
 exit 0 = every window above the floor, 1 = dark stretches found, 2 = usage error
 """
 import argparse

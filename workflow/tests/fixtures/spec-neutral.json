@@ -1,0 +1,427 @@
+{
+ "spec_version": "0.1",
+ "project": {
+  "title": "Sample Squares",
+  "fps": 60,
+  "duration": 6,
+  "sizes": [
+   {
+    "w": 1920,
+    "h": 1080,
+    "label": "landscape"
+   },
+   {
+    "w": 1080,
+    "h": 1920,
+    "label": "vertical"
+   }
+  ],
+  "audience": "test fixture",
+  "cta": "",
+  "brand": {
+   "name": "Sample",
+   "colors": {
+    "ground": "#101418",
+    "ink": "#f2f2f2",
+    "accent": "#3fa7d6"
+   },
+   "fonts": []
+  },
+  "facts_file": "facts.json",
+  "style": {
+   "id": "custom",
+   "palette": [
+    "#101418",
+    "#f2f2f2",
+    "#3fa7d6"
+   ],
+   "notes": "neutral fixture"
+  },
+  "motion_tokens": {
+   "energy": 0.5,
+   "tone": "calm",
+   "base_duration_s": 0.5,
+   "ease_in": "expo.out",
+   "ease_out": "expo.in",
+   "overshoot": 0,
+   "no_linear": true
+  },
+  "camera": {
+   "dial": 3,
+   "signature_moves": [
+    "push",
+    "orbit"
+   ],
+   "log_space": true,
+   "max_hold_s": 0.5,
+   "rest_drift": {
+    "shape": "ellipse",
+    "lateral_units": 0.05,
+    "vertical_units": 0.04,
+    "omega_rad_s": 1.7,
+    "slow_lateral_units": 0.03,
+    "slow_omega_rad_s": 0.61,
+    "boosts": [
+     {
+      "from_s": 1.5,
+      "to_s": 2.5,
+      "factor": 4,
+      "axes": "both"
+     },
+     {
+      "from_s": 3,
+      "to_s": 4,
+      "factor": 2,
+      "axes": "lateral"
+     }
+    ]
+   },
+   "notes": "lateral-only boost while the framing target settles"
+  },
+  "reference": {
+   "sources": [
+    "references/style-a.png"
+   ],
+   "palette": [
+    {
+     "hex": "#101418",
+     "share": 0.7
+    },
+    {
+     "hex": "#3FA7D6",
+     "share": 0.1
+    }
+   ],
+   "accents": [
+    {
+     "family": "blue",
+     "core": "#3fa7d6",
+     "halo": "#9fd3ea",
+     "share": 0.1
+    }
+   ],
+   "line_weight_px_1080p": 4,
+   "grain_index": 0.2,
+   "luma_mean": 0.18,
+   "motion_mean_diff": 2.5,
+   "cuts_per_30s": 4,
+   "shot_s_median": 2,
+   "compare_sheet": "references/compare-sheet.png",
+   "approved": true
+  },
+  "blur": {
+   "samples_per_frame": 8,
+   "shutter_angle": 180,
+   "shutter_phase": -90,
+   "route": "playwright"
+  },
+  "world": {
+   "module": "world.js",
+   "kind": "canvas2d",
+   "seed": 7,
+   "data_files": [
+    "data/tiles.json"
+   ],
+   "precompute_note": "tile layout solved once at load",
+   "options": {
+    "gridOpacity": 1
+   }
+  },
+  "footage": {
+   "source": "footage/subject.mp4",
+   "separation_dir": "footage/subject-sep",
+   "license": "synthetic"
+  },
+  "quality_bar": {
+   "frozen_max_s_per_30s": 1,
+   "hold_max_s": 0.6,
+   "contrast_min": 4.5,
+   "lufs_target": -14,
+   "true_peak_max_dbtp": -1,
+   "cut_error_max_frames": 2,
+   "handoff_max_mean_abs_diff": 6,
+   "palette_max_distance": 40
+  },
+  "music": {
+   "src": "assets/mix.wav",
+   "bpm": 120,
+   "beat_offset_s": 0,
+   "license": "synthesized"
+  },
+  "variants": [
+   {
+    "id": "vertical",
+    "composition": "compositions/vertical.html",
+    "width": 1080,
+    "height": 1920,
+    "fov_scale": 1.4,
+    "label_hold_frac": 0.6,
+    "world_options": {
+     "gridOpacity": 0.8
+    },
+    "gates": "own"
+   }
+  ],
+  "gates": {
+   "frozen_margin_samples": 2,
+   "allow_skip": [
+    "handoff",
+    "swatch"
+   ],
+   "hyperframes_cmd": "npx hyperframes"
+  }
+ },
+ "shots": [
+  {
+   "id": "s01",
+   "t_in": 0,
+   "t_out": 3,
+   "purpose": "tiles fill the row",
+   "card": "none",
+   "mechanism": "counter",
+   "style_move": "push",
+   "signature": true,
+   "subject": {
+    "what": "a row of tiles",
+    "fill_ratio": 0.7,
+    "layout": "wide"
+   },
+   "text": [
+    {
+     "id": "L-row",
+     "content": "ROW · 10 TILES",
+     "fact_ids": [
+      "F-ROW"
+     ],
+     "role": "label",
+     "at_s": 0.5,
+     "until_s": 2.8,
+     "min_hold_s": 2
+    },
+    {
+     "id": "C1",
+     "content": "Tiles land one by one.",
+     "role": "caption",
+     "at_s": 0.2,
+     "until_s": 2.9
+    }
+   ],
+   "camera": {
+    "poses": [
+     {
+      "t": 0,
+      "pos": [
+       0,
+       2,
+       12
+      ],
+      "look": [
+       0,
+       1,
+       0
+      ],
+      "fov": 40
+     },
+     {
+      "t": 2.5,
+      "pos": [
+       0,
+       1.5,
+       6
+      ],
+      "look": [
+       0,
+       1,
+       0
+      ],
+      "fov": 40,
+      "ease": "expo.out"
+     }
+    ],
+    "move": "push",
+    "velocity_peak_s": 0.8,
+    "settle_s": 2.5,
+    "dial": 2
+   },
+   "world_anchors": [
+    {
+     "id": "A-row",
+     "anchor": "row",
+     "text_id": "L-row",
+     "offset_px": [
+      0,
+      -60
+     ],
+     "occlusion": "fade",
+     "placement": "auto",
+     "hold_line_frac": 0.76
+    }
+   ],
+   "transition_out": {
+    "type": "cut",
+    "duration_s": 0
+   }
+  },
+  {
+   "id": "s02",
+   "t_in": 3,
+   "t_out": 6,
+   "purpose": "the square settles under the headline",
+   "card": "none",
+   "signature": false,
+   "subject": {
+    "what": "a unit square",
+    "fill_ratio": 0.6,
+    "layout": "close"
+   },
+   "text": [
+    {
+     "id": "H1",
+     "content": "ONE SQUARE",
+     "fact_ids": [],
+     "role": "headline",
+     "at_s": 4.2,
+     "until_s": 6
+    }
+   ],
+   "camera": {
+    "poses": [
+     {
+      "t": 3,
+      "pos": [
+       0,
+       1.5,
+       6
+      ],
+      "look": [
+       0,
+       1,
+       0
+      ]
+     },
+     {
+      "t": 4,
+      "pos": [
+       0,
+       1.6,
+       5
+      ],
+      "look": [
+       0,
+       1,
+       0
+      ]
+     }
+    ],
+    "move": "dolly",
+    "framing_target": {
+     "point": "0,0.5,0",
+     "axis": "y",
+     "keys": [
+      [
+       3,
+       0.62
+      ],
+      [
+       3.1,
+       0.632
+      ],
+      [
+       3.2,
+       0.644
+      ],
+      [
+       3.3,
+       0.656
+      ],
+      [
+       3.4,
+       0.668
+      ],
+      [
+       3.5,
+       0.68
+      ],
+      [
+       3.6,
+       0.692
+      ],
+      [
+       3.7,
+       0.704
+      ],
+      [
+       3.8,
+       0.716
+      ],
+      [
+       3.9,
+       0.728
+      ],
+      [
+       4,
+       0.74
+      ]
+     ],
+     "key_step_s": 0.1,
+     "assert": "monotone_down",
+     "hold_from_s": 4,
+     "slack_px": 0.6,
+     "hold_slack_px": 1.5
+    }
+   },
+   "footage_layer": {
+    "mask_dir": "footage/subject-sep/masks",
+    "cutout": "footage/subject-sep/cutout.webm",
+    "depth_order": [
+     "background",
+     "graphics",
+     "subject",
+     "captions"
+    ],
+    "frame_offset": 0
+   },
+   "transition_out": {
+    "type": "cut",
+    "duration_s": 0
+   }
+  }
+ ],
+ "audio": {
+  "cue_sheet": "audio/cues.json",
+  "synth_report": "audio/synth-report.json",
+  "cues": [
+   {
+    "id": "tick-1",
+    "t": 0.5,
+    "gen": "pop",
+    "group": "sfx",
+    "audibility_db": 4,
+    "band_hz": [
+     800,
+     4000
+    ],
+    "event": "tile-1"
+   },
+   {
+    "id": "whoosh",
+    "t": 0.8,
+    "gen": "whoosh",
+    "group": "sfx",
+    "event": "push-peak"
+   }
+  ],
+  "silence": [
+   [
+    5.5,
+    5.8
+   ]
+  ],
+  "music_only": {
+   "stem": "assets/stems/score.wav",
+   "out": "assets/music-only.wav",
+   "report": "gates/music-only-master.json",
+   "lufs": -14.1
+  }
+ }
+}

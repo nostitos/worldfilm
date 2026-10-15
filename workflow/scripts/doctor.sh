@@ -1,11 +1,19 @@
 #!/bin/bash
-# doctor.sh — readiness check for the worldfilm studio. Usage: bash workflow/scripts/doctor.sh [--quick]
+# doctor.sh — readiness check for the worldfilm studio. Usage: bash workflow/scripts/doctor.sh [--quick] [--project DIR]
 # Exit 0 when every required check passes; optional checks never fail the run.
 set -u
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="$(cd "$HERE/../.." && pwd)"
 STUDIO="$ROOT/studio"
-QUICK=0; [ "${1:-}" = "--quick" ] && QUICK=1
+QUICK=0
+PROJECT=""
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --quick) QUICK=1; shift ;;
+    --project) [ "$#" -ge 2 ] || { echo "--project needs a directory"; exit 2; }; PROJECT="$2"; shift 2 ;;
+    *) echo "usage: doctor.sh [--quick] [--project DIR]"; exit 2 ;;
+  esac
+done
 case ":$PATH:" in *":/opt/homebrew/bin:"*) ;; *) export PATH="/opt/homebrew/bin:$PATH" ;; esac   # homebrew first, then nvm in front of it
 if [ -s "$HOME/.nvm/nvm.sh" ]; then . "$HOME/.nvm/nvm.sh" >/dev/null 2>&1; nvm use 22 >/dev/null 2>&1 || true; fi   # nvm prepends its node 22
 export HYPERFRAMES_NO_TELEMETRY=1 HYPERFRAMES_NO_UPDATE_CHECK=1
@@ -26,7 +34,7 @@ done
 [ -n "$SSF" ] && ok "shotspec-film" "$SSF (run_gates.py, base schema)" || bad "shotspec-film" "not found: set SHOTSPEC_HOME, link it at studio/kits/shotspec-film, or install the skill"
 for f in SKILL.md schema/worldfilm.schema.json scripts/capture_subframes.mjs scripts/detect_pops.py scripts/synth_sfx.py; do [ -f "$ROOT/workflow/$f" ] && ok "workflow/$f" present || bad "workflow/$f" missing; done
 for d in "$HOME/.codex/skills/worldfilm" "$HOME/.claude/skills/worldfilm"; do [ -e "$d/SKILL.md" ] && ok "skill link" "$d" || opt "skill link" "$d not installed (studio/install-skill.sh)"; done
-for d in "$HOME/.codex/skills/shotspec-film" "$HOME/.claude/skills/shotspec-film"; do [ -e "$d/SKILL.md" ] && ok "shotspec-film (required)" "$d" || bad "shotspec-film (required)" "$d missing"; done
+# The dependency resolved above is sufficient; using one editor does not require installation in both profiles.
 if [ -x "$STUDIO/node_modules/.bin/hyperframes" ]; then ok "hyperframes CLI" "$("$STUDIO/node_modules/.bin/hyperframes" --version 2>/dev/null | tail -1) (studio/node_modules)"; else bad "hyperframes CLI" "npm i hyperframes in studio/"; fi
 if "$STUDIO/node_modules/.bin/hyperframes" render --help 2>/dev/null | grep -qi 'motion-blur'; then ok "blur route" "CLI exposes motion blur: use the engine route"; else opt "blur route" "CLI has no motion-blur flag: capture_subframes.mjs (Playwright) is the master route"; fi
 if [ -d "$STUDIO/node_modules/playwright" ]; then ok "playwright" "studio/node_modules"; else bad "playwright" "npm i playwright && npx playwright install chromium (in studio/)"; fi
@@ -42,10 +50,14 @@ command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1 && ok "docker" 
 command -v claude >/dev/null 2>&1 && ok "claude CLI (critics)" "$(claude --version 2>/dev/null | head -1)" || opt "claude CLI (critics)" "fresh critics need claude -p or codex exec"
 echo "Gate runner"
 # run_gates.py splits --hyperframes-cmd on whitespace: a path with a space in it is "executable not found" and the
-# contrast gate SKIPs (Block Space ran a whole Gauntlet that way). The command must be "npx hyperframes", never a path.
+# contrast gate SKIPs. The command must be "npx hyperframes", never a path.
 case "$STUDIO" in *" "*) opt "studio path has a space" "never pass \$HF or a path to run_gates --hyperframes-cmd";; esac
 hfbad=0
-for b in "$STUDIO"/projects/*/build.sh; do
+if [ -n "$PROJECT" ] && [ ! -f "$PROJECT/build.sh" ]; then
+  bad "project build" "$PROJECT/build.sh missing"
+fi
+# Check the reusable build and an explicitly selected project. Local example films are never readiness dependencies.
+for b in "$ROOT/workflow/templates/build.sh" "$STUDIO/projects/_template/build.sh" ${PROJECT:+"$PROJECT/build.sh"}; do
   [ -f "$b" ] || continue
   if grep -q -- '--hyperframes-cmd' "$b" && grep -- '--hyperframes-cmd' "$b" | grep -v '^ *#' | grep -qv -- '--hyperframes-cmd "npx hyperframes"'; then
     bad "run_gates command" "$b passes something other than \"npx hyperframes\" to --hyperframes-cmd"; hfbad=1
@@ -54,7 +66,7 @@ for b in "$STUDIO"/projects/*/build.sh; do
     bad "gate-report reader" "$b runs run_gates.py without check_gate_report.py (a SKIP would read as green)"; hfbad=1
   fi
 done
-[ "$hfbad" -eq 0 ] && ok "run_gates command" "every build.sh passes \"npx hyperframes\" and reads the report with check_gate_report.py"
+[ "$hfbad" -eq 0 ] && ok "run_gates command" "checked builds use \"npx hyperframes\" and read the report with check_gate_report.py"
 if (cd "$STUDIO" && npx --no-install hyperframes --version >/dev/null 2>&1); then ok "npx hyperframes" "resolves from studio/node_modules"; else bad "npx hyperframes" "does not resolve: npm i hyperframes in studio/"; fi
 if [ "$QUICK" -eq 0 ]; then
   echo "Self-tests"

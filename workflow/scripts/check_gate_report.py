@@ -2,9 +2,9 @@
 """check_gate_report.py — the pass/fail reader for a run_gates.py gate-report.json (worldfilm stage 7 and 9).
 
 run_gates.py exits 0 when nothing FAILED; it does not fail on a SKIPPED gate, and its frozen_time gate passes at
-exactly the limit. Both bit Block Space: a hyperframes path with a space in it made the contrast gate SKIP for a
-whole Gauntlet (read as "green"), and a draft that passed frozen_time at 1.00 s/30 s failed on the blur master at
-1.11 because the gate quantises at one 10 fps sample (0.1 s x 30 / analysed window = 0.11 s/30 s on a 30 s film).
+exactly the limit. A command path containing spaces can prevent a gate from running; the resulting SKIP must
+not count as success. Small differences in sampling or motion blur can move a render across a threshold.
+One frozen-time sample represents 0.1 seconds, normalised by the report's actual analysis-window length.
 
 This reader exits non-zero when:
   - the summary verdict is FAIL;
@@ -62,9 +62,11 @@ def main():
         m, t = fz.get("measured", {}), fz.get("threshold", {})
         limit = t.get("frozen_max_s_per_30s")
         per30 = m.get("frozen_s_per_30s")
-        win = m.get("analysed_window_s") or 27.0
+        win = m.get("analysed_window_s")
         total = m.get("frozen_total_s")
-        if limit is not None and total is not None:
+        if limit is not None and total is not None and (not isinstance(win, (int, float)) or win <= 0):
+            problems.append("frozen_time report lacks a positive analysed_window_s; margin cannot be verified")
+        elif limit is not None and total is not None:
             n = int(round(total * 10))                                   # frozen samples (10 fps)
             limit_n = int((limit * win / 30.0) * 10 + 1e-6)              # samples allowed in this analysed window
             sample = 0.1 * 30.0 / max(0.1, win)                          # one sample, normalised per 30 s

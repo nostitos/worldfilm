@@ -1,18 +1,11 @@
-# worldfilm — the skill
+# worldfilm skill
 
-`SKILL.md` is the skill: start here, non-negotiables 7-15, stages 0-9 with the rules written as requirements, the
-script table, and the lessons still kept as prose. `schema/worldfilm.schema.json` extends the shotspec-film Shot Spec
-(camera dial and rest drift, framing targets, label placement and hold line, aspect variants with their own world
-options, the gate reader's settings, the music-only export). `scripts/` holds the gates and tools, including
-`check_gate_report.py` (a skipped gate is not a passed gate) and `sweep_lib.mjs` (per-frame assertions).
-`templates/` holds the project documents plus `build.sh` (stages 2-9 in order), `sweep.template.mjs` and
-`film/place_label.js` (the label placement rule as one function shared by the HUD and the sweep). `tests/` holds the
-fixtures and `run.sh` (19 expectations against known defects; `--full` adds the Playwright blur A/B).
+Start with [SKILL.md](SKILL.md). It describes the production stages and the boundaries between reusable mechanics
+and project choices. `schema/` extends the Shot Spec; `scripts/` contains tools and gates; `templates/` holds the
+starter documents, build sequence, sweep and shared label placement helper.
 
-The studio that runs it is `../studio` (`env.sh`, `.venv`, `node_modules` with the HyperFrames CLI and Playwright,
-`new-project.sh`, `projects/_template`; shotspec-film is found as described in `../studio/kits/README.md`). The
-worked example is `../studio/projects/block-space`.
+The studio is `../studio`. It provides `env.sh`, `new-project.sh`, package requirements and the shotspec-film
+dependency location. Install the skill links with `bash studio/install-skill.sh` from the repository root.
+Run `bash workflow/scripts/doctor.sh`, then `bash workflow/tests/run.sh` to check the installation.
 
-Install the skill links with `bash studio/install-skill.sh` (shotspec-film must be installed); check readiness with
-`bash workflow/scripts/doctor.sh`; validate the skill with `bash workflow/tests/run.sh`.
-
+`tests/` uses synthetic fixtures. No example film, production data, soundtrack or archived render is needed.

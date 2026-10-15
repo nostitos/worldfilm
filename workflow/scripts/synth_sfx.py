@@ -12,7 +12,7 @@ Cue sheet (JSON):
   "silence": [[26.0, 28.0]],                               # exact digital silence (zeros) in every output
   "pad": {"group": "score", "gain": 0.25, "chords": [[0.0, [110, 164.81, 220]], [9.0, [98, 146.83, 196]]],
           "volume": [[0, 0.3], [20, 0.6], [25.5, 0.0]]},      # optional music bed (piecewise-linear volume)
-  "cues": [ {"id": "halving-1", "t": 9.0, "gen": "kick", "args": {"f0": 55}, "gain": 0.9, "pan": 0.0, "group": "score"},
+  "cues": [ {"id": "section-1", "t": 9.0, "gen": "kick", "args": {"f0": 55}, "gain": 0.9, "pan": 0.0, "group": "score"},
             {"id": "whoosh-s03", "t": 12.6, "gen": "whoosh", "args": {"dur": 0.5, "f0": 400, "f1": 2400}, "gain": 0.35, "group": "sfx",
              "align": "peak"} ]                                 # align "peak": t is where the loudest sample lands (default "start")
 }
@@ -23,7 +23,7 @@ usage: synth_sfx.py cues.json --out assets/mix.wav [--stems assets/stems] [--lis
        synth_sfx.py --master-stem assets/stems/score.wav --out assets/music-only.wav [--target-lufs -14] [--ceiling-db -2]
   A stem carries the MIX's gain, so on its own it is quieter than the target (a score without its sfx measured -16.3 LUFS).
   --master-stem applies one linear gain to reach the target under the true-peak ceiling: exact zeros stay exact zeros
-  (the silence windows survive), nothing is clipped or compressed, and the gain and the result are printed.
+  (any silence windows survive), nothing is clipped or compressed, and the gain and the result are printed.
 """
 import argparse
 import json
@@ -148,7 +148,7 @@ def impact(dur=1.2):
 
 
 def kick(f0=55.0, dur=0.45, punch=160.0):
-    """Electronic kick: pitch drops from punch Hz to f0, short click on top. Beat markers and halvings."""
+    """Electronic kick: pitch drops from punch Hz to f0, short click on top. Beat and event markers."""
     t = t_axis(int(dur * SR))
     f = f0 + (punch - f0) * np.exp(-t / 0.03)
     ph = np.cumsum(2 * np.pi * f / SR)

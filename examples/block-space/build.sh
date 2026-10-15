@@ -6,11 +6,12 @@
 # fails the build: a skipped gate is not a passed gate (check_gate_report.py), and the sweep must be configured.
 set -euo pipefail
 cd "$(dirname "$0")"
-STUDIO="$(cd ../.. && pwd)"
+STUDIO="$(cd ../../studio && pwd)"
 PY="$STUDIO/.venv/bin/python"
 WF="$STUDIO/worldfilm/scripts"
 SS="${SHOTSPEC_HOME:-$STUDIO/kits/shotspec-film}/scripts"; [ -f "$SS/run_gates.py" ] || SS="$HOME/.codex/skills/shotspec-film/scripts"   # shotspec-film (required)
 HF="$STUDIO/node_modules/.bin/hyperframes"          # for lint / check / render only. run_gates gets "npx hyperframes" (never a path: a space in it splits)
+export PATH="$STUDIO/node_modules/.bin:$PATH"
 export HYPERFRAMES_NO_TELEMETRY=1 HYPERFRAMES_NO_UPDATE_CHECK=1
 
 # ---- fill these once (stage 0-5) ----

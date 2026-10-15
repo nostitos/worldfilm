@@ -28,7 +28,17 @@ studio/projects/*/gates/*/cut-*.jpg
 studio/projects/*/assets/*.wav
 studio/projects/*/assets/stems/
 
-# third-party reference material, measured locally and never redistributed
-studio/projects/block-space/references/engine.reference.*
-studio/projects/block-space/gates/compare-sheet.png
-
+# optional examples: local renders and measurement material stay out of source control
+examples/*/renders/*.mp4
+examples/*/renders/*.wav
+examples/*/renders/*.log
+examples/*/renders/*.json
+examples/*/renders/abandoned/
+examples/*/stills/
+examples/*/gates/draft*/
+examples/*/gates/*/contact-sheet.jpg
+examples/*/gates/*/cut-*.jpg
+examples/*/assets/*.wav
+examples/*/assets/stems/
+examples/*/references/engine.reference.*
+examples/*/gates/compare-sheet.png

@@ -1,4 +1,9 @@
-# Block Space — a worldfilm prototype
+# Block Space — optional archived production
+
+This is a historical, content-specific example. Its numeric model, art direction, soundtrack, timing and review
+history belong to this production. It is not a starter or a dependency of the workflow.
+
+![Flight preview](preview/flight.gif)
 
 Thirty seconds, 1920x1080 at 60 fps (and a 1080x1920 cut): the Bitcoin issuance schedule as a night boulevard of
 concrete slabs, one per difficulty period, flown through once. Built with the worldfilm skill on top of shotspec-film.
@@ -17,3 +22,13 @@ Known state (2026-10-09): the shipped 16:9 masters predate the elliptical-drift 
 frozen_time at 1.11 s/30 s on the blur master (limit 1.0; the Docker master reads 1.00, the portrait master 0.11).
 `bash build.sh` regenerates the 16:9 masters with the fix. Nobody has listened to the audio; the blur master is a
 host Playwright capture (the installed HyperFrames CLI has no motion-blur option). Details: PROGRESS.md.
+
+## Archive layout
+
+The example moved from the studio into this optional folder. Existing gate reports record their historical
+paths and hashes. Full third-party source files were replaced by pinned links and hashes in
+`references/sources/SOURCES.md`; retained local copies are stored outside the repository.
+
+Finished downloads: [historical release](https://github.com/nostitos/worldfilm/releases/tag/block-space-v1).
+Example-only licences: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+To work with this example, source `../../studio/env.sh` from here; it is not used by the required test suite.

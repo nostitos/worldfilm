@@ -9,11 +9,11 @@ spec = json.load(open("shotspec.json"))
 rows = []
 for s in spec["shots"]:
     for t in s.get("text", []):
-        if t.get("role") in ("caption", "headline", "kicker", "note"):
+        if t.get("role") in ("caption", "headline", "kicker", "note") and t.get("at_s") is not None and t.get("until_s") is not None:
             rows.append((t["at_s"], t["until_s"], t["content"], t["role"]))
 ORDER = {"caption": 0, "headline": 1, "kicker": 2, "note": 3}
 rows.sort(key=lambda r: (r[0], ORDER[r[3]]))
-merged = []                                                    # the final card's lines become one cue
+merged = []                                                    # a final card's stacked lines become one cue
 for r in rows:
     if merged and r[3] in ("kicker", "note") and merged[-1][3] in ("headline", "kicker") and r[0] - merged[-1][0] < 1.0:
         a = merged[-1]
@@ -23,7 +23,10 @@ for r in rows:
 
 
 def ts(x):
-    h = int(x // 3600); m = int(x % 3600 // 60); s = int(x % 60); ms = int(round((x - int(x)) * 1000))
+    ms_total = int(round(x * 1000))
+    h, rem = divmod(ms_total, 3600000)
+    m, rem = divmod(rem, 60000)
+    s, ms = divmod(rem, 1000)
     return "%02d:%02d:%02d,%03d" % (h, m, s, ms)
 
 
@@ -32,4 +35,3 @@ with open(out, "w") as f:
     for i, (a, b, text, _) in enumerate(merged, 1):
         f.write("%d\n%s --> %s\n%s\n\n" % (i, ts(a), ts(b), text))
 print("%s: %d cues" % (out, len(merged)))
-

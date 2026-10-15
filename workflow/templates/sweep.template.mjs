@@ -1,70 +1,69 @@
-// tools/sweep.mjs — the full-frame sweep (worldfilm stage 7 pass criterion). Every displayed number is recomputed
-// independently every frame, no label plate touches what it names, every framing target settles in one direction,
-// and nothing declared gone is visible. Pure functions only (film/camera.js, film/data.js): no DOM, no renderer.
-// Usage: node tools/sweep.mjs    exit 0 clean · 1 violations · 2 while a check below is still TODO
-// Worked example: studio/projects/block-space/tools/sweep.mjs (each check there caught a real defect).
+// tools/sweep.mjs — the full-frame sweep (worldfilm stage 7 pass criterion). Each configured check runs on every frame:
+// displayed values equal an independent recomputation, readouts move only as declared, framing targets settle,
+// label plates never touch what they name, and layers declared hidden stay hidden. Pure functions only
+// (film/camera.js, film/data.js): no DOM, no renderer.
+// Usage: node tools/sweep.mjs    exit 0 clean · 1 violations · 2 while any check below is still TODO or none is configured
 import { everyFrame, monotone, settle, noTimeOverlap, labelsClear, invisibleWhile, runSweep } from '../../../worldfilm/scripts/sweep_lib.mjs';
 import { plateBox } from '../film/place_label.js';                   // the SAME placement rule film/main.js draws with
 
 // ---- ADAPT: the project's pure functions ----------------------------------------------------------------------
 let DATA, cam;
 try {
-  ({ DATA } = await import('../film/data.js'));                       // tools/build.py writes it: shots, anchors, constants
-  cam = await import('../film/camera.js');                            // cameraAt(t, aspect), readoutAt(t), project(cam, [x,y,z]), ...
+  ({ DATA } = await import('../film/data.js'));                       // tools/build.py writes it: fps, dur, sizes, shots, events
+  cam = await import('../film/camera.js');                            // e.g. cameraAt(t, aspect), readoutAt(t), project(cam, [x,y,z])
 } catch (e) { console.log('sweep: film/data.js or film/camera.js not importable yet (' + e.message + '); build stages 3-4 first'); process.exit(2); }
-const FPS = DATA.fps, DUR = DATA.dur, W = 1920, H = 1080, ASPECT = W / H;
+const FPS = DATA.fps, DUR = DATA.dur, W = DATA.sizes[0].w, H = DATA.sizes[0].h, ASPECT = W / H;
 const base = { fps: FPS, duration: DUR };
+const texts = DATA.shots.flatMap((s) => s.text || []);
 
-// ---- CHECKS: configure each one, then set todo: false; delete the ones this film has no use for ----------------
+// ---- CHECKS: configure each one and set todo: false, or delete the ones this film has no use for ---------------
 const CHECKS = [
-  // 1. Money is integers: every number on screen equals an INDEPENDENT recomputation (a different formula, BigInt
-  //    where the protocol uses integers), every frame. The facts gate cannot see a rounding error that facts.json shares.
-  everyFrame('displayed value equals an exact recomputation', (t, f) => {
-    const r = cam.readoutAt(t);                                        // { h, value, text, ... } as the HUD prints it
-    const exact = null;                                                // TODO e.g. (5000000000n >> BigInt(Math.floor(r.h / 210000))).toString()
-    return exact === null || String(r.value) === String(exact) ? null : 'frame ' + f + ': shows ' + r.value + ', exact ' + exact;
+  // 1. Every displayed value equals an INDEPENDENT recomputation (a different code path from the HUD), every frame,
+  //    at the source's precision: integers (BigInt if large) for discrete units, an exact decimal representation for
+  //    exact decimal quantities, a stated tolerance for measured values; then the same rounding the display declares.
+  //    The facts gate cannot see a rounding or unit error that facts.json shares with the HUD.
+  everyFrame('displayed value equals an independent recomputation', (t, f) => {
+    const shown = null;                                                // TODO the value as the HUD prints it at t
+    const exact = null;                                                // TODO the same value recomputed independently from the data
+    return shown === null || exact === null || String(shown) === String(exact) ? null : 'frame ' + f + ': shows ' + shown + ', expected ' + exact;
   }, { ...base, todo: true }),
 
-  // 2. The readout never runs backwards, except inside a designed swing written in the spec.
-  monotone('readout runs forward', (t) => cam.readoutAt(t).h, { ...base, direction: 'up', slack: 0, except: [/* [5.4, 8.4] */], todo: true }),
+  // 2. A readout or counter only moves in its declared direction, except inside designed windows written in the spec.
+  monotone('readout moves in its declared direction', (t) => 0 /* TODO e.g. cam.readoutAt(t).value */, { ...base, direction: 'up', slack: 0, except: [], todo: true }),
 
-  // 3. The readout is exactly the declared value while the camera rests on a declared stop (NOW, the end).
-  everyFrame('readout at the stop', (t, f) => {
-    const stops = [/* { from: 17.5, to: 19.2, h: DATA.tip } */];
-    for (const s of stops) if (t >= s.from && t <= s.to && cam.readoutAt(t).h !== s.h) return 'frame ' + f + ': ' + cam.readoutAt(t).h + ' at the stop, not ' + s.h;
-    return null;
-  }, { ...base, todo: true }),
+  // 3. Every shot whose camera is solved from a framing target settles in one direction, then holds. Generated from
+  //    shots[].camera.framing_target; resolve each target's world point (TODO) to make these checks real.
+  ...DATA.shots.filter((s) => s.camera && s.camera.framing_target).map((s) => {
+    const ft = s.camera.framing_target, keys = ft.keys, axis = ft.axis || 'y';
+    const point = null;                                                // TODO [x, y, z] for ft.point (an anchor name or 'x,y,z')
+    const at = (t) => cam.project(cam.cameraAt(t, ASPECT), point);
+    return settle(s.id + ': framing target ' + ft.point + ' settles', {
+      valueAt: (t) => at(t)[axis], visibleAt: (t) => { const e = at(t); return e.visible && e.x >= 0 && e.x <= W && e.y >= 0 && e.y <= H; },
+      from: keys[0][0], to: ft.hold_from_s ?? keys[keys.length - 1][0], holdFrom: ft.hold_from_s ?? null, holdTo: ft.hold_from_s != null ? s.t_out : null,
+      direction: ft.assert === 'monotone_up' ? 'up' : 'down', slack: ft.slack_px ?? 0.6, holdSlack: ft.hold_slack_px ?? 1.5, fps: FPS, todo: point === null });
+  }),
 
-  // 4. A framing target (the projected screen position of a world point) settles in one direction, then holds.
-  //    This is the proof for any shot whose camera is solved from a framing target (stage 4): key the pose every
-  //    0.1 s, assert the projected quantity here.
-  settle('end edge settles down the frame, then holds under the headline', {
-    valueAt: (t) => cam.project(cam.cameraAt(t, ASPECT), [/* DATA.end_x */ 0, 0, 0]).y,
-    visibleAt: (t) => { const e = cam.project(cam.cameraAt(t, ASPECT), [0, 0, 0]); return e.visible && e.y >= 0 && e.y <= H; },
-    from: 22.6, to: 27.0, holdFrom: 27.0, holdTo: DUR, direction: 'down', slack: 0.6, holdSlack: 1.5, fps: FPS, todo: true }),
-
-  // 5. Labels of one family never overlap in time; captions never overlap in time.
+  // 4. Labels of one family never overlap in time; captions never overlap in time. Derived from the spec.
   noTimeOverlap('anchored labels', DATA.shots.flatMap((s) => (s.text || []).filter((x) => (s.world_anchors || []).some((a) => a.text_id === x.id)).map((x) => ({ id: x.id, a: x.at_s, b: x.until_s }))), { todo: false }),
-  noTimeOverlap('captions', DATA.shots.flatMap((s) => (s.text || []).filter((x) => x.role === 'caption').map((x) => ({ id: x.id, a: x.at_s, b: x.until_s }))), { todo: false }),
+  noTimeOverlap('captions', texts.filter((x) => x.role === 'caption').map((x) => ({ id: x.id, a: x.at_s, b: x.until_s })), { todo: false }),
 
-  // 6. No label plate touches the thing it names, any frame it is up. plate(t) applies the SAME placement rule as
-  //    film/main.js by calling plateBox on the same projections (film/place_label.js: above the anchor, else beside the
-  //    right post past its outer face, else the left; safe area; readout; caption zone; hold line). target(t) is the
-  //    projected box of the object. ANCHORS maps every anchor and its -right/-right-outer/-left/-left-outer variants to
-  //    world points (export the table world.js builds from film/data.js so both read one source).
-  // const ANCHORS = { 'gate-1': [x, y, z], 'gate-1-right': [...], 'gate-1-right-outer': [...], 'gate-1-left': [...], 'gate-1-left-outer': [...] };
+  // 5. No label plate touches the object it names, any frame it is up. plate(t) applies the SAME placement rule as
+  //    film/main.js (plateBox on the same projections); target(t) is the projected box of the named object. ANCHORS
+  //    maps anchor names to world points; side candidates (<a>-right, <a>-right-outer, <a>-left, <a>-left-outer) are
+  //    optional and only needed for objects a plate may have to sit beside.
+  // const ANCHORS = { 'subject': [x, y, z] };
   // const projectAll = (t) => { const c = cam.cameraAt(t, ASPECT), out = {}; for (const [k, v] of Object.entries(ANCHORS)) out[k] = cam.project(c, v); return out; };
-  labelsClear('label plates clear their gates', DATA.shots.flatMap((s) => (s.world_anchors || []).map((a) => {
+  labelsClear('label plates clear their objects', DATA.shots.flatMap((s) => (s.world_anchors || []).map((a) => {
     const text = (s.text || []).find((x) => x.id === a.text_id);
     return {
       id: a.text_id, at: text ? text.at_s : 0, until: text ? text.until_s : 0,
-      plate: (t) => null,                                              // TODO -> plateBox(projectAll(t), a.anchor, text.content, { offset: a.offset_px, width: W, height: H, holdFrac: a.hold_line_frac || 0.76 })
-      target: (t) => null,                                             // TODO -> { x0, y0, x1, y1 }: the projected corners of the object (posts, bars) it names
+      plate: (t) => null,      // TODO -> plateBox(projectAll(t), a.anchor, text.content, { offset: a.offset_px, width: W, height: H, holdFrac: a.hold_line_frac ?? 0.76 })
+      target: (t) => null,     // TODO -> { x0, y0, x1, y1 }: the projected bounds of the object the label names
     };
   })), { fps: FPS, todo: true }),
 
-  // 7. Something declared gone stays gone (the ladder under the headline; a concept layer after its label).
-  invisibleWhile('ladder invisible under the headline', (t) => 0 /* TODO cam.ladderOpacityAt(t) */, { from: 27.0, to: DUR, fps: FPS, todo: true }),
+  // 6. A layer the spec declares hidden stays hidden for its window (add one per declaration, or delete).
+  invisibleWhile('declared-hidden layer stays hidden', (t) => 0 /* TODO opacity at t */, { from: 0, to: 0, fps: FPS, todo: true }),
 ];
 
 runSweep(CHECKS, base);

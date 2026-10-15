@@ -2,6 +2,10 @@
  "F-EXAMPLE": {
   "claim": "Replace with the first fact that reaches the screen.",
   "value": 0,
+  "value_type": "integer | decimal | measured",
+  "unit": "",
+  "precision": "as published by the source, e.g. 2 decimal places or +-0.5 unit",
+  "rounding": "how the source rounds, and how the display rounds",
   "kind": "measurement",
   "source": "",
   "url": "",

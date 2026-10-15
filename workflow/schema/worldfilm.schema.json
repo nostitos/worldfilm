@@ -2,7 +2,7 @@
  "$schema": "https://json-schema.org/draft/2020-12/schema",
  "$id": "https://aiception.ai/schemas/worldfilm-0.1.json",
  "title": "worldfilm Shot Spec — shotspec-film 0.1 plus world, camera, reference, blur, footage and audibility",
- "description": "A worldfilm spec is a valid shotspec-film Shot Spec (every shotspec gate still applies) with the blocks below. Old ShotSpecs validate unchanged; the new blocks are optional at the schema level and required by the SKILL at the stage that uses them.",
+ "description": "A worldfilm spec is a valid shotspec-film Shot Spec (every shotspec gate still applies) plus the optional blocks below. Old ShotSpecs validate unchanged; blocks are optional at the schema level and used by the stage that needs them.",
  "allOf": [
   {
    "$ref": "https://aiception.ai/schemas/shotspec-0.1.json"
@@ -15,7 +15,7 @@
      "properties": {
       "camera": {
        "type": "object",
-       "description": "Camera dial, set once per film at intake (a branding decision). 1 Locked, 2 Anchored, 3 Motivated (default), 4 Flowing, 5 Perpetual. The dial governs the camera only; elements keep moving at every setting.",
+       "description": "Camera dial, set once per film at intake (a branding decision). 1 Locked, 2 Anchored, 3 Motivated, 4 Flowing, 5 Perpetual. The dial governs the camera only; elements may keep moving at every setting. A per-shot shots[].camera.dial overrides it for that shot.",
        "required": [
         "dial"
        ],
@@ -30,11 +30,11 @@
          "items": {
           "type": "string"
          },
-         "description": "named moves this film is allowed to repeat (push, orbit, crane, dolly, rack); every other move must vary scene to scene"
+         "description": "named moves this film is allowed to repeat (e.g. push, orbit, crane, dolly, rack); other moves should vary scene to scene"
         },
         "max_hold_s": {
          "type": "number",
-         "description": "longest the camera may rest at dial 4-5 (default 0.5 s)"
+         "description": "longest the camera may rest motionless where the effective dial is 4-5 (a project choice; 0.5 s is a common starting point)"
         },
         "log_space": {
          "type": "boolean",
@@ -46,7 +46,7 @@
         },
         "rest_drift": {
          "type": "object",
-         "description": "Micro-drift at rests (dial 3-5). The rule: the drift moves on an ELLIPSE, height in quadrature with the lateral sway at one angular rate, so its velocity never passes through zero (a one-axis sine is still at every turning point, every pi/omega seconds, and the frozen_time gate reads those instants as frozen). pos += [0, vertical_units * cos(omega * t), lateral_units * sin(omega * t) + slow_lateral_units * sin(slow_omega_rad_s * t + 1)] times the boost factor inside each boost window; a boost whose axes are 'lateral' leaves the height alone so a framing target can still settle monotonically.",
+         "description": "Optional micro-drift for camera rests in shots whose effective dial (shots[].camera.dial, else project.camera.dial) is at least min_dial. Locked or anchored shots below min_dial do not drift. Recommended shape: an ellipse, height in quadrature with the lateral sway at one angular rate, so the drift velocity never passes through zero (a one-axis sine stops at every turning point, every pi/omega seconds, which a frozen-time gate reads as frozen). Offset added to the rest pose: lateral = A(t) * (lateral_units * sin(omega_rad_s * t) + slow_lateral_units * sin(slow_omega_rad_s * t + 1)), vertical = Av(t) * vertical_units * cos(omega_rad_s * t), where A(t) = 1 + the sine-windowed boost factors active at t and Av(t) is the same sum without boosts whose axes are 'lateral'. All parameters are in world units and must be scaled to the scene: a starting point is lateral_units of roughly 0.2-1 % of the camera-to-subject distance, vertical_units 0.5-1x lateral, and omega_rad_s giving a period of a few seconds; tune by eye and by the frozen-time margin. Use shape 'none' (or omit the block) when rests should stay still.",
          "properties": {
           "shape": {
            "type": "string",
@@ -54,26 +54,28 @@
             "ellipse",
             "none"
            ],
-           "default": "ellipse"
+           "default": "ellipse",
+           "description": "'ellipse' applies the quadrature drift above; 'none' disables rest drift"
           },
           "lateral_units": {
            "type": "number",
-           "description": "half-width of the sway in world units (Block Space: 0.05)"
+           "description": "half-width of the lateral sway in world units (scale to the scene)"
           },
           "vertical_units": {
            "type": "number",
-           "description": "half-height in world units, in quadrature with the lateral sway (Block Space: 0.04)"
+           "description": "half-height in world units, in quadrature with the lateral sway; 0 makes a one-axis sway that stops at its turning points"
           },
           "omega_rad_s": {
            "type": "number",
-           "description": "angular rate of the ellipse (Block Space: 1.7)"
+           "description": "angular rate of the ellipse in rad/s (period = 2*pi/omega)"
           },
           "slow_lateral_units": {
            "type": "number",
-           "description": "optional slow lateral component (Block Space: 0.03 at 0.61 rad/s)"
+           "description": "optional slower lateral component in world units, so the path does not repeat exactly"
           },
           "slow_omega_rad_s": {
-           "type": "number"
+           "type": "number",
+           "description": "angular rate of the slow lateral component in rad/s"
           },
           "boosts": {
            "type": "array",
@@ -93,7 +95,7 @@
              },
              "factor": {
               "type": "number",
-              "description": "peak multiplier, sine-windowed over the window (Block Space: 4 at the NOW stop, 10 in the ending)"
+              "description": "peak multiplier, sine-windowed over [from_s, to_s]"
              },
              "axes": {
               "type": "string",
@@ -102,10 +104,18 @@
                "lateral"
               ],
               "default": "both",
-              "description": "'lateral' when a framing target must settle in one direction during the window"
+              "description": "'lateral' leaves the height alone so a framing target can settle in one direction during the window"
              }
             }
-           }
+           },
+           "description": "optional windows where the drift is amplified (a designed rest); each window lies inside the film"
+          },
+          "min_dial": {
+           "type": "integer",
+           "minimum": 1,
+           "maximum": 5,
+           "default": 3,
+           "description": "rest drift applies only to shots whose effective dial is at least this value"
           }
          }
         }
@@ -113,7 +123,7 @@
       },
       "reference": {
        "type": "object",
-       "description": "Measured reference block from measure_reference.py (never copied pixels): the numbers the styleframes are matched against.",
+       "description": "Measured reference block from measure_reference.py (numbers only, never copied pixels): what the styleframes are matched against, and a basis for choosing per-project gate limits.",
        "properties": {
         "sources": {
          "type": "array",
@@ -190,7 +200,7 @@
       },
       "blur": {
        "type": "object",
-       "description": "Sub-frame motion blur for the master (capture_subframes.mjs or the engine's motionBlur). Drafts and the Gauntlet render without it.",
+       "description": "Sub-frame motion blur for the master. route 'playwright' uses capture_subframes.mjs; 'engine' is reserved for a renderer that exposes motion blur; 'none' delivers the sharp render. Drafts render without it.",
        "properties": {
         "samples_per_frame": {
          "type": "integer",
@@ -221,7 +231,7 @@
       },
       "world": {
        "type": "object",
-       "description": "The simulated world every shot films: one state precomputed at load, a pure render(t), anchors(t) for labels and events(t) for sound.",
+       "description": "The simulated world the shots film: state precomputed once at load, a pure render(t), anchors(t) for labels and events(t) for sound.",
        "properties": {
         "module": {
          "type": "string",
@@ -244,22 +254,22 @@
          "items": {
           "type": "string"
          },
-         "description": "CSV/JSON the world reads; every value on screen must trace to facts_file"
+         "description": "data files the world reads; every value on screen must trace to facts_file"
         },
         "precompute_note": {
          "type": "string",
-         "description": "what is simulated once at load (agents, physics, layouts) so render(t) stays pure"
+         "description": "what is simulated once at load so render(t) stays pure"
         },
         "options": {
          "type": "object",
-         "description": "extra createWorld(canvas, {width, height, ...options}) options for the main composition (e.g. portalFade: 0)",
+         "description": "optional extra createWorld(canvas, {width, height, ...options}) options for the primary composition; keys are defined by the project's world module",
          "additionalProperties": true
         }
        }
       },
       "footage": {
        "type": "object",
-       "description": "Real footage entering as a SAM-separated subject layer.",
+       "description": "Real footage entering as a separated subject layer (sam_separate.py).",
        "properties": {
         "source": {
          "type": "string"
@@ -275,7 +285,7 @@
       },
       "variants": {
        "type": "array",
-       "description": "Every extra aspect / size is its own film at the gates: its own composition, its own world options and label hold line, its own Docker render, its own pops / luma / run_gates reports (gates/master-<slug>-<WxH>/) and its own PROGRESS.md row. A variant never inherits the 16:9 pass. The 16:9 code path must stay byte-identical when a variant option is added (frame_hash on the 16:9 draft proves it).",
+       "description": "Optional extra aspects or sizes. Each delivered variant is its own film at the gates: its own composition, world options and label hold line, its own render, its own pops / luma / run_gates reports (gates/master-<slug>-<id>-<WxH>/) and its own PROGRESS.md row; it never inherits the primary size's pass. Adding a variant option must leave the primary render unchanged (frame_hash on a primary draft proves it). build.sh renders a variant when deliver is true or when its id is named in the VARIANTS environment variable.",
        "items": {
         "type": "object",
         "required": [
@@ -287,11 +297,11 @@
         "properties": {
          "id": {
           "type": "string",
-          "description": "e.g. vertical"
+          "description": "short slug used in file names, e.g. vertical or square"
          },
          "composition": {
           "type": "string",
-          "description": "compositions/<id>.html, root-relative paths"
+          "description": "composition HTML for this variant, relative to the project root"
          },
          "width": {
           "type": "integer"
@@ -302,15 +312,15 @@
          "world_options": {
           "type": "object",
           "additionalProperties": true,
-          "description": "createWorld options only this variant turns on (Block Space portrait: portalFade 14 — portals dissolve over the last 14 units of the approach because the wider vertical field keeps a ground bar on screen until the camera is over it)"
+          "description": "optional createWorld options only this variant turns on; keys are defined by the project's world module"
          },
          "label_hold_frac": {
           "type": "number",
-          "description": "hold line for anchored labels in this variant (portrait: 0.60)"
+          "description": "hold line for anchored labels in this variant (fraction of frame height)"
          },
          "fov_scale": {
           "type": "number",
-          "description": "tan(fov/2) multiplier applied to the pose graph's fov in this aspect (Block Space portrait: 1.6, capped at 100 degrees)"
+          "description": "optional tan(fov/2) multiplier applied to the pose graph's fov in this aspect; choose it from the variant's framing"
          },
          "gates": {
           "type": "string",
@@ -319,13 +329,18 @@
           ],
           "default": "own",
           "description": "always 'own': the variant's render is gated on its own"
+         },
+         "deliver": {
+          "type": "boolean",
+          "default": false,
+          "description": "build.sh renders, muxes and gates this variant in a full build"
          }
         }
        }
       },
       "gates": {
        "type": "object",
-       "description": "How the gate reports are read (check_gate_report.py). A skipped gate is not a passed gate; frozen_time quantises at one 10 fps sample (0.1 s x 30 / analysed window, 0.11 s/30 s on a 30 s film) and a blur master or a Docker render reads +-1 sample from a draft, so a draft passes stage 7 only with this many samples of margin.",
+       "description": "How the gates are run and read (run_gates.py via npx hyperframes, check_gate_report.py, detect_pops.py, luma_floor.py, loop_seam.py, frame_hash.py). A skipped gate is not a passed gate. frozen_time is sampled at 10 fps, and a blurred or containerised master can read one sample differently from a draft, so a draft passes only with frozen_margin_samples of margin. Limits may be chosen per project from the measured reference; script defaults apply when a field is omitted.",
        "properties": {
         "frozen_margin_samples": {
          "type": "integer",
@@ -337,13 +352,82 @@
          "items": {
           "type": "string"
          },
-         "description": "gates the spec legitimately cannot feed (handoff without a carry object, swatch without swatch points); the reason goes in GAUNTLET.jsonl"
+         "description": "gates this spec legitimately cannot feed (e.g. handoff without a carry object, swatch without swatch points); record the reason in GAUNTLET.jsonl"
         },
         "hyperframes_cmd": {
          "type": "string",
          "const": "npx hyperframes",
          "default": "npx hyperframes",
-         "description": "run_gates.py splits this on spaces: it is always 'npx hyperframes', never a path"
+         "description": "the gate runner command; always 'npx hyperframes' (run_gates.py splits it on spaces, so a path is not allowed)"
+        },
+        "cta_tail_s": {
+         "type": "number",
+         "minimum": 0,
+         "description": "final seconds excluded from frozen_time as an end card (run_gates default 1.5)"
+        },
+        "hard_cuts_s": {
+         "type": "array",
+         "items": {
+          "type": "number"
+         },
+         "description": "intended hard-cut times; detect_pops reports them and the blur shutter never crosses them"
+        },
+        "pops_allow_s": {
+         "type": "array",
+         "items": {
+          "type": "number"
+         },
+         "description": "intended one-frame events (e.g. a designed flash) detect_pops should accept"
+        },
+        "luma_min": {
+         "type": "number",
+         "minimum": 0,
+         "maximum": 255,
+         "default": 35,
+         "description": "per-window mean-luma floor for luma_floor.py (library default 35); set from the measured reference for intentionally dark films"
+        },
+        "luma_window_s": {
+         "type": "number",
+         "exclusiveMinimum": 0,
+         "description": "luma_floor.py window (default 0.5 s)"
+        },
+        "luma_tail_s": {
+         "type": "number",
+         "minimum": 0,
+         "description": "seconds at the end that luma_floor.py ignores (e.g. a fade to black)"
+        },
+        "require": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         },
+         "description": "gates that must be present in every gate report (check_gate_report.py --require)"
+        },
+        "loop_seam": {
+         "type": "boolean",
+         "default": false,
+         "description": "the film is a loop: run loop_seam.py on every delivered master"
+        },
+        "frame_hash_ab": {
+         "type": "boolean",
+         "default": true,
+         "description": "full builds render the primary picture twice in Docker and compare decoded frame hashes"
+        }
+       }
+      },
+      "delivery": {
+       "type": "object",
+       "description": "What a full build delivers beyond the primary master (project.sizes[0] at project.fps). Fields left unset are skipped and reported.",
+       "properties": {
+        "poster_t": {
+         "type": "number",
+         "minimum": 0,
+         "description": "time of the poster frame; omit for no poster"
+        },
+        "srt": {
+         "type": "boolean",
+         "default": true,
+         "description": "write captions as SRT from shots[].text (tools/srt.py)"
         }
        }
       }
@@ -356,7 +440,7 @@
       "properties": {
        "camera": {
         "type": "object",
-        "description": "Pose graph for this shot. Poses are keyed in log space for distance/zoom and interpolated with a monotone cubic (no overshoot) unless ease says otherwise; velocity peaks are where blur and whoosh cues belong.",
+        "description": "Pose graph for this shot. Distance and zoom are keyed in log space when project.camera.log_space is true, interpolated with a monotone cubic (no overshoot) unless a pose names an ease; velocity peaks are where blur and whoosh-like cues belong.",
         "properties": {
          "poses": {
           "type": "array",
@@ -402,11 +486,11 @@
          },
          "move": {
           "type": "string",
-          "description": "named move (push, pull, orbit, crane, dolly, pan, rack, hold)"
+          "description": "named move (e.g. push, pull, orbit, crane, dolly, pan, rack, hold)"
          },
          "velocity_peak_s": {
           "type": "number",
-          "description": "time of the fastest camera motion in the shot (blur + whoosh cue)"
+          "description": "time of the fastest camera motion in the shot (where blur and a motion cue belong)"
          },
          "settle_s": {
           "type": "number",
@@ -416,11 +500,11 @@
           "type": "integer",
           "minimum": 1,
           "maximum": 5,
-          "description": "optional per-shot exception to project.camera.dial (a locked insert in a flowing film, a flowing reveal in an anchored one). Name the exception and its reason in MOTION.md; the critic's CAM checklist reads it. Elements keep moving at every setting."
+          "description": "optional per-shot exception to project.camera.dial (e.g. a locked insert in a flowing film). Name the exception and its reason in MOTION.md. Rest drift follows the effective dial."
          },
          "framing_target": {
           "type": "object",
-          "description": "A shot whose camera is SOLVED from where something must sit on screen, instead of keyed by hand: name the world point, key its screen position densely (<= key_step_s apart), derive the pose from it, and assert the projected quantity in tools/sweep.mjs (settle check: one direction, then hold). Block Space's end stretch: the ground's end edge from 4.5 % at 22.3 s to the top fifth at 27.0 s, keyed every 0.1 s, asserted 'never reverses by more than 0.6 px, never moves more than 1.5 px under the headline'.",
+          "description": "A shot whose camera is solved from where something must sit on screen instead of keyed by hand: name the world point, key its screen position densely (<= key_step_s apart), derive the pose from it, and assert the projected quantity in tools/sweep.mjs (settles in one direction, then holds within slack).",
           "required": [
            "point",
            "keys"
@@ -428,7 +512,7 @@
           "properties": {
            "point": {
             "type": "string",
-            "description": "anchor name, or 'x,y,z' in world units"
+            "description": "anchor name returned by anchors(t), or 'x,y,z' in world units"
            },
            "axis": {
             "type": "string",
@@ -467,15 +551,17 @@
            },
            "hold_from_s": {
             "type": "number",
-            "description": "from here the projected quantity must hold (sweep holdSlack px per frame)"
+            "description": "from here the projected quantity must hold (within hold_slack_px per frame)"
            },
            "slack_px": {
             "type": "number",
-            "default": 0.6
+            "default": 0.6,
+            "description": "reversal allowed per frame while settling"
            },
            "hold_slack_px": {
             "type": "number",
-            "default": 1.5
+            "default": 1.5,
+            "description": "movement allowed per frame during the hold"
            }
           }
          }
@@ -483,7 +569,7 @@
        },
        "world_anchors": {
         "type": "array",
-        "description": "Labels projected from world anchors: the text follows a world point, set at a fixed screen size. Placement rule (a requirement, enforced by film/main.js and asserted by the sweep): the plate sits ABOVE the anchor; if that puts it on the object (the top bar of a gate), it moves BESIDE the right post, past the post's outer face, with a leader; if that side is the readout's, beside the LEFT post; then it is clamped to the safe area, never over the corner readout, never in the caption zone, and later labels are pushed up deterministically when they collide. For this the world's anchors(cam) must return, for every anchor <a> that names an object with posts, the variants <a>-right, <a>-right-outer, <a>-left, <a>-left-outer (the post tops and their outer faces). No plate may touch the object it names, any frame it is up (sweep_lib labelsClear).",
+        "description": "Labels projected from world anchors: the text follows a world point and is set at a fixed screen size. Placement rule (film/place_label.js, shared by the HUD and the sweep): the plate sits above its anchor; when that overlaps the object it names and the world provides side candidates, it moves beside the object (<a>-right, then <a>-left; <a>-right-outer / <a>-left-outer give the outer edge to clear). Side candidates are optional: anchors(cam) returns them only for objects that need them. Then the plate is clamped to the safe area, kept out of any reserved readout box and the caption zone, held at hold_line_frac, and pushed up deterministically on collision. No plate may touch the object it names in any frame it is up (sweep_lib labelsClear).",
         "items": {
          "type": "object",
          "required": [
@@ -528,13 +614,13 @@
             "beside-left"
            ],
            "default": "auto",
-           "description": "'auto' is the above -> right -> left rule"
+           "description": "'auto' is above, then beside-right, then beside-left when side candidates exist"
           },
           "hold_line_frac": {
            "type": "number",
            "minimum": 0,
            "maximum": 1,
-           "description": "the plate stops following its anchor below this fraction of the frame height and holds (16:9 default 0.76, portrait 0.60: a plate must not race a passing gate out of the frame)"
+           "description": "the plate stops following its anchor below this fraction of the frame height and holds, so it never races a passing object out of frame (place_label.js default 0.76)"
           }
          }
         }
@@ -571,7 +657,7 @@
     },
     "audio": {
      "type": "object",
-     "description": "Cue sheet summary for the audible gate.",
+     "description": "Optional audio contract. Synthesized audio: set cue_sheet (audio/make_cues.py writes it, synth_sfx.py renders it, prove_audible.py checks each cue). A supplied track: project.music.src. Picture only: neither.",
      "properties": {
       "cue_sheet": {
        "type": "string",
@@ -604,7 +690,7 @@
          },
          "audibility_db": {
           "type": "number",
-          "description": "required in-band lift over the bed at the cue's peak (default 4)"
+          "description": "required in-band lift over the bed at the cue's peak (prove_audible default 4)"
          },
          "band_hz": {
           "type": "array",
@@ -631,11 +717,11 @@
          "type": "number"
         }
        },
-       "description": "exact digital-silence windows [[from_s, to_s], ...]: zeros in every output (mix, stems, music-only), carved by synth_sfx.py and proven by prove_audible.py --silence; the same windows go to build.sh SILENCE"
+       "description": "optional exact digital-silence windows [[from_s, to_s], ...]: zeros in every output, carved by synth_sfx.py and proven by prove_audible.py --silence. build.sh reads them from here."
       },
       "music_only": {
        "type": "object",
-       "description": "The music-only export is the score stem mastered ON ITS OWN (synth_sfx.py --master-stem): a stem carries the mix's gain and alone reads under the target (Block Space: -16.3 LUFS raw, -14.3 after). Record the result here.",
+       "description": "Optional music-only export: the score stem mastered on its own with synth_sfx.py --master-stem (a stem carries the mix's gain and alone reads under the loudness target). build.sh produces it only when this block names a stem; record the result here.",
        "properties": {
         "stem": {
          "type": "string"

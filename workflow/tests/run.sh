@@ -1,13 +1,14 @@
 #!/bin/bash
 # tests/run.sh — validate the worldfilm skill the way code is validated: every check must catch its known defect and
 # stay quiet on clean input. Usage: bash workflow/tests/run.sh [--full]   (--full adds the Playwright blur A/B, ~2 min)
-# Exit 0 when every expectation holds. Writes into tests/out/ (ignored by git).
+# Exit 0 when every expectation holds. Writes into tests/out/ (ignored by git). Every fixture is synthetic and lives
+# under workflow/tests/; nothing here reads an example or film project (the suite runs with examples/ absent).
 set -u
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT="$(cd "$HERE/../.." && pwd)"
-SC="$ROOT/workflow/scripts"
-STUDIO="$ROOT/studio"
-PY="$STUDIO/.venv/bin/python"; [ -x "$PY" ] || PY=python3
+WF="$(cd "$HERE/.." && pwd)"
+SC="$WF/scripts"
+TPL="$WF/templates"
+PY="${WORLDFILM_PYTHON:-$WF/../studio/.venv/bin/python}"; [ -x "$PY" ] || PY=python3   # any python with numpy, jsonschema
 case ":$PATH:" in *":/opt/homebrew/bin:"*) ;; *) export PATH="/opt/homebrew/bin:$PATH" ;; esac   # homebrew first, then nvm in front of it
 if [ -s "$HOME/.nvm/nvm.sh" ]; then . "$HOME/.nvm/nvm.sh" >/dev/null 2>&1; nvm use 22 >/dev/null 2>&1 || true; fi   # nvm prepends its node 22
 export HYPERFRAMES_NO_TELEMETRY=1 HYPERFRAMES_NO_UPDATE_CHECK=1
@@ -21,7 +22,7 @@ want() {  # want <expected exit> <name> <cmd...>
   if [ "$rc" -eq "$exp" ]; then ok "$name (exit $rc)"; else bad "$name (exit $rc, wanted $exp)"; fi
 }
 cd "$HERE" && mkdir -p out out/gates
-echo "worldfilm tests — $ROOT"
+echo "worldfilm tests — $WF"
 echo "synthetic clips"
 "$PY" synth_clips.py --out out >/dev/null 2>&1 && ok "synth_clips.py wrote out/*.mp4" || bad "synth_clips.py"
 cd out
@@ -36,11 +37,24 @@ echo "gate reader"
 want 1 "check_gate_report: a skipped contrast gate is not a pass"      "$PY" "$SC/check_gate_report.py" ../fixtures/gate-report-skip.json --allow-skip handoff,swatch --quiet
 want 0 "check_gate_report: two samples of frozen margin pass"           "$PY" "$SC/check_gate_report.py" ../fixtures/gate-report-margin.json --allow-skip handoff,swatch --quiet
 want 1 "check_gate_report: an unallowed skip (handoff) is not a pass"   "$PY" "$SC/check_gate_report.py" ../fixtures/gate-report-margin.json --quiet
+want 1 "check_gate_report: frozen_time exactly at its limit has no margin" "$PY" "$SC/check_gate_report.py" ../fixtures/gate-report-edge.json --allow-skip handoff,swatch --quiet
+want 0 "check_gate_report: the same report passes with --frozen-margin-samples 0" "$PY" "$SC/check_gate_report.py" ../fixtures/gate-report-edge.json --allow-skip handoff,swatch --frozen-margin-samples 0 --quiet
+want 1 "check_gate_report: a frozen_time report without its analysed window is not a pass" "$PY" "$SC/check_gate_report.py" ../fixtures/gate-report-no-window.json --allow-skip handoff,swatch --quiet
 echo "sweep"
 want 0 "sweep_lib: every check catches its defect (14 expectations)"    node ../sweep_lib_test.mjs
 want 0 "place_label: the shared placement rule takes the right side, holds at the hold line (9 expectations)" node ../place_label_test.mjs
-want 0 "sweep_lib on Block Space's pure functions: 0 violations"       node ../sweep_blockspace.mjs
-want 2 "sweep template exits 2 in a project with no film yet"          node "$STUDIO/projects/_template/tools/sweep.mjs"
+want 0 "sweep_lib on a synthetic world: clean passes, each of 7 defects is caught (17 expectations)" node ../sweep_world_test.mjs
+want 0 "runSweep on the clean synthetic world exits 0"                 node ../sweep_world_test.mjs --sweep clean
+want 1 "runSweep exits 1 when the readout shows a value its recomputation rejects" node ../sweep_world_test.mjs --sweep format
+# the sweep template copied into a fresh scratch project (path with spaces) that has no film yet: a placeholder never passes
+SWEEP_PROJ="$(mktemp -d "${TMPDIR:-/tmp}/worldfilm scratch.XXXXXX")/new film"
+mkdir -p "$SWEEP_PROJ/tools" "$SWEEP_PROJ/film" && cp "$TPL/film/place_label.js" "$SWEEP_PROJ/film/"
+SWEEP_LIB="$SC/sweep_lib.mjs" node -e '
+const fs = require("fs"), { pathToFileURL } = require("url"), [src, dst] = process.argv.slice(1);
+const lib = pathToFileURL(process.env.SWEEP_LIB).href;
+fs.writeFileSync(dst, fs.readFileSync(src, "utf8").replace(/(from\s+["\x27])[^"\x27]*sweep_lib\.mjs(["\x27])/g, "$1" + lib + "$2"));
+' "$TPL/sweep.template.mjs" "$SWEEP_PROJ/tools/sweep.mjs"
+want 2 "sweep template exits 2 in a scratch project with no film yet"  node "$SWEEP_PROJ/tools/sweep.mjs"
 echo "sound"
 cat > gates/quiet.json <<'EOF2'
 {"duration": 4.0, "seed": 3, "target_lufs": -14.0, "ceiling_db": -2.0, "fade_out": 0.2, "silence": [[3.0, 3.5]],
@@ -58,14 +72,7 @@ import json; r = json.load(open("gates/music-only.json")); assert r["lufs"] > r[
 EOF3
 then ok "--master-stem lifts a stem to -14 +-1.5 LUFS under the -2 dBTP ceiling"; else bad "--master-stem"; fi
 echo "spec"
-want 0 "validate_spec: the template spec is valid against the updated schema"   "$PY" "$SC/validate_spec.py" "$STUDIO/projects/_template/shotspec.json"
-want 0 "validate_spec: the Block Space spec is valid against the updated schema" "$PY" "$SC/validate_spec.py" "$STUDIO/projects/block-space/shotspec.json"
-TPL_SPEC="$STUDIO/projects/_template/shotspec.json" "$PY" - <<'EOF4' > gates/bad-spec.json
-import json, os; s = json.load(open(os.environ["TPL_SPEC"]))
-s["project"]["gates"]["hyperframes_cmd"] = "/opt/some path/hyperframes"; s["project"]["camera"]["rest_drift"]["vertical_units"] = 0
-s["audio"]["silence"] = [[27.0, 25.0]]; print(json.dumps(s))
-EOF4
-want 1 "validate_spec rejects a path as the gate runner, a one-axis drift and a reversed silence window" "$PY" "$SC/validate_spec.py" gates/bad-spec.json
+want 0 "validate_spec: template + neutral fixture valid at a path with spaces; 8 mutated defects, a missing mask dir and a missing dial each named (5 expectations)" "$PY" ../validate_spec_test.py --python "$PY" --out "$HERE/out"
 if [ "$FULL" -eq 1 ]; then
   echo "blur A/B (Playwright)"
   node "$SC/capture_subframes.mjs" --dir ../blur-page --out blur-sharp.mp4 --fps 30 --duration 2 --width 640 --height 360 --samples 1 --cuts 0.97 >/dev/null 2>&1

@@ -1,0 +1,99 @@
+{
+ "_fixture": "synthetic: gate-report-margin.json with frozen_time.measured.analysed_window_s removed; the margin cannot be computed, so the reader must not pass it",
+ "runner": {
+  "name": "run_gates.py",
+  "version": "0.1.0"
+ },
+ "spec": {
+  "path": "projects/sample film/shotspec.json",
+  "title": "Sample",
+  "shots": 3
+ },
+ "mode": "render",
+ "video": {
+  "path": "synthetic: no video"
+ },
+ "gates": [
+  {
+   "gate": "frozen_time",
+   "status": "PASS",
+   "measured": {
+    "frozen_total_s": 0.7,
+    "frozen_s_per_30s": 0.78,
+    "longest_hold_s": 0.2,
+    "tail_excluded_s": 3,
+    "samples": 300
+   },
+   "threshold": {
+    "frozen_max_s_per_30s": 1,
+    "hold_max_s": 0.3
+   },
+   "detail": "7 near-frozen 10 fps samples in the first 27s",
+   "evidence_paths": []
+  },
+  {
+   "gate": "loudness",
+   "status": "PASS",
+   "measured": {
+    "integrated_lufs": -14,
+    "true_peak_dbtp": -2.5
+   },
+   "threshold": {
+    "lufs_target": -14,
+    "lufs_tolerance_lu": 1.5,
+    "true_peak_max_dbtp": -1
+   },
+   "detail": "integrated -14.0 LUFS, true peak -2.5 dBTP",
+   "evidence_paths": []
+  },
+  {
+   "gate": "contrast",
+   "status": "PASS",
+   "measured": {
+    "min_ratio": 7.1
+   },
+   "threshold": {
+    "contrast_min": 4.5
+   },
+   "detail": "lowest text contrast 7.1:1",
+   "evidence_paths": []
+  },
+  {
+   "gate": "facts",
+   "status": "PASS",
+   "measured": {
+    "tokens_checked": 4,
+    "unmatched": 0
+   },
+   "threshold": {},
+   "detail": "every number on screen traces to facts.json",
+   "evidence_paths": []
+  },
+  {
+   "gate": "handoff",
+   "status": "SKIP",
+   "measured": {},
+   "threshold": {
+    "handoff_max_mean_abs_diff": 6
+   },
+   "detail": "no shot declares a carry object",
+   "evidence_paths": []
+  },
+  {
+   "gate": "swatch",
+   "status": "SKIP",
+   "measured": {},
+   "threshold": {},
+   "detail": "no shot declares swatch points",
+   "evidence_paths": []
+  }
+ ],
+ "summary": {
+  "verdict": "PASS",
+  "pass": 4,
+  "warn": 0,
+  "fail": 0,
+  "skip": 2,
+  "failed_gates": []
+ }
+}
